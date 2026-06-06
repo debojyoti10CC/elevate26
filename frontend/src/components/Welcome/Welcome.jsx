@@ -1,8 +1,8 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap/all";
 import { welcomeLinesLG, welcomeLinesSM } from "../../constants/welcome";
-import w1 from "../../assets/welcome-1.png";
-import w2 from "../../assets/welcome-2.png";
+import w1 from "../../assets/welcome-1.jpg";
+import w2 from "../../assets/welcome-2.jpg";
 
 const Welcome = () => {
     const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
