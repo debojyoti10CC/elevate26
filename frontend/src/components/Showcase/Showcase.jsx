@@ -4,6 +4,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useEffect, useState } from "react";
 import "./showcase.css";
 
+// Import event background images
+import roboWarsBg from "../../assets/robo-wars-bg.jpg";
+import eventHackathon from "../../assets/event-hackathon.jpg";
+import eventSeminar from "../../assets/event-seminar.jpg";
+import event3DPrint from "../../assets/event-3dprint.jpg";
+import eventVR from "../../assets/event-vr.jpg";
+import eventCertificate from "../../assets/event-certificate.jpg";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const eventsData = [
