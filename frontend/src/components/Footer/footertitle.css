@@ -1,0 +1,66 @@
+.footer-title {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.footer-title h1 {
+    position: relative;
+    line-height: 1;
+    color: #f4efe7;
+}
+
+.ftChar {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.ftChar>span {
+    display: inline-block;
+    will-change: transform;
+}
+
+/* Specific styling for the ® symbol */
+.footer-title h1 sub.ftChar {
+    /* font-size: 0.5em; */
+    /* Make ® smaller */
+    vertical-align: super;
+    bottom: 0;
+}
+
+/* Enhanced Footer Map Container Styling */
+.footer-map-container {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+}
+
+.footer-map-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(244, 239, 231, 0.05) 0%, rgba(177, 166, 150, 0.03) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.footer-map-container iframe {
+    position: relative;
+    z-index: 0;
+}
+
+/* Hover effect for subtle interactivity */
+.footer-map-container:hover {
+    transform: translateY(-2px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
