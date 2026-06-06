@@ -6,13 +6,11 @@ import Home from "../pages/Home/Home";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <MainLayout />, // Layout wrapper
+        element: <MainLayout />,
         children: [
-            { path: "", element: <Home /> }, // default page
+            { path: "", element: <Home /> },
         ],
     },
-], {
-    basename: import.meta.env.BASE_URL
-});
+]);
 
 export default router;
