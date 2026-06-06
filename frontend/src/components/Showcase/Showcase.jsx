@@ -1,10 +1,4 @@
 import { useGSAP } from "@gsap/react";
-import roboWarsBg    from "../../assets/robo-wars-bg.jpg";
-import eventHackathon   from "../../assets/event-hackathon.jpg";
-import eventSeminar     from "../../assets/event-seminar.jpg";
-import eventVR          from "../../assets/event-vr.jpg";
-import event3DPrint     from "../../assets/event-3dprint.jpg";
-import eventCertificate from "../../assets/event-certificate.jpg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useEffect, useState } from "react";
