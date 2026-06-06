@@ -1,0 +1,22 @@
+/* Showcase Styles - Fixed overflow clipping */
+
+#events {
+  clip-path: inset(0);
+  contain: layout style paint;
+}
+
+/* Ensure the inner scrolling container doesn't clip */
+#events > div[style*="transform"] {
+  clip-path: none;
+  overflow: visible !important;
+}
+
+/* Prevent card content from being clipped at viewport edges */
+#events .absolute {
+  clip-path: none;
+}
+
+/* Smooth scrolling experience */
+html {
+  scroll-behavior: smooth;
+}
