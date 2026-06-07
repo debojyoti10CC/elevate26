@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './gallery.css';
 import { BsFillPlusCircleFill } from "react-icons/bs";
@@ -55,7 +56,7 @@ const MobileGallery = () => (
 const DesktopGallery = () => {
   const pageRef = useRef(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const tl4 = gsap.timeline({
       scrollTrigger: {
         trigger: ".gallery-page4",
@@ -104,11 +105,7 @@ const DesktopGallery = () => {
         opacity: 0, x: 50, force3D: true,
       })
       .to({}, { duration: 0.4 }, "+=0");
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
+  }, { scope: pageRef });
 
   const generateItems = (qty = 6) =>
     Array.from({ length: qty }, (_, i) => (

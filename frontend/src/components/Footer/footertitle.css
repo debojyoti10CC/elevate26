@@ -1,12 +1,11 @@
 .footer-title {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     width: 100%;
     text-align: center;
     z-index: 2;
     overflow: hidden;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .footer-title h1 {

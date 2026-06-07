@@ -53,8 +53,8 @@ const FooterTitle = () => {
             force3D: true,
             scrollTrigger: {
                 trigger: ftConRef.current,
-                start: "top 90%",
-                end: "top 80%",
+                start: "top 95%",
+                end: "bottom bottom",
                 scrub: true,
                 // markers: true
             }
