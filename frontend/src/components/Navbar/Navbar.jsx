@@ -37,7 +37,7 @@ const Navbar = () => {
       {/* Menu overlay */}
       {open && (
         <div
-          className="nav-overlay fixed bottom-24 left-1/2 -translate-x-1/2 bg-[#f4efe7] rounded-3xl z-50 px-8 py-6 min-w-[220px] opacity-0"
+          className="nav-overlay fixed bottom-24 left-1/2 -translate-x-1/2 bg-[#eae4f5] rounded-3xl z-50 px-8 py-6 min-w-[220px] opacity-0"
           style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.35)" }}
         >
           <ul className="flex flex-col gap-3">
@@ -46,9 +46,9 @@ const Navbar = () => {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`text-[#2a2725] text-xl font-medium hover:text-[#b1a696] transition-colors ${
+                  className={`text-[#181126] text-xl font-medium hover:text-[#9a8eb7] transition-colors ${
                     link.label === "Register"
-                      ? "text-[#2a2725] font-bold border-t border-[#c4c1b9] pt-3 mt-1 block"
+                      ? "text-[#181126] font-bold border-t border-[#35294e] pt-3 mt-1 block"
                       : ""
                   }`}
                 >
@@ -63,16 +63,16 @@ const Navbar = () => {
       {/* Navbar pill */}
       <div
         onClick={() => setOpen((prev) => !prev)}
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 w-fit h-10 p-1 flex items-center justify-end gap-2 bg-[#f4efe7] rounded-4xl z-50 cursor-pointer group transition-all duration-500 select-none"
+        className="fixed bottom-8 left-1/2 -translate-x-1/2 w-fit h-10 p-1 flex items-center justify-end gap-2 bg-[#eae4f5] rounded-4xl z-50 cursor-pointer group transition-all duration-500 select-none"
       >
-        <div className="pl-4 text-[#2a2725] text-[12px] font-medium">
+        <div className="pl-4 text-[#181126] text-[12px] font-medium">
           {open ? "Close" : "Menu"}
         </div>
-        <div className="bg-[#2a2725] rounded-full p-2">
+        <div className="bg-[#181126] rounded-full p-2">
           {open ? (
-            <IoMdClose className="text-[#b1a696] transition-transform duration-300" />
+            <IoMdClose className="text-[#9a8eb7] transition-transform duration-300" />
           ) : (
-            <IoMdMenu className="text-[#b1a696] transition-transform duration-500 group-hover:rotate-[360deg]" />
+            <IoMdMenu className="text-[#9a8eb7] transition-transform duration-500 group-hover:rotate-[360deg]" />
           )}
         </div>
       </div>

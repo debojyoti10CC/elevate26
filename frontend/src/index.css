@@ -144,14 +144,14 @@
 
 
 :root {
-	--base-100: #181717;
+	--base-100: #0b0714;
 	--base-200: #292725;
 	--base-300: #f5f5f5;
 }
 
 html,
 body {
-	background-color: #181717;
+	background-color: #0b0714;
 	scroll-behavior: smooth;
 	font-family: "Inter", sans-serif;
 	scroll-behavior: smooth;
@@ -276,7 +276,7 @@ body {
 /* --------------- Welcome Section Styles -------------- */
 
 .text-darkBrown {
-	color: #2A2725;
+	color: #181126;
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
@@ -288,7 +288,7 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	color: #f4efe7;
+	color: #eae4f5;
 	clip-path: inset(0 0 100% 0);
 	white-space: nowrap;
 	transition: none;
@@ -305,18 +305,18 @@ body {
 /* -------------- Choose Section Styles ----------------- */
 .choose-section {
 	background: linear-gradient(to bottom,
-			#181717 0%,
-			#181717 50%,
-			#1f1d1b 65%,
-			#1f1d1b 75%,
-			#1f1d1b 85%,
-			#1f1d1b 90%,
+			#0b0714 0%,
+			#0b0714 50%,
+			#12091f 65%,
+			#12091f 75%,
+			#12091f 85%,
+			#12091f 90%,
 			/* #241f1d 95%, */
-			#2b2825 100%);
+			#1b112d 100%);
 }
 
 .choose-title-break {
-	color: #181717;
+	color: #0b0714;
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
@@ -327,7 +327,7 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	color: #f4efe7;
+	color: #eae4f5;
 	clip-path: inset(100% 0 0 0);
 	white-space: wrap;
 	transition: none;
@@ -356,12 +356,12 @@ body {
 	}
 
 	.col h1 {
-		color: #b1a696;
+		color: #9a8eb7;
 		width: 60%;
 	}
 
 	.col p {
-		color: #b1a696;
+		color: #9a8eb7;
 		width: auto;
 	}
 
@@ -405,7 +405,7 @@ body {
 		position: relative;
 		width: 100%;
 		height: 100%;
-		background-color: #2a2725;
+		background-color: #181126;
 		border-radius: 3rem;
 		overflow: hidden;
 	}
@@ -475,9 +475,18 @@ body {
 /* ─── Footer Map Embed Styles ─── */
 .footer-map-container {
 	width: 100%;
-	border-radius: 2rem;
+	max-width: 850px;
+	margin: 0 auto;
+	border-radius: 1.5rem;
 	overflow: hidden;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+	border: 1px solid rgba(139, 92, 246, 0.15);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 12px rgba(139, 92, 246, 0.04);
+	transition: all 0.3s ease;
+}
+
+.footer-map-container:hover {
+	border-color: rgba(139, 92, 246, 0.35);
+	box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 20px rgba(139, 92, 246, 0.1);
 }
 
 .footer-map-container iframe {
@@ -489,15 +498,15 @@ body {
 
 @media (max-width: 767px) {
 	.footer-map-container {
-		height: 300px;
-		margin-bottom: 2.5rem;
+		height: 260px;
+		margin-bottom: 2rem;
 	}
 }
 
 @media (min-width: 768px) {
 	.footer-map-container {
-		height: 400px;
-		margin-bottom: 3.5rem;
+		height: 340px;
+		margin-bottom: 3rem;
 	}
 }
 * {
@@ -512,7 +521,7 @@ body {
 /* On mobile the animation trigger fires too late, so make text visible by default */
 @media (max-width: 767px) {
 	.choose-title-break {
-		color: #3a3330;        /* slightly lighter so it's visible on dark bg */
+		color: #2e2540;        /* slightly lighter so it's visible on dark bg */
 	}
 	.choose-title-clip {
 		clip-path: inset(0% 0% 0% 0%); /* fully revealed on mobile — no clip anim */

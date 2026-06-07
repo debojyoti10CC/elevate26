@@ -51,7 +51,7 @@ const Hero = () => {
                 <div className="absolute inset-0 z-30 flex flex-col justify-between p-6 md:p-8">
                     {/* Top: big title */}
                     <h1
-                        className="text-[#f4efe7] text-[15vw] md:text-[10vw] lg:text-9xl font-bold tracking-wider leading-none"
+                        className="text-[#eae4f5] text-[15vw] md:text-[10vw] lg:text-9xl font-bold tracking-wider leading-none"
                         style={{ textShadow: "2px 4px 12px rgba(0,0,0,0.8)" }}
                     >
                         ELEVATE
@@ -60,7 +60,7 @@ const Hero = () => {
                     {/* Bottom: tagline + description */}
                     <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-3">
                         <h2
-                            className="text-[#f4efe7] text-xl md:text-2xl font-bold leading-snug flex flex-col gap-0.5"
+                            className="text-[#eae4f5] text-xl md:text-2xl font-bold leading-snug flex flex-col gap-0.5"
                             style={{ textShadow: "1px 2px 6px rgba(0,0,0,0.9)" }}
                         >
                             <span>India's Premier</span>

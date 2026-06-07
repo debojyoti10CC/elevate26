@@ -39,11 +39,11 @@ const FooterBanner = () => {
                     onMouseLeave={() => setActive(false)}
                     ref={fbImgRef} src={banner} alt="" className='w-full h-full object-cover' />
 
-                <h1 className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10vw] font-bold text-[#f4efe7]'>ELEVATE</h1>
+                <h1 className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10vw] font-bold text-[#eae4f5]'>ELEVATE</h1>
                 <div className='absolute bottom-5 px-4 w-full'>
                     <div className="w-full h-auto flex md:flex-row flex-col md:justify-between md:items-end">
                         <h2
-                            className="text-start lg:mt-0 md:text-[#f4efe7] text-[#b1a696] text-2xl font-bold md:tracking-wider leading-5 flex flex-col gap-1"
+                            className="text-start lg:mt-0 md:text-[#eae4f5] text-[#9a8eb7] text-2xl font-bold md:tracking-wider leading-5 flex flex-col gap-1"
                             style={{ textShadow: '2px 2px 4px #000' }}
                         >
                             <span>Register—Now</span>
@@ -52,7 +52,7 @@ const FooterBanner = () => {
                         </h2>
 
                         <p
-                            className="md:w-[20%] w-[80%] text-[#f4efe7] text-[0.7rem] font-bold  md:font-medium tracking-wide lg:text-end mt-2 text-justify"
+                            className="md:w-[20%] w-[80%] text-[#eae4f5] text-[0.7rem] font-bold  md:font-medium tracking-wide lg:text-end mt-2 text-justify"
                             style={{ textShadow: '2px 2px 4px #000' }}
                         >
                             Join ELEVATE — IEEE IEM Student Branch's flagship tech-fest. Don't miss your shot.

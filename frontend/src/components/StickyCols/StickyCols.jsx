@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 // ─── Mobile: simple stacked cards ─────────────────────────────────────────────
 const MobileStickyCols = () => (
-  <section className="w-full bg-[#181717] px-4 py-12 flex flex-col gap-6">
+  <section className="w-full bg-[#0b0714] px-4 py-12 flex flex-col gap-6">
     {[
       {
         num: "1", heading: "Compete, create,—\nand connect with the best minds in tech",
@@ -24,15 +24,15 @@ const MobileStickyCols = () => (
         img: colimg1,
       },
     ].map(({ num, heading, body, img }) => (
-      <div key={num} className="bg-[#2a2725] rounded-[2rem] overflow-hidden">
+      <div key={num} className="bg-[#181126] rounded-[2rem] overflow-hidden">
         <img src={img} alt="" className="w-full h-48 object-cover" />
         <div className="p-6">
           <div className="flex items-center gap-2 mb-3">
-            <span className="border px-3 py-1 rounded-full text-[#aaa091] text-sm">{num}</span>
+            <span className="border px-3 py-1 rounded-full text-[#9081b0] text-sm">{num}</span>
             <span className="border px-3 py-1 rounded-full text-[#524e4b] text-sm">3</span>
           </div>
-          <h2 className="text-[#b1a696] text-xl font-bold mb-3 whitespace-pre-line">{heading}</h2>
-          <p className="text-[#b1a696] text-xs leading-relaxed">{body}</p>
+          <h2 className="text-[#9a8eb7] text-xl font-bold mb-3 whitespace-pre-line">{heading}</h2>
+          <p className="text-[#9a8eb7] text-xs leading-relaxed">{body}</p>
         </div>
       </div>
     ))}
@@ -94,17 +94,17 @@ const DesktopStickyCols = () => {
   });
 
   return (
-    <section className="sticky-cols w-screen h-dvh overflow-hidden bg-[#181717] lg:mb-20">
+    <section className="sticky-cols w-screen h-dvh overflow-hidden bg-[#0b0714] lg:mb-20">
       <div className="sticky-cols-wrapper relative w-full h-screen">
         <div className="col col-1">
           <div className="col-content">
             <div className="col-content-wrapper">
-              <h1 className="text-2xl text-[#b1a696] font-bold leading-auto">
+              <h1 className="text-2xl text-[#9a8eb7] font-bold leading-auto">
                 Compete, create,—<br />and connect with<br />the best minds<br />in tech
               </h1>
               <div className="col-content-para flex items-center gap-4 justify-between">
                 <div className="flex items-center gap-0 justify-center">
-                  <h3 className="border-1 px-3 py-1 rounded-full text-[#aaa091]">1</h3>
+                  <h3 className="border-1 px-3 py-1 rounded-full text-[#9081b0]">1</h3>
                   <h3 className="border-1 px-3 py-1 rounded-full text-[#524e4b]">3</h3>
                 </div>
                 <p className={`text-[12px] font-medium ${!reveal ? "mr-6" : "mr-0"}`}>
@@ -135,7 +135,7 @@ const DesktopStickyCols = () => {
             </h1>
             <div className={`col-content-para flex items-center gap-4 justify-between ${reveal ? "ml-0" : "ml-6"}`}>
               <div className="flex items-center gap-0 justify-center">
-                <h3 className="border-1 px-3 py-1 rounded-full text-[#aaa091]">{reveal ? "3" : "2"}</h3>
+                <h3 className="border-1 px-3 py-1 rounded-full text-[#9081b0]">{reveal ? "3" : "2"}</h3>
                 <h3 className="border-1 px-3 py-1 rounded-full text-[#524e4b]">3</h3>
               </div>
               <p className="text-[12px] font-medium">

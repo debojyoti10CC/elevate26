@@ -30,15 +30,15 @@ const eventsData = [
 ];
 
 const difficultyColor = {
-  Advanced:     "text-[#f4efe7] border-[#f4efe7]",
-  Intermediate: "text-[#b1a696] border-[#b1a696]",
-  Open:         "text-[#b1a696] border-[#b1a696]",
-  Beginner:     "text-[#b1a696] border-[#b1a696]",
+  Advanced:     "text-[#eae4f5] border-[#eae4f5]",
+  Intermediate: "text-[#9a8eb7] border-[#9a8eb7]",
+  Open:         "text-[#9a8eb7] border-[#9a8eb7]",
+  Beginner:     "text-[#9a8eb7] border-[#9a8eb7]",
 };
 
 // ─── Single event card ───────────────────────────────────────────────────────
 const EventCard = ({ event }) => (
-  <div className="relative flex-shrink-0 w-[82vw] sm:w-[60vw] md:w-[48vw] lg:w-[38vw] h-[55vh] bg-[#2a2725] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden flex flex-col justify-between p-6 md:p-8">
+  <div className="relative flex-shrink-0 w-[82vw] sm:w-[60vw] md:w-[48vw] lg:w-[38vw] h-[55vh] bg-[#181126] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden flex flex-col justify-between p-6 md:p-8">
 
     {/* Background image (only for cards that have one) */}
     {event.image && (
@@ -58,8 +58,8 @@ const EventCard = ({ event }) => (
       <span
         className={`border rounded-3xl px-3 py-1 text-[0.6rem] font-bold tracking-wide ${
           event.category === "Technical"
-            ? "text-[#f4efe7] border-[#f4efe7]"
-            : "text-[#b1a696] border-[#b1a696]"
+            ? "text-[#eae4f5] border-[#eae4f5]"
+            : "text-[#9a8eb7] border-[#9a8eb7]"
         }`}
       >
         {event.category}
@@ -71,19 +71,18 @@ const EventCard = ({ event }) => (
 
     {/* Centre */}
     <div className="relative z-20">
-      <p className="text-4xl mb-3">{event.icon}</p>
-      <h1 className="text-[#f4efe7] text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+      <h1 className="text-[#eae4f5] text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
         {event.name}
       </h1>
     </div>
 
     {/* Bottom */}
     <div className="relative z-20 flex justify-between items-end gap-4">
-      <p className="text-[0.68rem] text-[#b1a696] leading-relaxed max-w-[65%]">
+      <p className="text-[0.68rem] text-[#9a8eb7] leading-relaxed max-w-[65%]">
         {event.description}
       </p>
       <div className="flex items-center flex-shrink-0">
-        <span className="text-[#f4efe7] border border-[#f4efe7] rounded-3xl px-2 py-1 text-[0.65rem]">
+        <span className="text-[#eae4f5] border border-[#eae4f5] rounded-3xl px-2 py-1 text-[0.65rem]">
           {String(event.id).padStart(2, "0")}
         </span>
         <span className="text-[#4e484e] border border-[#4e484e] rounded-3xl px-2 py-1 text-[0.65rem]">
@@ -132,9 +131,9 @@ const DesktopShowcase = () => {
     <section
       ref={containerRef}
       id="events"
-      className="relative w-full min-h-screen bg-[#181717] flex items-center py-20"
+      className="relative w-full min-h-screen bg-[#0b0714] flex items-center py-20"
     >
-      <p className="absolute top-6 left-8 text-[0.7rem] font-bold text-[#eae5dd] z-20 pointer-events-none">
+      <p className="absolute top-6 left-8 text-[0.7rem] font-bold text-[#eae4f5] z-20 pointer-events-none">
         12 Events — Scroll to explore →
       </p>
       <div
@@ -154,8 +153,8 @@ const DesktopShowcase = () => {
 
 // ─── Mobile: native horizontal snap scroll ───────────────────────────────────
 const MobileShowcase = () => (
-  <section id="events" className="w-full bg-[#181717] py-4">
-    <p className="px-5 pb-3 text-[0.65rem] font-bold text-[#eae5dd]">
+  <section id="events" className="w-full bg-[#0b0714] py-4">
+    <p className="px-5 pb-3 text-[0.65rem] font-bold text-[#eae4f5]">
       12 Events — Swipe to explore →
     </p>
     {/* snap container */}
@@ -172,15 +171,15 @@ const MobileShowcase = () => (
         <div
           key={event.id}
           style={{ scrollSnapAlign: "start", scrollSnapStop: "always" }}
-          className="flex-shrink-0 w-[82vw] h-[60vh] bg-[#2a2725] rounded-[2rem] overflow-hidden flex flex-col justify-between p-6"
+          className="flex-shrink-0 w-[82vw] h-[60vh] bg-[#181126] rounded-[2rem] overflow-hidden flex flex-col justify-between p-6"
         >
           {/* Top */}
           <div className="flex justify-between items-start">
             <span
               className={`border rounded-3xl px-3 py-1 text-[0.6rem] font-bold tracking-wide ${
                 event.category === "Technical"
-                  ? "text-[#f4efe7] border-[#f4efe7]"
-                  : "text-[#b1a696] border-[#b1a696]"
+                  ? "text-[#eae4f5] border-[#eae4f5]"
+                  : "text-[#9a8eb7] border-[#9a8eb7]"
               }`}
             >
               {event.category}
@@ -191,16 +190,15 @@ const MobileShowcase = () => (
           </div>
           {/* Centre */}
           <div>
-            <p className="text-4xl mb-3">{event.icon}</p>
-            <h1 className="text-[#f4efe7] text-3xl font-bold leading-tight">{event.name}</h1>
+            <h1 className="text-[#eae4f5] text-3xl font-bold leading-tight">{event.name}</h1>
           </div>
           {/* Bottom */}
           <div className="flex justify-between items-end gap-2">
-            <p className="text-[0.65rem] text-[#b1a696] leading-relaxed max-w-[70%]">
+            <p className="text-[0.65rem] text-[#9a8eb7] leading-relaxed max-w-[70%]">
               {event.description}
             </p>
             <div className="flex items-center flex-shrink-0">
-              <span className="text-[#f4efe7] border border-[#f4efe7] rounded-3xl px-2 py-1 text-[0.6rem]">
+              <span className="text-[#eae4f5] border border-[#eae4f5] rounded-3xl px-2 py-1 text-[0.6rem]">
                 {String(event.id).padStart(2, "0")}
               </span>
               <span className="text-[#4e484e] border border-[#4e484e] rounded-3xl px-2 py-1 text-[0.6rem]">

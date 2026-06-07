@@ -26,9 +26,9 @@ const ClickIndicator = ({ active }) => {
 
     return createPortal(
         <div ref={ref} className="click-indicator visible text-[0.7rem] px-3 py-2 rounded-4xl">
-            <div className="w-auto bg-[#f4efe7] flex justify-center items-center gap-3">
+            <div className="w-auto bg-[#eae4f5] flex justify-center items-center gap-3">
                 <p>Show the map</p>
-                <MdArrowOutward className="bg-[#2a2725] text-[#b3a694] w-[3rem] h-[3rem] rounded-full p-1" />
+                <MdArrowOutward className="bg-[#181126] text-[#9a8eb7] w-[3rem] h-[3rem] rounded-full p-1" />
             </div>
         </div>,
         document.body

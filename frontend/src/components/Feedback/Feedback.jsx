@@ -19,11 +19,11 @@ const Feedback = () => {
 
     return (
         <section className="w-full px-5 md:px-8 py-16 md:h-dvh flex flex-col justify-center">
-            <p className="text-[0.65rem] font-bold text-[#eae5dd] mb-4">
+            <p className="text-[0.65rem] font-bold text-[#eae4f5] mb-4">
                 ELEVATE Highlights
             </p>
 
-            <h1 className="text-[#f4efe7] text-3xl md:text-7xl mt-2 mb-6 leading-tight">
+            <h1 className="text-[#eae4f5] text-3xl md:text-7xl mt-2 mb-6 leading-tight">
                 {feedbackH1LG[index].map((line, i) => (
                     <span key={i}>{line}<br /></span>
                 ))}
@@ -35,7 +35,7 @@ const Feedback = () => {
                     alt="reviewer"
                     className="w-12 md:w-[4.5vw] rounded-2xl object-cover"
                 />
-                <p className="text-[#aca192] text-xs">
+                <p className="text-[#9889b7] text-xs">
                     {feedbackReviewLG[index][0]}<br />
                     ({feedbackReviewLG[index][1]})
                 </p>
@@ -45,21 +45,21 @@ const Feedback = () => {
                 <div className="flex gap-2">
                     <button
                         onClick={handlePrev}
-                        className="border border-[#aaa090] hover:bg-[#aaa090] rounded-full p-2 transition-colors"
+                        className="border border-[#9081b0] hover:bg-[#9081b0] rounded-full p-2 transition-colors"
                     >
-                        <IoMdArrowBack className="text-[#f1ece4] w-5 h-5" />
+                        <IoMdArrowBack className="text-[#eae4f5] w-5 h-5" />
                     </button>
                     <button
                         onClick={handleNext}
-                        className="border border-[#aaa090] hover:bg-[#aaa090] rounded-full p-2 transition-colors"
+                        className="border border-[#9081b0] hover:bg-[#9081b0] rounded-full p-2 transition-colors"
                     >
-                        <IoMdArrowForward className="text-[#f1ece4] w-5 h-5" />
+                        <IoMdArrowForward className="text-[#eae4f5] w-5 h-5" />
                     </button>
                 </div>
 
-                <div className="relative w-40 md:w-70 h-[1px] bg-[#4f4b48] flex-shrink-0">
+                <div className="relative w-40 md:w-70 h-[1px] bg-[#271d3a] flex-shrink-0">
                     <div
-                        className="absolute top-0 left-0 h-full bg-[#f4efe7] transition-all duration-500"
+                        className="absolute top-0 left-0 h-full bg-[#eae4f5] transition-all duration-500"
                         style={{ width: progressWidth }}
                     />
                 </div>

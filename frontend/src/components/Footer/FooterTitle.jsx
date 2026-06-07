@@ -70,15 +70,15 @@ const FooterTitle = () => {
     }, { scope: ftConRef });
 
     return (
-        <section ref={ftConRef} className='relative z-1 w-full border-t border-[#c4c1b9] pb-4'>
+        <section ref={ftConRef} className='relative z-1 w-full border-t border-[#35294e] pb-4'>
             <div className='w-full flex flex-wrap justify-between items-center gap-y-1 px-5 md:px-6 pt-5 pb-2'>
-                <p className='text-[#b1a696] text-[0.65rem]'>
-                    Powered by—<a href="#" className='text-[#f2ede5]'>IEEE IEM Student Branch</a>
+                <p className='text-[#9a8eb7] text-[0.65rem]'>
+                    Powered by—<a href="#" className='text-[#eae4f5]'>IEEE IEM Student Branch</a>
                 </p>
-                <p className='text-[#b1a696] text-[0.65rem]'>
+                <p className='text-[#9a8eb7] text-[0.65rem]'>
                     © ELEVATE 2025
                 </p>
-                <p className='text-[#b1a696] text-[0.65rem]'>
+                <p className='text-[#9a8eb7] text-[0.65rem]'>
                     All rights reserved
                 </p>
             </div>

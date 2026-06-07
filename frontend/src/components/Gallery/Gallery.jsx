@@ -36,15 +36,15 @@ const slides = [
 
 // ─── Mobile: simple vertical stack ───────────────────────────────────────────
 const MobileGallery = () => (
-  <section className="w-full bg-[#181717] py-8 px-4 flex flex-col gap-4">
-    <p className="text-[0.65rem] font-bold text-[#eae5dd] mb-2">Venue — ELEVATE 2025</p>
+  <section className="w-full bg-[#0b0714] py-8 px-4 flex flex-col gap-4">
+    <p className="text-[0.65rem] font-bold text-[#eae4f5] mb-2">Venue — ELEVATE 2025</p>
     {slides.map((s) => (
       <div key={s.id} className="relative rounded-[2rem] overflow-hidden h-[55vw] min-h-[180px]">
         <img src={s.img} alt={s.alt} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="text-[#f4efe7] text-xl font-semibold mb-1">{s.label}</h3>
-          <p className="text-[#b1a696] text-[0.65rem] leading-relaxed">{s.desc}</p>
+          <h3 className="text-[#eae4f5] text-xl font-semibold mb-1">{s.label}</h3>
+          <p className="text-[#9a8eb7] text-[0.65rem] leading-relaxed">{s.desc}</p>
         </div>
       </div>
     ))}
@@ -68,7 +68,7 @@ const DesktopGallery = () => {
       },
     });
 
-    tl4.to(".gallery-page4", { backgroundColor: "#181717", force3D: true }, "start");
+    tl4.to(".gallery-page4", { backgroundColor: "#0b0714", force3D: true }, "start");
 
     gsap.set(".gallery-topText h4, .gallery-topText h3, .gallery-bottomText h3", {
       opacity: 1, x: 0,
@@ -133,11 +133,11 @@ const DesktopGallery = () => {
         </div>
         <div className="gallery-bottomText">
           <div className="w-full flex justify-center items-center gap-0">
-            <BsFillPlusCircleFill className="w-8 h-8 text-[#b1a696]" />
+            <BsFillPlusCircleFill className="w-8 h-8 text-[#9a8eb7]" />
             <h3>The Main Arena hosts the flagship robot combat and racing events,<br />surrounded by roaring crowds and electrifying energy.</h3>
           </div>
-          <div className="relative z-9 w-50 h-[0.1rem] bg-[#4f4b48]">
-            <div className="progress-line absolute z-10 bg-[#f4efe7] w-[33%] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" />
+          <div className="relative z-9 w-50 h-[0.1rem] bg-[#271d3a]">
+            <div className="progress-line absolute z-10 bg-[#eae4f5] w-[33%] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" />
           </div>
         </div>
       </div>
@@ -150,11 +150,11 @@ const DesktopGallery = () => {
         </div>
         <div className="gallery-bottomText">
           <div className="w-full flex justify-center items-center gap-0">
-            <BsFillPlusCircleFill className="w-8 h-8 text-[#b1a696]" />
+            <BsFillPlusCircleFill className="w-8 h-8 text-[#9a8eb7]" />
             <h3>The Lab Complex is where circuit design, AI hackathons,<br />and hands-on workshops come to life.</h3>
           </div>
-          <div className="relative z-9 w-50 h-[0.1rem] bg-[#4f4b48]">
-            <div className="progress-line absolute z-10 bg-[#f4efe7] w-[67%] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" />
+          <div className="relative z-9 w-50 h-[0.1rem] bg-[#271d3a]">
+            <div className="progress-line absolute z-10 bg-[#eae4f5] w-[67%] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" />
           </div>
         </div>
       </div>
@@ -167,11 +167,11 @@ const DesktopGallery = () => {
         </div>
         <div className="gallery-bottomText">
           <div className="w-full flex justify-center items-center gap-0">
-            <BsFillPlusCircleFill className="w-8 h-8 text-[#b1a696]" />
+            <BsFillPlusCircleFill className="w-8 h-8 text-[#9a8eb7]" />
             <h3>The Expo Hall showcases the best student projects and innovations,<br />open to visitors, judges, and industry guests.</h3>
           </div>
-          <div className="relative z-9 w-50 h-[0.1rem] bg-[#4f4b48]">
-            <div className="progress-line absolute z-10 bg-[#f4efe7] w-[100%] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" />
+          <div className="relative z-9 w-50 h-[0.1rem] bg-[#271d3a]">
+            <div className="progress-line absolute z-10 bg-[#eae4f5] w-[100%] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" />
           </div>
         </div>
       </div>

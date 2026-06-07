@@ -1,7 +1,7 @@
 /* Link indicator styles - IMPORTANT: fixed positioning */
 .click-indicator {
     position: fixed !important;
-    background: #f4efe7;
+    background: #eae4f5;
     color: black;
     z-index: 9999 !important;
     pointer-events: none;

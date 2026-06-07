@@ -7,9 +7,9 @@
     /* background: linear-gradient(to top,
             #191813 0%,
             #191813 45%,
-            #181717 50%,
-            #181717 95%,
-            #181717 100%); */
+            #0b0714 50%,
+            #0b0714 95%,
+            #0b0714 100%); */
 }
 
 .gallery-background img {
@@ -29,7 +29,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: #2b2825;
+    background-color: #1b112d;
     transition: background-color 0.3s ease;
 }
 
@@ -51,7 +51,7 @@
     font-size: 10rem;
     width: 50rem;
     position: absolute;
-    color: #f4efe7;
+    color: rgba(109, 40, 217, 0.18);
     font-weight: 600;
     left: 100%;
     animation: gallery-animate var(--time) linear infinite;
@@ -89,11 +89,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #f4efe7;
-    text-shadow: 0 4px 15px rgba(20, 10, 35, 0.95), 
-                 0 2px 5px rgba(20, 10, 35, 0.8),
-                 0 0 12px rgba(20, 10, 35, 0.6);
-    font-weight: 800;
+    color: #eae4f5;
+    font-weight: 900;
     display: flex;
     justify-content: space-between;
     padding: 0 2rem;
@@ -113,7 +110,8 @@
 
 .gallery-topText h4 {
     font-size: clamp(2rem, 6vw, 5rem);
-    font-weight: 800;
+    font-weight: 900;
+    color: #6d28d9;
 }
 
 .gallery-topText h3 {
