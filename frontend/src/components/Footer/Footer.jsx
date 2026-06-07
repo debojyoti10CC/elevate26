@@ -12,7 +12,7 @@ const Footer = () => {
             </p>
 
             <div className="mt-2 mb-8">
-                <MarqueeText />
+                <MarqueeText text="Join ELEVATE" />
             </div>
 
             {/* Google Map Embed */}

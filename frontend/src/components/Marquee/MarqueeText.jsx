@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import './marqueetext.css';
 
-const MarqueeText = () => {
+const MarqueeText = ({ text = "Why ELEVATE?" }) => {
     const animationRef = useRef(null);
     const isForwardRef = useRef(true);
     const starRotationRef = useRef(0); // Track current rotation
@@ -85,7 +85,7 @@ const MarqueeText = () => {
     // Create multiple marquee items
     const marqueeItems = Array(6).fill(null).map((_, index) => (
         <div key={index} className="marquee-text-marquee">
-            <h1>Why ELEVATE?<span className='star-rotate'>★</span></h1>
+            <h1>{text}<span className='star-rotate'>★</span></h1>
         </div>
     ));
 
