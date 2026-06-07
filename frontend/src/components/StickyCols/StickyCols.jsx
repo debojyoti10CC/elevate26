@@ -1,7 +1,8 @@
 import gsap, { ScrollTrigger, SplitText } from "gsap/all";
 import { useGSAP } from "@gsap/react";
-import colimg1 from "../../assets/cap1-square.jpg";
-import colimg2 from "../../assets/cap2-square.jpg";
+import colimg1 from "../../assets/sticky-3.jpg";
+import colimg2 from "../../assets/sticky-2.jpg";
+import colimg3 from "../../assets/sticky-1.jpg";
 import { useState, useEffect } from "react";
 
 // ─── Mobile: simple stacked cards ─────────────────────────────────────────────
@@ -21,7 +22,7 @@ const MobileStickyCols = () => (
       {
         num: "3", heading: "Win prizes,—\nearn recognition, build your portfolio",
         body: "Top performers take home prizes, certificates, and recognition from IEEE IEM Student Branch.",
-        img: colimg1,
+        img: colimg3,
       },
     ].map(({ num, heading, body, img }) => (
       <div key={num} className="bg-[#181126] rounded-[2rem] overflow-hidden">
@@ -159,7 +160,7 @@ const DesktopStickyCols = () => {
         <div className="col col-4">
           <div className="col-img col-img-1">
             <div className="col-img-wrapper">
-              <img src={colimg1} alt="img" />
+              <img src={colimg3} alt="img" />
             </div>
           </div>
         </div>
