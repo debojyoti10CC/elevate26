@@ -11,21 +11,27 @@ import eventSeminar from "../../assets/event-seminar.jpg";
 import event3DPrint from "../../assets/event-3dprint.jpg";
 import eventVR from "../../assets/event-vr.jpg";
 import eventCertificate from "../../assets/event-certificate.jpg";
+import eventMazeSolver from "../../assets/event-mazesolver.jpg";
+import eventRoboSoccer from "../../assets/event-robosoccer.jpg";
+import eventDroneRacing from "../../assets/event-droneracing.jpg";
+import eventCircuitDesign from "../../assets/event-circuitdesign.jpg";
+import eventTechQuiz from "../../assets/event-techquiz.jpg";
+import eventPhotography from "../../assets/event-photography.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const eventsData = [
   { id: 1,  name: "Robo Wars",          category: "Technical",     description: "Battle your robot against opponents in an arena combat challenge. Build the toughest machine and dominate the ring.", difficulty: "Advanced",     icon: "⚔️", image: roboWarsBg },
   { id: 2,  name: "Line Follower",      category: "Technical",     description: "Program an autonomous robot to follow a line track at maximum speed with precision and reliability.",               difficulty: "Intermediate", icon: "📡", image: eventHackathon },
-  { id: 3,  name: "Maze Solver",        category: "Technical",     description: "Design a robot that can autonomously navigate and solve a complex maze with the shortest possible path.",           difficulty: "Advanced",     icon: "🧩" },
-  { id: 4,  name: "Robo Soccer",        category: "Technical",     description: "Head-to-head robot football. Maneuver your bot to score goals and outplay your opponent in 2-minute matches.",     difficulty: "Intermediate", icon: "⚽" },
-  { id: 5,  name: "Drone Racing",       category: "Technical",     description: "Pilot FPV drones through obstacle courses at high speed. Fastest lap time wins.",                                   difficulty: "Advanced",     icon: "🚁" },
-  { id: 6,  name: "Circuit Design",     category: "Technical",     description: "Solve PCB layout and circuit design challenges under time pressure. Test your electronics fundamentals.",           difficulty: "Intermediate", icon: "🔌" },
+  { id: 3,  name: "Maze Solver",        category: "Technical",     description: "Design a robot that can autonomously navigate and solve a complex maze with the shortest possible path.",           difficulty: "Advanced",     icon: "🧩", image: eventMazeSolver },
+  { id: 4,  name: "Robo Soccer",        category: "Technical",     description: "Head-to-head robot football. Maneuver your bot to score goals and outplay your opponent in 2-minute matches.",     difficulty: "Intermediate", icon: "⚽", image: eventRoboSoccer },
+  { id: 5,  name: "Drone Racing",       category: "Technical",     description: "Pilot FPV drones through obstacle courses at high speed. Fastest lap time wins.",                                   difficulty: "Advanced",     icon: "🚁", image: eventDroneRacing },
+  { id: 6,  name: "Circuit Design",     category: "Technical",     description: "Solve PCB layout and circuit design challenges under time pressure. Test your electronics fundamentals.",           difficulty: "Intermediate", icon: "🔌", image: eventCircuitDesign },
   { id: 7,  name: "AI Hackathon",       category: "Technical",     description: "Build an AI/ML solution to a real-world problem in 4 hours. Any language, any framework.",                        difficulty: "Open",         icon: "🤖", image: eventSeminar },
   { id: 8,  name: "Paper Presentation", category: "Non-Technical", description: "Present your research paper or technical concept to a panel of judges. Innovation and clarity rewarded.",         difficulty: "Open",         icon: "📄", image: event3DPrint },
   { id: 9,  name: "Project Exhibition", category: "Non-Technical", description: "Showcase your project — hardware or software — to visitors and judges. Best project wins.",                       difficulty: "Open",         icon: "🏗️", image: eventVR },
-  { id: 10, name: "Tech Quiz",          category: "Non-Technical", description: "Fast-paced technical quiz covering robotics, AI, electronics, and general science. Teams of 2.",                   difficulty: "Beginner",     icon: "🧠" },
-  { id: 11, name: "Photography",        category: "Non-Technical", description: "Capture the energy and spirit of ELEVATE through your lens. Best photo wins across categories.",                  difficulty: "Open",         icon: "📸" },
+  { id: 10, name: "Tech Quiz",          category: "Non-Technical", description: "Fast-paced technical quiz covering robotics, AI, electronics, and general science. Teams of 2.",                   difficulty: "Beginner",     icon: "🧠", image: eventTechQuiz },
+  { id: 11, name: "Photography",        category: "Non-Technical", description: "Capture the energy and spirit of ELEVATE through your lens. Best photo wins across categories.",                  difficulty: "Open",         icon: "📸", image: eventPhotography },
   { id: 12, name: "Gaming",             category: "Non-Technical", description: "Compete in the esports tournament. Titles to be announced. Solo and team formats available.",                    difficulty: "Open",         icon: "🎮", image: eventCertificate },
 ];
 
