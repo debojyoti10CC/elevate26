@@ -14,9 +14,9 @@ const FooterBanner = () => {
         if (!fbConRef.current || !fbImgRef.current) return;
 
         gsap.fromTo(fbImgRef.current,
-            { scale: 1.15 },
+            { scale: 1.25 },
             {
-                scale: 1,
+                scale: 1.08,
                 ease: "none",
                 force3D: true,
                 scrollTrigger: {
@@ -37,7 +37,12 @@ const FooterBanner = () => {
                 <img
                     onMouseEnter={() => setActive(true)}
                     onMouseLeave={() => setActive(false)}
-                    ref={fbImgRef} src={banner} alt="" className='w-full h-full object-cover' />
+                    ref={fbImgRef} 
+                    src={banner} 
+                    alt="" 
+                    className='w-full h-full object-cover select-none' 
+                    style={{ filter: "blur(2px) brightness(0.45)" }} 
+                />
 
                 <h1 className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10vw] font-bold text-[#eae4f5]'>ELEVATE</h1>
                 <div className='absolute bottom-5 px-4 w-full'>
