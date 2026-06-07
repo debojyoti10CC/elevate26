@@ -4,9 +4,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './gallery.css';
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
-import gbg1 from '../../assets/background1.png';
-import gbg2 from '../../assets/background2.png';
-import gbg3 from '../../assets/background3.png';
+import gbg1 from '../../assets/gallery-1.jpg';
+import gbg2 from '../../assets/gallery-2.jpg';
+import gbg3 from '../../assets/gallery-3.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -130,7 +130,6 @@ const DesktopGallery = () => {
         <img src={gbg1} alt="Main Arena" />
         <div className="gallery-topText">
           <h4>Main Arena</h4>
-          <h3>(Scroll)</h3>
         </div>
         <div className="gallery-bottomText">
           <div className="w-full flex justify-center items-center gap-0">
@@ -148,7 +147,6 @@ const DesktopGallery = () => {
         <img src={gbg2} alt="Lab Complex" />
         <div className="gallery-topText">
           <h4>Lab Complex</h4>
-          <h3>(Scroll)</h3>
         </div>
         <div className="gallery-bottomText">
           <div className="w-full flex justify-center items-center gap-0">
@@ -166,7 +164,6 @@ const DesktopGallery = () => {
         <img src={gbg3} alt="Expo Hall" />
         <div className="gallery-topText">
           <h4>Expo Hall</h4>
-          <h3>(Scroll)</h3>
         </div>
         <div className="gallery-bottomText">
           <div className="w-full flex justify-center items-center gap-0">

@@ -22,7 +22,7 @@
     transform: translateX(-50%) scaleX(0);
     width: 55%;
     height: 100%;
-    background-color: var(--base-300);
+    background-color: transparent;
     transform-origin: left;
     will-change: transform;
 }
@@ -48,10 +48,6 @@
 
 .preloader-mask {
     background-color: var(--base-100);
-    mask:
-        linear-gradient(var(--base-300), var(--base-300)),
-        url("../../../public/preloader-bg.svg") center/40% no-repeat;
-    mask-composite: subtract;
     will-change: transform;
     z-index: 1;
 }

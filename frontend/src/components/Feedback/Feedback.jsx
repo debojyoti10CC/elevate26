@@ -20,7 +20,7 @@ const Feedback = () => {
     return (
         <section className="w-full px-5 md:px-8 py-16 md:h-dvh flex flex-col justify-center">
             <p className="text-[0.65rem] font-bold text-[#eae5dd] mb-4">
-                Do people like us?
+                ELEVATE Highlights
             </p>
 
             <h1 className="text-[#f4efe7] text-3xl md:text-7xl mt-2 mb-6 leading-tight">

@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import banner from '../../assets/background3.png';
+import banner from '../../assets/footer-banner.jpg';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ClickIndicator from '../MapLink/ClickIndicator';

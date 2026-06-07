@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
-// import { ArrowRight, Menu } from "lucide-react";
+import BoxLoader from "@/components/ui/box-loader";
 
 import "./preloaderII.css";
 
@@ -20,13 +20,12 @@ export default function PreloaderII() {
         }
 
         const splitElements = [
-            { key: "logoChars", selector: ".preloader-logo h1", type: "chars" },
             { key: "footerLines", selector: ".preloader-footer p", type: "lines" },
         ];
 
         const splits = createSplitTexts(splitElements);
 
-        gsap.set(splits.logoChars.chars, { x: "100%" });
+        gsap.set(".box-loader-wrapper", { scale: 0, opacity: 0 });
 
         gsap.set(
             [
@@ -58,11 +57,11 @@ export default function PreloaderII() {
         }
 
         const tl = gsap.timeline({ delay: 0.5 });
-        tl.to(splits.logoChars.chars, {
-            x: "0%",
-            stagger: 0.05,
-            duration: 1,
-            ease: "power4.inOut",
+        tl.to(".box-loader-wrapper", {
+            scale: 1,
+            opacity: 1,
+            duration: 1.2,
+            ease: "back.out(1.5)",
         })
             .to(
                 splits.footerLines.lines,
@@ -77,11 +76,11 @@ export default function PreloaderII() {
             .add(animateProgress(), "<")
             .set(".preloader-progress", { backgroundClip: "var(--base-300)" })
             .to(
-                splits.logoChars.chars,
+                ".box-loader-wrapper",
                 {
-                    x: "-100%",
-                    stagger: 0.05,
-                    duration: 1,
+                    scale: 0,
+                    opacity: 0,
+                    duration: 0.8,
                     ease: "power4.inOut",
                 },
                 "+=0.15"
@@ -125,12 +124,22 @@ export default function PreloaderII() {
         <div className="size-full fixed z-51 overflow-hidden pointer-events-none">
             <div className="preloader-progress">
                 <div className="preloader-progress-bar"></div>
-                <div className="preloader-logo">
-                    <h1>ELEVATE</h1>
-                </div>
             </div>
 
             <div className="preloader-mask"></div>
+
+            <div className="box-loader-wrapper" style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 3,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}>
+                <BoxLoader />
+            </div>
 
             <div className="preloader-content">
                 <div className="preloader-footer">

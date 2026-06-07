@@ -1,43 +1,43 @@
 export const feedbackH1LG = [
     [
-        "Staying at Capsules® in the",
-        "California desert redefined my",
-        "retreat — modern design meets",
-        "nature, and every sunset feels",
-        "like a serene masterpiece."
+        "Robo-Wars is the ultimate combat",
+        "arena where steel meets steel,",
+        "sparks fly, and student-built",
+        "machines battle for supremacy",
+        "in an action-packed colosseum."
     ],
     [
-        "Capsules® offered the perfect",
-        "escape — sleek, modern spaces",
-        "surrounded by desert stillness.",
-        "Each moment felt peaceful,",
-        "grounded, and truly unique."
+        "The 24-Hour AI Hackathon puts",
+        "your coding, model training,",
+        "and rapid prototyping skills to",
+        "the test to solve real-world",
+        "challenges in record time."
     ],
     [
-        "Capsules® was the perfect",
-        "desert hideaway — stylish,",
-        "peaceful, and fully surrounded",
-        "by stunning views day and",
-        " night."
+        "From high-speed drone racing",
+        "maneuvers to complex PCB design",
+        "optimization, ELEVATE challenges",
+        "every facet of engineering",
+        "and creative problem solving."
     ]
 ];
 
 export const feedbackReviewLG = [
     [
-        "Marcus Simpson",
-        "New York",
+        "Robo-Wars Arena",
+        "Combat & Strategy",
         "review1",
         "33%"
     ],
     [
-        "Lena Morrison",
-        "Los Angeles",
+        "AI Hackathon",
+        "24-Hour Code Sprint",
         "review2",
         "66%"
     ],
     [
-        "Jason Whitaker",
-        "San Francisco",
+        "Tech Challenges",
+        "IEEE Certified Tracks",
         "review3",
         "100%"
     ]
