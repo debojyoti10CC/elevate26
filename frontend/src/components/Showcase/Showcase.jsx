@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./showcase.css";
 
 // Import event background images
@@ -113,87 +112,10 @@ const DesktopShowcase = () => {
   );
 };
 
-// ─── Mobile: native horizontal snap scroll ───────────────────────────────────
-const MobileShowcase = () => (
-  <section id="events" className="w-full bg-[#0b0714] py-4">
-    <p className="px-5 pb-3 text-[0.65rem] font-bold text-[#eae4f5]">
-      12 Events — Swipe to explore →
-    </p>
-    <div
-      className="flex gap-3 px-4 overflow-x-auto"
-      style={{
-        scrollSnapType: "x mandatory",
-        WebkitOverflowScrolling: "touch",
-        scrollbarWidth: "none",
-        msOverflowStyle: "none",
-      }}
-    >
-      {eventsData.map((event) => (
-        <div
-          key={event.id}
-          style={{ scrollSnapAlign: "start", scrollSnapStop: "always" }}
-          className="relative flex-shrink-0 w-[78vw] h-[52vh] min-h-[260px] bg-[#181126] rounded-[2rem] overflow-hidden flex flex-col justify-between p-5"
-        >
-          {/* Background image */}
-          {event.image && (
-            <>
-              <img
-                src={event.image}
-                alt={event.name}
-                className="absolute inset-0 w-full h-full object-cover object-center z-0"
-                draggable="false"
-              />
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
-            </>
-          )}
-
-          {/* Top */}
-          <div className="relative z-20 flex justify-between items-start">
-            <span
-              className={`border rounded-3xl px-3 py-1 text-[0.6rem] font-bold tracking-wide ${event.category === "Technical"
-                ? "text-[#eae4f5] border-[#eae4f5]"
-                : "text-[#9a8eb7] border-[#9a8eb7]"
-                }`}
-            >
-              {event.category}
-            </span>
-            <span className={`border rounded-3xl px-3 py-1 text-[0.6rem] ${difficultyColor[event.difficulty]}`}>
-              {event.difficulty}
-            </span>
-          </div>
-
-          {/* Centre */}
-          <div className="relative z-20">
-            <h2 className="text-[#eae4f5] text-2xl sm:text-3xl font-bold leading-tight">{event.name}</h2>
-          </div>
-
-          {/* Bottom */}
-          <div className="relative z-20">
-            <p className="text-[0.65rem] text-[#9a8eb7] leading-relaxed">
-              {event.description}
-            </p>
-          </div>
-        </div>
-      ))}
-      <div className="flex-shrink-0 w-4" />
-    </div>
-  </section>
-);
 
 // ─── Root: swap based on viewport ────────────────────────────────────────────
 const Showcase = () => {
-  const [isMobile, setIsMobile] = useState(() =>
-    typeof window !== "undefined" ? window.innerWidth < 768 : false
-  );
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    const handler = (e) => setIsMobile(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
-  return isMobile ? <MobileShowcase /> : <DesktopShowcase />;
+  return <DesktopShowcase />;
 };
 
 export default Showcase;

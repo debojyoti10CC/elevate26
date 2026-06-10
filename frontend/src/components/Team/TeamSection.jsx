@@ -6,13 +6,13 @@ import { useState, useRef, useEffect } from "react";
 // import crest3 from "@/assets/CONVERGE (3).png";
 // import crest4 from "@/assets/CONVERGE (6).png";
 
-import samya from "../../../assets/Team_section/Samya.svg";
+import Shinjan from "../../../assets/Team_section/Shinjan Bhatta.svg";
 import souhardya from "../../../assets/Team_section/Souhardya.svg";
 import souherdya from "../../../assets/Team_section/Souherdya.svg";
 import swarnalee from "../../../assets/Team_section/Swarnalee.svg";
+import Swarnalee from "../../../assets/Team_section/Swarnalee Ray.svg";
 import archishman from "../../../assets/Team_section/Archishman.svg";
 import shinjan from "../../../assets/Team_section/Shinjan.svg";
-import subhraneel from "../../../assets/Team_section/Subhraneel.svg";
 import ishika from "../../../assets/Team_section/Ishika.svg";
 import amreta from "../../../assets/Team_section/Amreta.svg";
 import ananya from "../../../assets/Team_section/Ananya.svg";
@@ -21,15 +21,15 @@ import srijit from "../../../assets/Team_section/Srijit.svg";
 const teamCards = [
     {
         id: "chairperson",
-        name: "SAMYA DUTTA",
+        name: "SHINJAN BHATTA",
         role: "CHAIRPERSON",
-        image: samya,
+        image: Shinjan,
     },
     {
-        id: "vice-chairperson",
-        name: "SUBHRANEEL DAS",
-        role: "VICE-CHAIRPERSON",
-        image: subhraneel,
+        id: "vice chairperson",
+        name: "SOHAM KARAK",
+        role: "VICE CHAIRPERSON",
+        image: Swarnalee,
     },
     {
         id: "Treasurer",
@@ -44,9 +44,9 @@ const teamCards = [
         image: shinjan,
     },
     {
-        id: "join-secretary",
+        id: "join-treasurer",
         name: "SOUHARDYA RAY",
-        role: "JOINT SECRETARY",
+        role: "JOINT Treasurer",
         image: souhardya,
     },
     {
