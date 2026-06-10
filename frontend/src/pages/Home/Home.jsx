@@ -12,6 +12,8 @@ import Showcase from '../../components/Showcase/Showcase'
 import Feedback from '../../components/Feedback/Feedback'
 import FooterBanner from '../../components/FooterBanner/FooterBanner'
 import TeamSection from '../../components/Team/TeamSection'
+import { Timeline } from '../../components/Timeline/timeline'
+
 const Home = () => {
     return (
         <div>
@@ -22,6 +24,7 @@ const Home = () => {
             {/* <Choose /> */}
             {/* <Gallery /> */}
             <MarqueeSticky />
+            <Timeline />
             {/* <StickyCols /> */}
             {/* <Feedback /> */}
             <TeamSection />
