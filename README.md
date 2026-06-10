@@ -1,4 +1,4 @@
-﻿# ELEVATE 2025 - IEEE IEM Student Branch Flagship Tech-Fest
+﻿# ELEVATE 2025 - IEEE IEM Student Branch Tech-Fest
 
 <div align="center">
 
