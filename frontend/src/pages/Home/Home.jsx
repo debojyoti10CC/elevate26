@@ -11,7 +11,7 @@ import Activities from '../../components/Activities/Activities'
 import Showcase from '../../components/Showcase/Showcase'
 import Feedback from '../../components/Feedback/Feedback'
 import FooterBanner from '../../components/FooterBanner/FooterBanner'
-
+import TeamSection from '../../components/Team/TeamSection'
 const Home = () => {
     return (
         <div>
@@ -19,12 +19,12 @@ const Home = () => {
             <Welcome />
             <Activities />
             <Showcase />
-            <Choose />
-            <Gallery />
-            <MapLink />
+            {/* <Choose /> */}
+            {/* <Gallery /> */}
             <MarqueeSticky />
-            <StickyCols />
-            <Feedback />
+            {/* <StickyCols /> */}
+            {/* <Feedback /> */}
+            <TeamSection />
             <FooterBanner />
         </div>
     )

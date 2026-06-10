@@ -72,7 +72,7 @@ const Hero = () => {
                             className="text-[#e8e3db] text-xs md:text-[0.7rem] font-medium tracking-wide md:w-[22%] md:text-right leading-relaxed"
                             style={{ textShadow: "1px 2px 4px rgba(0,0,0,0.9)" }}
                         >
-                            Join thousands of innovators, engineers, and creators at ELEVATE — powered by IEEE IEM Student Branch.
+                            Join thousands of innovators, engineers, and creators at ELEVATE - powered by IEEE IEM Student Branch.
                         </p>
                     </div>
                 </div>
