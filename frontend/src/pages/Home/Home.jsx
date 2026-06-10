@@ -19,7 +19,6 @@ const Home = () => {
             <Welcome />
             <Activities />
             <Showcase />
-            <Choose />
             <Gallery />
             <MapLink />
             <MarqueeSticky />
