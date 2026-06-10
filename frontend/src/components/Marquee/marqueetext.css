@@ -21,7 +21,7 @@
 }
 
 .marquee-text-marquee h1 {
-    font-size: 11vw;
+    font-size: clamp(2.2rem, 11vw, 9rem);
     color: #eae4f5;
     font-weight: 500;
     margin: 0;

@@ -59,18 +59,18 @@ const Activities = () => {
     });
 
     return (
-        <section className="activities-section w-full md:h-[120vh] h-auto py-16 md:py-0 px-6 md:px-8 md:mt-16 mt-8">
-            <p className="text-[.7rem] font-bold text-[#eae4f5] activities-subtitle">Ready to compete?</p>
+        <section className="activities-section w-full md:h-[120vh] h-auto py-12 md:py-0 px-5 md:px-8 md:mt-16 mt-6">
+            <p className="text-[0.7rem] font-bold text-[#eae4f5] activities-subtitle">Ready to compete?</p>
 
-            <div className="md:mt-10 mt-7 activities-part origin-bottom">
+            <div className="md:mt-10 mt-6 activities-part origin-bottom">
                 {activitiesLines.map((line, index) => (
                     <h1
                         key={index}
-                        className="activities-heading text-[#eae4f5] lg:text-[9.5rem] text-[2.8rem] leading-[0.9] font-medium tracking-tighter"
+                        className="activities-heading text-[#eae4f5] lg:text-[9.5rem] text-[clamp(2rem,10vw,3.5rem)] leading-[0.9] font-medium tracking-tighter"
                     >
-                        <span className={`activities-title-break ${index === 1 ? "lg:pb-3 pb-2" : ""}`}>
+                        <span className={`activities-title-break ${index === 1 ? "lg:pb-3 pb-1" : ""}`}>
                             {line}
-                            <span className={`activities-title-clip ${index === 1 ? "lg:pb-3 pb-2" : ""}`}>
+                            <span className={`activities-title-clip ${index === 1 ? "lg:pb-3 pb-1" : ""}`}>
                                 {line}
                             </span>
                         </span>
@@ -78,15 +78,15 @@ const Activities = () => {
                 ))}
             </div>
 
-            <div className="activities-sec w-full flex lg:flex-row flex-col justify-center items-start gap-8 md:gap-10 lg:mt-0 mt-10">
+            <div className="activities-sec w-full flex lg:flex-row flex-col justify-center items-start gap-6 md:gap-10 lg:mt-0 mt-8">
                 <div className="lg:w-1/2 w-full">
-                    <div className="lg:w-[40%] w-[70%]">
-                        <p className="text-[.7rem] text-[#eae4f5]">ELEVATE events span across categories:</p>
+                    <div className="lg:w-[40%] w-[80%]">
+                        <p className="text-[0.7rem] text-[#eae4f5]">ELEVATE events span across categories:</p>
                     </div>
-                    <div className="flex flex-col justify-start items-start gap-5 mt-8 md:mr-14">
+                    <div className="flex flex-col justify-start items-start gap-4 mt-6 md:mr-14">
                         <div className="w-full">
-                            <div className="flex justify-between w-full mb-4">
-                                <h1 className="text-[#9a8eb7] text-xl">Technical</h1>
+                            <div className="flex justify-between w-full mb-3">
+                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Technical</h1>
                                 <p className="text-[#9a8eb7] text-[0.7rem]">7 events</p>
                             </div>
                             <div className="relative z-9 w-full h-[0.1rem] bg-[#271d3a]">
@@ -94,8 +94,8 @@ const Activities = () => {
                             </div>
                         </div>
                         <div className="w-full">
-                            <div className="flex justify-between w-full mb-4">
-                                <h1 className="text-[#9a8eb7] text-xl">Non-Technical</h1>
+                            <div className="flex justify-between w-full mb-3">
+                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Non-Technical</h1>
                                 <p className="text-[#9a8eb7] text-[0.7rem]">5 events</p>
                             </div>
                             <div className="relative z-9 w-full h-[0.1rem] bg-[#271d3a]">
@@ -103,8 +103,8 @@ const Activities = () => {
                             </div>
                         </div>
                         <div className="w-full">
-                            <div className="flex justify-between w-full mb-4">
-                                <h1 className="text-[#9a8eb7] text-xl">Robotics Core</h1>
+                            <div className="flex justify-between w-full mb-3">
+                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Robotics Core</h1>
                                 <p className="text-[#9a8eb7] text-[0.7rem]">4 events</p>
                             </div>
                             <div className="relative z-9 w-full h-[0.1rem] bg-[#271d3a]">
@@ -114,7 +114,7 @@ const Activities = () => {
                     </div>
                 </div>
 
-                <div className="lg:w-1/2 w-full text-[#9a8eb7] lg:text-[2rem] text-[1rem] md:leading-[1.1] lg:mt-0 mt-4">
+                <div className="lg:w-1/2 w-full text-[#9a8eb7] text-[0.9rem] sm:text-[1rem] lg:text-[2rem] md:leading-[1.1] leading-[1.6] lg:mt-0 mt-4">
                     <p>ELEVATE offers 12 events spanning robotics, AI, circuit design, drones, and beyond. Whether you're a builder, a coder, or a creative thinker — there's a stage here for you.</p>
                 </div>
             </div>

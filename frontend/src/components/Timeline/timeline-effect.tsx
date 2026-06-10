@@ -1,15 +1,12 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-
 import { motion, MotionValue, useTransform } from 'framer-motion';
+import { useState } from 'react';
 
-import { svgs } from '@/config/timeline';
+import { timelineData, svgs } from '@/config/timeline';
 import { cn } from '@/lib/utils';
+import { buildPath, getViewBox } from './path-utils';
 
-const transition = {
-  duration: 0,
-  ease: 'linear' as const,
-};
+const transition = { duration: 0, ease: 'linear' as const };
 
 export const TimelineEffect = ({
   pathLengths,
@@ -18,146 +15,107 @@ export const TimelineEffect = ({
   pathLengths: MotionValue[];
   className?: string;
 }) => {
-  const { pencil: PencilIcon, robot: RobotIcon } = svgs;
+  const { pencil: PencilIcon } = svgs;
+  const eventCount = timelineData.events.length;
 
-  const [isheight, setIsheight] = useState(0);
+  const pathD = buildPath(eventCount);
+  const viewBox = getViewBox(eventCount);
 
   const [pathElement, setPathElement] = useState<SVGPathElement | null>(null);
 
-  useEffect(() => {
-    const checkHeight = () => {
-      setIsheight(window.innerHeight);
-    };
-
-    checkHeight();
-
-    window.addEventListener('resize', checkHeight);
-    return () => window.removeEventListener('resize', checkHeight);
-  }, []);
-
   const pathProgress = useTransform(pathLengths[0], [0, 1], [0, 1]);
 
-  const getPointAtLength = (progress: number) => {
-    if (!pathElement) return { x: 9, y: 4 }; // Start position
-
-    const pathLength = pathElement.getTotalLength();
-    const point = pathElement.getPointAtLength(pathLength * progress);
-    return point;
+  const getPoint = (progress: number) => {
+    if (!pathElement) return { x: 0, y: 0 };
+    const len = pathElement.getTotalLength();
+    return pathElement.getPointAtLength(len * Math.min(progress, 1));
   };
 
-  const tipX = useTransform(pathProgress, (progress) => {
-    const point = getPointAtLength(progress);
-    return point.x;
-  });
+  const getAngle = (progress: number) => {
+    if (!pathElement) return 0;
+    const len = pathElement.getTotalLength();
+    const delta = 3;
+    const p1 = pathElement.getPointAtLength(Math.max(0, len * progress - delta));
+    const p2 = pathElement.getPointAtLength(Math.min(len, len * progress + delta));
+    return (Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180) / Math.PI;
+  };
 
-  const tipY = useTransform(pathProgress, (progress) => {
-    const point = getPointAtLength(progress);
-    return point.y;
-  });
+  const tipX = useTransform(pathProgress, (p) => getPoint(p).x);
+  const tipY = useTransform(pathProgress, (p) => getPoint(p).y);
+  const tipRotate = useTransform(pathProgress, (p) => getAngle(p));
 
   return (
     <div
       className={cn(
-        'relative mx-20 lg:top-32 xlg:top-36 xl:top-44 2xl:top-60 xl:mx-40 ',
+        'pointer-events-none absolute inset-0 mx-20 xl:mx-40',
         className
       )}
     >
-      <img
+      {/* Pencil icon at path start */}
+      {/* <img
         src={PencilIcon.link}
         alt={PencilIcon.alt}
-        className="   absolute lg:h-36 lg:w-36  xl:h-48 xl:w-48 
-        2xl:h-56 2xl:w-56
-        lg:-top-[96px] xlg:-top-[94px] xl:-top-[132px] 2xl:-top-[155px] 3xl:-top-[148px] 5xl:-top-[140px] 6xl:-top-[135px] lg:-left-[86px] xlg:-left-[82px] xl:-left-[124px] 2xl:-left-[136px] 3xl:-left-[130px] 5xl:-left-[122px] 6xl:-left-[110px] "
-      />
-{/* <Image
-        src={RobotIcon.link}
-        alt={RobotIcon.alt}
-        height={0}
-        width={0}
-        className={cn(
-          'absolute lg:h-60 lg:w-40 xl:w-50 xl:h-76',
-          'lg:top-[42vw] xlg:top-[48vw] xl:top-[44vw] 2xl:top-[50vw]  ',
-          'lg:-right-[7%] xl:-right-[14%] 2xl:-right-[7%] ',
-          isheight > 800 && isheight < 1064 ? 'xl:-right-[6%]' : ''
-        )}
+        className="absolute top-0 left-0 h-10 w-10 xl:h-14 xl:w-14 -translate-x-1/2 -translate-y-1/2 opacity-80"
       /> */}
 
       <svg
-        width="1189 "
-        height="1038"
-        viewBox="-25 -25 1240 1090"
+        viewBox={viewBox}
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute  -left-5 xl:-left-8 h-auto w-full"
+        className="absolute inset-0 h-full w-full"
+        preserveAspectRatio="none"
       >
-        {/* dash dash path */}
+        {/* Static dashed track */}
         <path
-          d="M9.00101 3.99977C9.00101 3.99977 -15.1548 65.4995 50.5004 133.499C116.155 201.499 229.557 204.076 294.5 296.499C352.121 378.502 348.348 441.21 440.5 511.999C550.5 596.499 710.501 479.853 862.001 535.003C985.501 579.959 1058.43 986.896 1184.5 1033.5"
-          stroke="#ADADAD"
-          strokeWidth="7.9875"
+          d={pathD}
+          stroke="rgba(128, 0, 128, 0.4)"
+          strokeWidth="4"
           strokeLinecap="round"
-          strokeDasharray="15.98 15.98"
+          strokeDasharray="12 12"
           fill="none"
         />
 
-        {/* animated path */}
+        {/* Animated coloured fill */}
         <motion.path
           ref={setPathElement}
-          d="M9.00101 3.99977C9.00101 3.99977 -15.1548 65.4995 50.5004 133.499C116.155 201.499 229.557 204.076 294.5 296.499C352.121 378.502 348.348 441.21 440.5 511.999C550.5 596.499 710.501 479.853 862.001 535.003C985.501 579.959 1058.43 986.896 1184.5 1033.5"
-          stroke="url(#paint0_linear_1738_19055)"
-          strokeWidth="7.9875"
+          d={pathD}
+          stroke="rgba(128, 0, 128, 0.7)" // Adjust the '0.5' (0 to 1) for opacity
+          strokeWidth="8"
           strokeLinecap="round"
           fill="none"
-          initial={{
-            pathLength: 0,
-          }}
-          style={{
-            pathLength: pathLengths[0],
-          }}
+          initial={{ pathLength: 0 }}
+          style={{ pathLength: pathLengths[0] }}
           transition={transition}
         />
 
+        {/* Icon that moves along the path */}
         <motion.g
-          style={{
-            x: tipX,
-            y: tipY,
-            transformOrigin: 'center',
-          }}
+          style={{ x: tipX, y: tipY, rotate: tipRotate, transformOrigin: 'center' }}
           initial={{ scale: 0, opacity: 0 }}
-          animate={{
-            scale: 1,
-            opacity: 1,
-            transition: { delay: 0.2, duration: 0.3 },
-          }}
+          animate={{ scale: 1, opacity: 1, transition: { delay: 0.2, duration: 0.3 } }}
         >
-          <foreignObject x="-40" y="-40" width="80" height="80">
-            <div className="w-full h-full rounded-full bg-white border-2 border-blue-600 flex items-center justify-center overflow-hidden">
-              <img
-                src="/logo2.png"
-                alt="Logo"
-                className="object-contain w-20 h-20"
-              />
-            </div>
-          </foreignObject>
+          <circle r="22" fill="white" stroke="#2563EB" strokeWidth="3" />
+          <g transform="translate(-10,-12) scale(0.85)">
+            <circle cx="12" cy="4" r="2.5" fill="#2563EB" />
+            <path
+              d="M14.5 8.5L18 7l-1 3-3 1.5L12 15l-3 2v3H7v-4l3.5-2.5-.5-4L8 11l-1-2.5 3-1.5 2 2z"
+              fill="#2563EB"
+            />
+            <path
+              d="M13 15l1 3 2 1"
+              stroke="#2563EB"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              fill="none"
+            />
+          </g>
         </motion.g>
 
         <defs>
-          <linearGradient
-            xmlns="http://www.w3.org/2000/svg"
-            id="paint0_linear_1738_19055"
-            x1="1097.57"
-            y1="212.909"
-            x2="665.402"
-            y2="707.481"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#ADADAD" />
-            <stop offset="1" />
-          </linearGradient>
-
-          {/* Gradient for the tip indicator */}
-          <linearGradient id="tipGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ff6b6b" />
-            <stop offset="100%" stopColor="#4ecdc4" />
+          <linearGradient id="timelineGradient" gradientUnits="userSpaceOnUse"
+            x1="0" y1="0" x2="0" y2="100%">
+            <stop offset="0%" stopColor="#2563EB" />
+            <stop offset="50%" stopColor="#7C3AED" />
+            <stop offset="100%" stopColor="#0617B0" />
           </linearGradient>
         </defs>
       </svg>

@@ -1,12 +1,8 @@
 'use client';
-
-import React, { useEffect, useRef, useState } from 'react';
-
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-
 import { svgs } from '@/config/timeline';
 import { cn } from '@/lib/utils';
-
 import Typography from '../Typography';
 
 function Event({
@@ -15,77 +11,76 @@ function Event({
   duration,
   description,
   className,
+  align = 'left',
 }: {
-  className?: string | undefined;
-  alignmentStyle?: { top: string; left: string } | undefined;
+  className?: string;
   eventNumber: number;
   title: string;
   duration: string;
   description: string;
+  align?: 'left' | 'right';
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start 60%', 'end 60%'],
+    offset: ['start 70%', 'start 30%'],
   });
 
-  const color = useTransform(scrollYProgress, [0, 0.4], ['#ADADAD', '#000000']);
+  const color = useTransform(
+    scrollYProgress,
+    [0, 0.5],
+    ['#ADADAD', '#000000']
+  );
 
   const { border } = svgs;
-  const [isLgScreen, setIsLgScreen] = useState(false);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsLgScreen(window.innerWidth >= 864);
-    };
-
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
 
   return (
-    <>
-      <div
-        ref={ref}
-        className={cn(
-          'flex  lg:flex-row w-full max-w-[380px] sm:max-w-[540px] lg:max-w-[480px] xlg:max-w-[680px] xl:max-w-[750px] 2xl:max-w-[850px]  items-start',
-          isLgScreen ? className : undefined
-        )}
-      >
-        <div className=" sm:self-start  ">
-          <motion.h2
-            style={{ color }}
-            className="  font-sketch-block font-normal text-[70px]  sm:text-[100px]  md:text-[130px] lg:text-[130px] xlg:text-[200px] xl:text-[220px] 2xl:text-[280px] leading-[120%] text-[#ADADAD]  tracking-[6px]"
-          >
-            {eventNumber}
-          </motion.h2>
-        </div>
-        <div className=" lg:py-4 px-2 sm:px-6 flex flex-col">
-          <Typography.H5
-            className=" text-[#0617B0] leading-none pt-2 lg:pt-0 sm:leading-10 font-semibold
-          text-base     sm:text-xl lg:text-xl xlg:text-3xl 2xl:text-4xl "
-          >
-            {title}
-          </Typography.H5>
-          <img
-            src={border.link}
-            alt={border.alt}
-            className="w-[54vw] "
-          />
-          <div className=" mt-3">
-            <Typography.H6 className=" text-base sm:text-lg font-semibold text-[#454545] leading-none sm:leading-7">
-              {duration}
-            </Typography.H6>
-            <Typography.P className="text-sm sm:text-base  font-normal text-[#454545] leading-none sm:leading-7">
-              {description}
-            </Typography.P>
-          </div>
+    <div
+      ref={ref}
+      className={cn(
+        'flex flex-row w-full max-w-[500px] items-start',
+        align === 'right' && 'lg:ml-auto',
+        className
+      )}
+    >
+      {/* Large animated event number */}
+      <div className="shrink-0 select-none">
+        <motion.span
+          style={{ color }}
+          className="font-sketch-block font-normal leading-none tracking-wider text-[#ADADAD] block
+            text-[64px] sm:text-[90px] lg:text-[110px] xl:text-[140px] 2xl:text-[160px]"
+        >
+          {eventNumber}
+        </motion.span>
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col py-2 px-3 sm:px-5 min-w-0">
+        <Typography.H5
+          className="text-[#7b00ff] leading-tight font-semibold
+            text-sm sm:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl"
+        >
+          {title}
+        </Typography.H5>
+
+        {/* Squiggly border — constrained to content width */}
+        <img
+          src={border.link}
+          alt={border.alt}
+          className="w-full max-w-[280px] my-1"
+        />
+
+        <div className="mt-2 space-y-1">
+          <Typography.H6 className="text-sm sm:text-base font-semibold text-[#ffffff] leading-snug">
+            {duration}
+          </Typography.H6>
+          <Typography.P className="text-xs sm:text-sm font-normal text-[#ffffff] leading-relaxed">
+            {description}
+          </Typography.P>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

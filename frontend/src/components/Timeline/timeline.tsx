@@ -1,30 +1,34 @@
 'use client';
-import React from 'react';
-
+import { useRef } from 'react';
 import { useScroll, useTransform } from 'framer-motion';
-
 import { TimelineEffect } from './timeline-effect';
 import TimelineEvents from './timeline-events';
 
 export function Timeline() {
-  const ref = React.useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // 'start center' → 'end center': progress goes 0→1 as the section
+  // scrolls from "top at viewport midpoint" to "bottom at viewport midpoint".
+  // This gives a consistent pixel-per-progress ratio regardless of section height.
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end start'],
+    offset: ['start center', 'end center'],
   });
 
-  const pathLengthFirst = useTransform(scrollYProgress, [0.21, 0.9], [0, 1.2]);
+  // Map the full 0→1 scroll range directly to 0→1 path fill.
+  // No overshoot (1.2) — that was masking the misalignment before.
+  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <div
       id="timeline"
-      className=" mt-28 md:mt-56 mb-28  lg:h-[128vw] xlg:h-[126vw] xl:h-[118vw] "
+      className="relative mt-20 md:mt-40 mb-20"
       ref={ref}
     >
       <TimelineEvents />
       <TimelineEffect
-        className="  hidden lg:block"
-        pathLengths={[pathLengthFirst]}
+        className="hidden lg:block"
+        pathLengths={[pathLength]}
       />
     </div>
   );

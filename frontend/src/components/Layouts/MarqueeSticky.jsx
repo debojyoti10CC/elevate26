@@ -43,8 +43,8 @@ const MarqueeSticky = () => {
     return (
         <section className="w-full overflow-hidden">
             <div className="pin-con relative">
-                <div className="pl-6 md:pl-8 py-4 md:py-0">
-                    <p className="text-[0.7rem] text-[#eae4f5] choose-subtitle">
+                <div className="pl-5 md:pl-8 py-4 md:py-0">
+                    <p className="text-[0.75rem] sm:text-[0.8rem] text-[#eae4f5] choose-subtitle leading-relaxed">
                         Want to know why ELEVATE
                         <br />
                         is the event of the year?
