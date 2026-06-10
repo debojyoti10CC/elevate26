@@ -1,22 +1,53 @@
-/* Showcase Styles - Fixed overflow clipping */
+/* ── Showcase / Events Carousel ─────────────────────────────── */
 
 #events {
-  clip-path: inset(0);
-  contain: layout style paint;
+  overflow: hidden;
+  position: relative;
 }
 
-/* Ensure the inner scrolling container doesn't clip */
-#events > div[style*="transform"] {
-  clip-path: none;
-  overflow: visible !important;
+/* ── Continuous scroll track ──────────────────────────────────── */
+.carousel-track {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;           /* gap-5 */
+  width: max-content;
+  animation: carousel-scroll var(--carousel-duration, 40s) linear infinite;
+  will-change: transform;
 }
 
-/* Prevent card content from being clipped at viewport edges */
-#events .absolute {
-  clip-path: none;
+/* ── Card pop-up on hover ────────────────────────────────────── */
+.carousel-track > div {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease;
+  cursor: pointer;
 }
 
-/* Smooth scrolling experience */
+.carousel-track > div:hover {
+  transform: scale(1.045) translateY(-8px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1.5px rgba(234, 228, 245, 0.18);
+  z-index: 20;
+}
+
+@keyframes carousel-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }   /* 50% = one full copy of the list */
+}
+
+/* ── Edge fade masks ─────────────────────────────────────────── */
+.carousel-fade-left,
+.carousel-fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.carousel-fade-left  { left: 0;  background: linear-gradient(to right, #0b0714 0%, transparent 100%); }
+.carousel-fade-right { right: 0; background: linear-gradient(to left,  #0b0714 0%, transparent 100%); }
+
+/* ── Smooth scrolling ────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
