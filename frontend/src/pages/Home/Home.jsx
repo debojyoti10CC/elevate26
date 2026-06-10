@@ -17,16 +17,16 @@ const Home = () => {
         <div>
             <Hero />
             <Welcome />
+            <Activities />
+            <Showcase />
             <Choose />
             <Gallery />
             <MapLink />
             <MarqueeSticky />
             <StickyCols />
-            <Activities />
-            <Showcase />
             <Feedback />
             <FooterBanner />
-        </div >
+        </div>
     )
 }
 
