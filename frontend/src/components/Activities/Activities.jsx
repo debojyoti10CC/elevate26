@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { activitiesLinesLG } from "../../constants/activites";
 import './activities.css';
 
-const activitiesLinesSM = ["Explore", "the 12 events"];
+const activitiesLinesSM = ["Explore", "the 19 events"];
 
 const Activities = () => {
     const isMobD = useMediaQuery({ query: "(max-width:768px)" });
@@ -52,9 +52,9 @@ const Activities = () => {
         }
 
         if (progressLines.length >= 3) {
-            activitiesTl.fromTo(progressLines[0], { width: "0%" }, { width: "58%", duration: 0.5, ease: "power2.in" });
-            activitiesTl.fromTo(progressLines[1], { width: "0%" }, { width: "42%", duration: 0.5, ease: "power2.in" }, "<");
-            activitiesTl.fromTo(progressLines[2], { width: "0%" }, { width: "33%", duration: 0.5, ease: "power2.in" }, "<");
+            activitiesTl.fromTo(progressLines[0], { width: "0%" }, { width: "37%", duration: 0.5, ease: "power2.in" });
+            activitiesTl.fromTo(progressLines[1], { width: "0%" }, { width: "21%", duration: 0.5, ease: "power2.in" }, "<");
+            activitiesTl.fromTo(progressLines[2], { width: "0%" }, { width: "42%", duration: 0.5, ease: "power2.in" }, "<");
         }
     });
 
@@ -86,36 +86,36 @@ const Activities = () => {
                     <div className="flex flex-col justify-start items-start gap-4 mt-6 md:mr-14">
                         <div className="w-full">
                             <div className="flex justify-between w-full mb-3">
-                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Technical</h1>
+                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Technical & Workshops</h1>
                                 <p className="text-[#9a8eb7] text-[0.7rem]">7 events</p>
                             </div>
                             <div className="relative z-9 w-full h-[0.1rem] bg-[#271d3a]">
-                                <div className="progress-line absolute z-10 bg-[#eae4f5] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" style={{ width: "58%" }} />
+                                <div className="progress-line absolute z-10 bg-[#eae4f5] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" style={{ width: "37%" }} />
                             </div>
                         </div>
                         <div className="w-full">
                             <div className="flex justify-between w-full mb-3">
-                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Non-Technical</h1>
-                                <p className="text-[#9a8eb7] text-[0.7rem]">5 events</p>
-                            </div>
-                            <div className="relative z-9 w-full h-[0.1rem] bg-[#271d3a]">
-                                <div className="progress-line absolute z-10 bg-[#eae4f5] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" style={{ width: "42%" }} />
-                            </div>
-                        </div>
-                        <div className="w-full">
-                            <div className="flex justify-between w-full mb-3">
-                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Robotics Core</h1>
+                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Competitions & Creative</h1>
                                 <p className="text-[#9a8eb7] text-[0.7rem]">4 events</p>
                             </div>
                             <div className="relative z-9 w-full h-[0.1rem] bg-[#271d3a]">
-                                <div className="progress-line absolute z-10 bg-[#eae4f5] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" style={{ width: "33%" }} />
+                                <div className="progress-line absolute z-10 bg-[#eae4f5] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" style={{ width: "21%" }} />
+                            </div>
+                        </div>
+                        <div className="w-full">
+                            <div className="flex justify-between w-full mb-3">
+                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Ceremonies, Talks & Fun</h1>
+                                <p className="text-[#9a8eb7] text-[0.7rem]">8 events</p>
+                            </div>
+                            <div className="relative z-9 w-full h-[0.1rem] bg-[#271d3a]">
+                                <div className="progress-line absolute z-10 bg-[#eae4f5] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" style={{ width: "42%" }} />
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="lg:w-1/2 w-full text-[#9a8eb7] text-[0.9rem] sm:text-[1rem] lg:text-[2rem] md:leading-[1.1] leading-[1.6] lg:mt-0 mt-4">
-                    <p>ELEVATE offers 12 events spanning robotics, AI, circuit design, drones, and beyond. Whether you're a builder, a coder, or a creative thinker — there's a stage here for you.</p>
+                    <p>ELEVATE offers 19 events spanning coding, workshops, competitions, creative challenges, talks, ceremonies, and cultural activities. Whether you're a builder, a coder, or a creative thinker, there's a stage here for you.</p>
                 </div>
             </div>
         </section>
