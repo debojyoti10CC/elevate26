@@ -11,51 +11,91 @@ const Activities = () => {
     const activitiesLines = isMobD ? activitiesLinesSM : activitiesLinesLG;
 
     useGSAP(() => {
+        const mm = gsap.matchMedia();
         const lines = gsap.utils.toArray(".activities-title-clip");
         const progressLines = gsap.utils.toArray(".progress-line");
 
-        const activitiesTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".activities-section",
-                start: "top 85%",
-                end: "top 30%",
-                scrub: 1,
-                invalidateOnRefresh: true,
-            },
-        });
+        // Desktop / Tablet
+        mm.add("(min-width: 769px)", () => {
+            const activitiesTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".activities-section",
+                    start: "top 85%",
+                    end: "top 30%",
+                    scrub: 1,
+                    invalidateOnRefresh: true,
+                },
+            });
 
-        activitiesTl.from(".activities-subtitle", {
-            yPercent: 100,
-            opacity: 0,
-            force3D: true,
-            ease: "power1.inOut",
-        });
+            activitiesTl.from(".activities-subtitle", {
+                yPercent: 100,
+                opacity: 0,
+                force3D: true,
+                ease: "power1.inOut",
+            });
 
-        if (!isMobD) {
             activitiesTl.fromTo(
                 ".activities-part",
                 { height: "10vh" },
                 { height: "50vh", ease: "none", force3D: true }
             );
-        }
 
-        activitiesTl.to(lines, {
-            clipPath: "inset(0% 0% 0% 0%)",
-            ease: "none",
-            force3D: true,
-            stagger: 0.2,
-            duration: 1,
-        }, "<");
+            activitiesTl.to(lines, {
+                clipPath: "inset(0% 0% 0% 0%)",
+                ease: "none",
+                force3D: true,
+                stagger: 0.2,
+                duration: 1,
+            }, "<");
 
-        if (!isMobD) {
-            activitiesTl.from(".activities-sec", { yPercent: 100, force3D: true, duration: 1 }, "<");
-        }
+            activitiesTl.from(".activities-sec", { 
+                yPercent: 100, 
+                force3D: true, 
+                duration: 1 
+            }, "<");
 
-        if (progressLines.length >= 3) {
-            activitiesTl.fromTo(progressLines[0], { width: "0%" }, { width: "37%", duration: 0.5, ease: "power2.in" });
-            activitiesTl.fromTo(progressLines[1], { width: "0%" }, { width: "21%", duration: 0.5, ease: "power2.in" }, "<");
-            activitiesTl.fromTo(progressLines[2], { width: "0%" }, { width: "42%", duration: 0.5, ease: "power2.in" }, "<");
-        }
+            if (progressLines.length >= 3) {
+                activitiesTl.fromTo(progressLines[0], { width: "0%" }, { width: "37%", duration: 0.5, ease: "power2.in" });
+                activitiesTl.fromTo(progressLines[1], { width: "0%" }, { width: "21%", duration: 0.5, ease: "power2.in" }, "<");
+                activitiesTl.fromTo(progressLines[2], { width: "0%" }, { width: "42%", duration: 0.5, ease: "power2.in" }, "<");
+            }
+        });
+
+        // Mobile
+        mm.add("(max-width: 768px)", () => {
+            const activitiesTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".activities-section",
+                    start: "top 85%",
+                    end: "top 30%",
+                    scrub: 1,
+                    invalidateOnRefresh: true,
+                },
+            });
+
+            activitiesTl.from(".activities-subtitle", {
+                yPercent: 100,
+                opacity: 0,
+                force3D: true,
+                ease: "power1.inOut",
+            });
+
+            activitiesTl.to(lines, {
+                clipPath: "inset(0% 0% 0% 0%)",
+                ease: "none",
+                force3D: true,
+                stagger: 0.2,
+                duration: 1,
+            }, "<");
+
+            if (progressLines.length >= 3) {
+                activitiesTl.fromTo(progressLines[0], { width: "0%" }, { width: "37%", duration: 0.5, ease: "power2.in" });
+                activitiesTl.fromTo(progressLines[1], { width: "0%" }, { width: "21%", duration: 0.5, ease: "power2.in" }, "<");
+                activitiesTl.fromTo(progressLines[2], { width: "0%" }, { width: "42%", duration: 0.5, ease: "power2.in" }, "<");
+            }
+        });
+
+        return () => mm.revert();
     });
 
     return (

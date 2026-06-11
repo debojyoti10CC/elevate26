@@ -21,6 +21,20 @@ const sortedKeys = Object.keys(frameModules).sort((a, b) => {
 const FRAME_SRCS = sortedKeys.map((k) => frameModules[k].default);
 const TOTAL_FRAMES = FRAME_SRCS.length;
 
+// ── Import all mobile robot frames eagerly via Vite glob (auto-detects count) ──
+const mobileFrameModules = import.meta.glob(
+    "../../assets/robot-frames-mobile/ezgif-frame-*.jpg",
+    { eager: true }
+);
+
+const sortedMobileKeys = Object.keys(mobileFrameModules).sort((a, b) => {
+    const n = (s) => parseInt(s.match(/(\d+)\.jpg$/)?.[1] ?? "0", 10);
+    return n(a) - n(b);
+});
+
+const MOBILE_FRAME_SRCS = sortedMobileKeys.map((k) => mobileFrameModules[k].default);
+const TOTAL_MOBILE_FRAMES = MOBILE_FRAME_SRCS.length;
+
 // ── Canvas draw ──
 function drawFrame(canvas, img, logW, logH) {
     if (!canvas || !img || !img.complete || !img.naturalWidth) return;
@@ -50,7 +64,8 @@ const Hero = () => {
     const h2Ref = useRef(null);
     const descRef = useRef(null);
     const registerBtnRef = useRef(null);
-    const imagesRef = useRef([]);
+    const desktopImagesRef = useRef([]);
+    const mobileImagesRef = useRef([]);
     const frameIdxRef = useRef(0);
     const logSizeRef = useRef({ w: 0, h: 0 });
 
@@ -71,23 +86,45 @@ const Hero = () => {
 
     // ── Pre-load all frames ──
     useEffect(() => {
-        const imgs = FRAME_SRCS.map((src) => {
+        const dImgs = FRAME_SRCS.map((src) => {
             const img = new Image();
             img.src = src;
             return img;
         });
-        imagesRef.current = imgs;
+        desktopImagesRef.current = dImgs;
 
-        imgs[0].onload = () => {
-            setupCanvas();
-            const { w, h } = logSizeRef.current;
-            drawFrame(canvasRef.current, imgs[0], w, h);
-        };
+        const mImgs = MOBILE_FRAME_SRCS.map((src) => {
+            const img = new Image();
+            img.src = src;
+            return img;
+        });
+        mobileImagesRef.current = mImgs;
+
+        const isMobile = window.innerWidth < 768;
+        const initialImg = isMobile ? mImgs[0] : dImgs[0];
+
+        if (initialImg) {
+            initialImg.onload = () => {
+                setupCanvas();
+                const { w, h } = logSizeRef.current;
+                drawFrame(canvasRef.current, initialImg, w, h);
+            };
+            if (initialImg.complete) {
+                setupCanvas();
+                const { w, h } = logSizeRef.current;
+                drawFrame(canvasRef.current, initialImg, w, h);
+            }
+        }
 
         const onResize = () => {
             setupCanvas();
+            const isMob = window.innerWidth < 768;
+            const imgs = isMob ? mobileImagesRef.current : desktopImagesRef.current;
+            const target = Math.round(frameIdxRef.current);
             const { w, h } = logSizeRef.current;
-            drawFrame(canvasRef.current, imagesRef.current[Math.round(frameIdxRef.current)], w, h);
+            if (imgs[target]) {
+                drawFrame(canvasRef.current, imgs[target], w, h);
+            }
         };
         window.addEventListener("resize", onResize);
         return () => window.removeEventListener("resize", onResize);
@@ -108,13 +145,19 @@ const Hero = () => {
                 invalidateOnRefresh: true,
                 onUpdate(self) {
                     // ── Frame animation (ends by 80% progress) ──
+                    const isMobile = window.innerWidth < 768;
+                    const imgs = isMobile ? mobileImagesRef.current : desktopImagesRef.current;
+                    const totalFrames = isMobile ? TOTAL_MOBILE_FRAMES : TOTAL_FRAMES;
+
                     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
                     const robotProgress = clamp(self.progress / 0.80, 0, 1);
-                    const target = Math.round(robotProgress * (TOTAL_FRAMES - 1));
+                    const target = Math.round(robotProgress * (totalFrames - 1));
                     if (target !== Math.round(frameIdxRef.current)) {
                         frameIdxRef.current = target;
                         const { w, h } = logSizeRef.current;
-                        drawFrame(canvasRef.current, imagesRef.current[target], w, h);
+                        if (imgs[target]) {
+                            drawFrame(canvasRef.current, imgs[target], w, h);
+                        }
                     }
 
                     // ── Tagline animation (enters 15%->30%, exits 40%->55%) ──
