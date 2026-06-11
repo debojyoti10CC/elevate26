@@ -10,7 +10,7 @@
 }
 
 .preloader-progress {
-    background-color: var(--base-200);
+    background-color: var(--base-100);
     z-index: 1;
     will-change: transform;
 }

@@ -176,7 +176,7 @@ body {
 }
 
 .preloader-progress {
-	background-color: var(--base-200);
+	background-color: var(--base-100);
 	z-index: 1;
 	will-change: opacity;
 }
@@ -188,7 +188,7 @@ body {
 	transform: translateX(-50%) scaleX(0);
 	width: 55%;
 	height: 100%;
-	background-color: var(--base-300);
+	background-color: transparent;
 	transform-origin: left;
 	will-change: transform;
 }

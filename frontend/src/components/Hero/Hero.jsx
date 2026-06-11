@@ -69,6 +69,29 @@ const Hero = () => {
     const frameIdxRef = useRef(0);
     const logSizeRef = useRef({ w: 0, h: 0 });
 
+    // Cache layout sizes to avoid layout thrashing during scroll events
+    const layoutSizesRef = useRef({
+        cardW: 0,
+        cardH: 0,
+        h1Left: 0,
+        h1Top: 0,
+        h1W: 0,
+        h1H: 0
+    });
+
+    const updateLayoutSizes = () => {
+        if (cardRef.current && h1Ref.current) {
+            layoutSizesRef.current = {
+                cardW: cardRef.current.offsetWidth,
+                cardH: cardRef.current.offsetHeight,
+                h1Left: h1Ref.current.offsetLeft,
+                h1Top: h1Ref.current.offsetTop,
+                h1W: h1Ref.current.offsetWidth,
+                h1H: h1Ref.current.offsetHeight
+            };
+        }
+    };
+
     // ── Size the canvas ──
     const setupCanvas = () => {
         const canvas = canvasRef.current;
@@ -108,11 +131,13 @@ const Hero = () => {
                 setupCanvas();
                 const { w, h } = logSizeRef.current;
                 drawFrame(canvasRef.current, initialImg, w, h);
+                updateLayoutSizes();
             };
             if (initialImg.complete) {
                 setupCanvas();
                 const { w, h } = logSizeRef.current;
                 drawFrame(canvasRef.current, initialImg, w, h);
+                updateLayoutSizes();
             }
         }
 
@@ -125,6 +150,7 @@ const Hero = () => {
             if (imgs[target]) {
                 drawFrame(canvasRef.current, imgs[target], w, h);
             }
+            updateLayoutSizes();
         };
         window.addEventListener("resize", onResize);
         return () => window.removeEventListener("resize", onResize);
@@ -143,6 +169,9 @@ const Hero = () => {
                 anticipatePin: 1,
                 scrub: 0.6,
                 invalidateOnRefresh: true,
+                onRefresh() {
+                    updateLayoutSizes();
+                },
                 onUpdate(self) {
                     // ── Frame animation (ends by 80% progress) ──
                     const isMobile = window.innerWidth < 768;
@@ -228,12 +257,7 @@ const Hero = () => {
                         const t = clamp((self.progress - 0.82) / 0.16, 0, 1);
                         const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
                         
-                        const cardW = cardRef.current?.offsetWidth || 0;
-                        const cardH = cardRef.current?.offsetHeight || 0;
-                        const h1Left = h1Ref.current?.offsetLeft || 0;
-                        const h1Top = h1Ref.current?.offsetTop || 0;
-                        const h1W = h1Ref.current?.offsetWidth || 0;
-                        const h1H = h1Ref.current?.offsetHeight || 0;
+                        const { cardW, cardH, h1Left, h1Top, h1W, h1H } = layoutSizesRef.current;
 
                         const targetX = (cardW - h1W) / 2 - h1Left;
                         const targetY = (cardH - h1H) / 2 - h1Top;
