@@ -7,7 +7,6 @@ import Navbar from "../components/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import PreloaderII from "../components/Preloader/PreloaderII";
 import ReserveBtn from "../components/Buttons/ReserveBtn";
-import Logo from "../components/Buttons/Logo";
 import Footer from "../components/Footer/Footer";
 import FooterTitle from "../components/Footer/FooterTitle";
 
@@ -33,7 +32,6 @@ const MainLayout = () => {
     return (
         <>
             <PreloaderII />
-            <Logo />
             <ReserveBtn />
             <Navbar />
             <div id="smooth-wrapper">

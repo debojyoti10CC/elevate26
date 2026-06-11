@@ -1,41 +1,268 @@
+import { useEffect, useRef } from "react";
 import gsap from "gsap/all";
-import smoke from "../../assets/smoke_final.mp4";
-import robotImg from "../../assets/hero-robot.png";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { MdArrowOutward } from "react-icons/md";
+import smoke from "../../assets/smoke_final.mp4";
+
+gsap.registerPlugin(ScrollTrigger);
+
+// ── Import all robot frames eagerly via Vite glob (auto-detects count) ──
+const frameModules = import.meta.glob(
+    "../../assets/robot-frames/ezgif-frame-*.jpg",
+    { eager: true }
+);
+
+const sortedKeys = Object.keys(frameModules).sort((a, b) => {
+    const n = (s) => parseInt(s.match(/(\d+)\.jpg$/)?.[1] ?? "0", 10);
+    return n(a) - n(b);
+});
+
+const FRAME_SRCS = sortedKeys.map((k) => frameModules[k].default);
+const TOTAL_FRAMES = FRAME_SRCS.length;
+
+// ── Canvas draw ──
+function drawFrame(canvas, img, logW, logH) {
+    if (!canvas || !img || !img.complete || !img.naturalWidth) return;
+    const ctx = canvas.getContext("2d");
+    const W = logW || canvas.offsetWidth;
+    const H = logH || canvas.offsetHeight;
+
+    ctx.clearRect(0, 0, W, H);
+
+    const imgA = img.naturalWidth / img.naturalHeight;
+    const boxA = W / H;
+
+    let dW, dH, dX, dY;
+    if (imgA > boxA) {
+        dW = W; dH = dW / imgA; dX = 0; dY = (H - dH) / 2;
+    } else {
+        dH = H; dW = dH * imgA; dX = (W - dW) / 2; dY = 0;
+    }
+    ctx.drawImage(img, dX, dY, dW, dH);
+}
 
 const Hero = () => {
-    useGSAP(() => {
-        gsap.to(".hero-img", {
-            yPercent: -5,
-            scale: 1.1,
-            ease: "none",
-            force3D: true,
-            scrollTrigger: {
-                trigger: ".hero-section",
-                start: "top top",
-                end: "bottom top",
-                scrub: 1,
-                invalidateOnRefresh: true,
-            },
+    const sectionRef = useRef(null);
+    const cardRef = useRef(null);
+    const canvasRef = useRef(null);
+    const h1Ref = useRef(null);
+    const h2Ref = useRef(null);
+    const descRef = useRef(null);
+    const registerBtnRef = useRef(null);
+    const imagesRef = useRef([]);
+    const frameIdxRef = useRef(0);
+    const logSizeRef = useRef({ w: 0, h: 0 });
+
+    // ── Size the canvas ──
+    const setupCanvas = () => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const dpr = window.devicePixelRatio || 1;
+        const w = canvas.offsetWidth;
+        const h = canvas.offsetHeight;
+        logSizeRef.current = { w, h };
+        canvas.width = Math.round(w * dpr);
+        canvas.height = Math.round(h * dpr);
+        const ctx = canvas.getContext("2d");
+        ctx.resetTransform();
+        ctx.scale(dpr, dpr);
+    };
+
+    // ── Pre-load all frames ──
+    useEffect(() => {
+        const imgs = FRAME_SRCS.map((src) => {
+            const img = new Image();
+            img.src = src;
+            return img;
         });
-    });
+        imagesRef.current = imgs;
+
+        imgs[0].onload = () => {
+            setupCanvas();
+            const { w, h } = logSizeRef.current;
+            drawFrame(canvasRef.current, imgs[0], w, h);
+        };
+
+        const onResize = () => {
+            setupCanvas();
+            const { w, h } = logSizeRef.current;
+            drawFrame(canvasRef.current, imagesRef.current[Math.round(frameIdxRef.current)], w, h);
+        };
+        window.addEventListener("resize", onResize);
+        return () => window.removeEventListener("resize", onResize);
+    }, []);
+
+    // ── GSAP pin + scrub — works correctly inside ScrollSmoother ──
+    useGSAP(() => {
+        // Wait one tick so ScrollSmoother has initialised
+        const ctx = gsap.context(() => {
+            ScrollTrigger.create({
+                trigger: sectionRef.current,
+                start: "top top",
+                end: "+=400%",          // 4× viewport — enough travel for 238 frames
+                pin: true,              // GSAP pins — not CSS sticky
+                pinSpacing: true,       // adds scroll space after the pin
+                anticipatePin: 1,
+                scrub: 0.6,
+                invalidateOnRefresh: true,
+                onUpdate(self) {
+                    // ── Frame animation (ends by 80% progress) ──
+                    const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+                    const robotProgress = clamp(self.progress / 0.80, 0, 1);
+                    const target = Math.round(robotProgress * (TOTAL_FRAMES - 1));
+                    if (target !== Math.round(frameIdxRef.current)) {
+                        frameIdxRef.current = target;
+                        const { w, h } = logSizeRef.current;
+                        drawFrame(canvasRef.current, imagesRef.current[target], w, h);
+                    }
+
+                    // ── Tagline animation (enters 15%->30%, exits 40%->55%) ──
+                    let tagX = -300;
+                    let tagOpacity = 0;
+
+                    if (self.progress < 0.15) {
+                        tagX = -300;
+                        tagOpacity = 0;
+                    } else if (self.progress <= 0.30) {
+                        const t = (self.progress - 0.15) / 0.15;
+                        const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+                        tagX = (1 - eased) * -300;
+                        tagOpacity = eased;
+                    } else if (self.progress <= 0.40) {
+                        tagX = 0;
+                        tagOpacity = 1;
+                    } else if (self.progress <= 0.55) {
+                        const t = (self.progress - 0.40) / 0.15;
+                        const eased = Math.pow(t, 3); // ease-in cubic
+                        tagX = eased * -300;
+                        tagOpacity = 1 - eased;
+                    } else {
+                        tagX = -300;
+                        tagOpacity = 0;
+                    }
+
+                    if (h2Ref.current) {
+                        h2Ref.current.style.transform = `translateX(${tagX}px) translateY(-50%)`;
+                        h2Ref.current.style.opacity = tagOpacity;
+                    }
+
+                    // ── Description animation (enters 55%->70%, exits 75%->85%) ──
+                    let descX = 300;
+                    let descOpacity = 0;
+
+                    if (self.progress < 0.55) {
+                        descX = 300;
+                        descOpacity = 0;
+                    } else if (self.progress <= 0.70) {
+                        const t = (self.progress - 0.55) / 0.15;
+                        const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+                        descX = (1 - eased) * 300;
+                        descOpacity = eased;
+                    } else if (self.progress <= 0.75) {
+                        descX = 0;
+                        descOpacity = 1;
+                    } else if (self.progress <= 0.82) {
+                        const t = (self.progress - 0.75) / 0.07;
+                        const eased = Math.pow(t, 3); // ease-in cubic
+                        descX = eased * 300;
+                        descOpacity = 1 - eased;
+                    } else {
+                        descX = 300;
+                        descOpacity = 0;
+                    }
+
+                    if (descRef.current) {
+                        descRef.current.style.transform = `translateX(${descX}px) translateY(-50%)`;
+                        descRef.current.style.opacity = descOpacity;
+                    }
+
+                    // ── ELEVATE centering animation (82%->98%) ──
+                    let elevX = 0;
+                    let elevY = 0;
+
+                    if (self.progress >= 0.82) {
+                        const t = clamp((self.progress - 0.82) / 0.16, 0, 1);
+                        const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+                        
+                        const cardW = cardRef.current?.offsetWidth || 0;
+                        const cardH = cardRef.current?.offsetHeight || 0;
+                        const h1Left = h1Ref.current?.offsetLeft || 0;
+                        const h1Top = h1Ref.current?.offsetTop || 0;
+                        const h1W = h1Ref.current?.offsetWidth || 0;
+                        const h1H = h1Ref.current?.offsetHeight || 0;
+
+                        const targetX = (cardW - h1W) / 2 - h1Left;
+                        const targetY = (cardH - h1H) / 2 - h1Top;
+
+                        elevX = eased * targetX;
+                        elevY = eased * targetY;
+                    }
+
+                    if (h1Ref.current) {
+                        h1Ref.current.style.transform = `translate(${elevX}px, ${elevY}px)`;
+                    }
+
+                    // ── Register button entry animation (90%->99%) ──
+                    let regOpacity = 0;
+                    let regY = 50;
+
+                    if (self.progress >= 0.90) {
+                        const t = clamp((self.progress - 0.90) / 0.09, 0, 1);
+                        const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+                        regOpacity = eased;
+                        regY = (1 - eased) * 50;
+                    }
+
+                    if (registerBtnRef.current) {
+                        registerBtnRef.current.style.opacity = regOpacity;
+                        const isMobile = window.innerWidth < 768;
+                        const targetYOffset = isMobile ? 80 : 130;
+                        registerBtnRef.current.style.transform = `translate(-50%, calc(-50% + ${targetYOffset + regY}px))`;
+                        registerBtnRef.current.style.pointerEvents = self.progress >= 0.92 ? "auto" : "none";
+                    }
+                },
+            });
+        });
+        return () => ctx.revert();
+    }, { scope: sectionRef });
 
     return (
-        <section className="hero-section w-full h-[100svh] p-2 md:p-2 mb-0">
-            <div className="relative w-full h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-black">
-
-                {/* ── Robot image ── */}
-                <img
-                    src={robotImg}
-                    alt="AI Robot"
-                    className="hero-img absolute inset-0 w-full h-full object-cover object-right z-0"
+        /*
+         * Section is exactly 100svh tall.
+         * GSAP's pin + pinSpacing handles the extra scroll travel,
+         * so there is NO blank gap between Hero and Welcome.
+         */
+        <section
+            ref={sectionRef}
+            className="hero-section w-full p-2 md:p-2 mb-0"
+            style={{ height: "100svh" }}
+        >
+            {/* ── Card ── */}
+            <div
+                ref={cardRef}
+                className="relative w-full h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden"
+                style={{
+                    background: `
+                        radial-gradient(ellipse 65% 90% at 80% 45%, rgba(109, 40, 217, 0.55) 0%, rgba(76, 17, 140, 0.35) 35%, transparent 65%),
+                        radial-gradient(ellipse 45% 60% at 90% 65%, rgba(139, 60, 255, 0.25) 0%, transparent 55%),
+                        radial-gradient(ellipse 80% 70% at 60% 50%, rgba(49, 10, 100, 0.4) 0%, transparent 70%),
+                        #080511
+                    `
+                }}
+            >
+                {/* ── Robot canvas ── */}
+                <canvas
+                    ref={canvasRef}
+                    className="absolute inset-0 w-full h-full z-0"
+                    style={{ display: "block" }}
                 />
 
-                {/* ── Left gradient so text stays readable ── */}
-                <div className="absolute inset-0 z-10 bg-gradient-to-r from-black via-black/80 to-transparent md:from-black md:via-black/60 md:to-transparent" />
+                {/* ── Left gradient ── */}
+                <div className="absolute inset-0 z-10" style={{ background: "linear-gradient(to right, #080511 0%, rgba(8,5,17,0.85) 30%, rgba(8,5,17,0.2) 60%, transparent 100%)" }} />
 
-                {/* ── Bottom gradient for text contrast ── */}
-                <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+                {/* ── Bottom gradient ── */}
+                <div className="absolute inset-0 z-10" style={{ background: "linear-gradient(to top, rgba(8,5,17,0.75) 0%, transparent 45%, rgba(8,5,17,0.2) 100%)" }} />
 
                 {/* ── Smoke overlay ── */}
                 <video
@@ -48,36 +275,72 @@ const Hero = () => {
                 />
 
                 {/* ── Text layer ── */}
-                <div className="absolute inset-0 z-30 flex flex-col justify-between p-6 md:p-8">
-                    {/* Top: big title */}
+                <div className="absolute inset-0 z-30 p-6 md:p-8">
+
+                    {/* Top-left: big title */}
                     <h1
-                        className="text-[#eae4f5] text-[15vw] md:text-[10vw] lg:text-9xl font-bold tracking-wider leading-none"
-                        style={{ textShadow: "2px 4px 12px rgba(0,0,0,0.8)" }}
+                        ref={h1Ref}
+                        className="text-[#eae4f5] text-[15vw] md:text-[10vw] lg:text-9xl font-bold tracking-wider leading-none w-fit"
+                        style={{
+                            textShadow: "2px 4px 12px rgba(0,0,0,0.8)",
+                            willChange: "transform",
+                        }}
                     >
                         ELEVATE
                     </h1>
 
-                    {/* Bottom: tagline + description */}
-                    <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-3">
-                        <h2
-                            className="text-[#eae4f5] text-xl md:text-2xl font-bold leading-snug flex flex-col gap-0.5"
-                            style={{ textShadow: "1px 2px 6px rgba(0,0,0,0.9)" }}
-                        >
-                            <span>India's Premier</span>
-                            <span>College Tech-Fest—</span>
-                            <span>IEEE IEM SB</span>
-                        </h2>
+                    {/* Vertically centered left: tagline — slides in at scroll midpoint, out at end */}
+                    <h2
+                        ref={h2Ref}
+                        className="absolute left-6 md:left-8 text-[#eae4f5] text-2xl md:text-3xl lg:text-4xl font-bold leading-snug flex flex-col gap-0.5"
+                        style={{
+                            top: "50%",
+                            transform: "translateX(-300px) translateY(-50%)",
+                            opacity: 0,
+                            textShadow: "1px 2px 6px rgba(0,0,0,0.9)",
+                            willChange: "transform, opacity",
+                        }}
+                    >
+                        <span>India's Premier</span>
+                        <span>College Tech-Fest—</span>
+                        <span>IEEE IEM SB</span>
+                    </h2>
 
-                        <p
-                            className="text-[#e8e3db] text-xs md:text-[0.7rem] font-medium tracking-wide md:w-[22%] md:text-right leading-relaxed"
-                            style={{ textShadow: "1px 2px 4px rgba(0,0,0,0.9)" }}
-                        >
-                            Join thousands of innovators, engineers, and creators at ELEVATE - powered by IEEE IEM Student Branch.
-                        </p>
-                    </div>
+                    {/* Vertically centered right: description — slides in/out after tagline */}
+                    <p
+                        ref={descRef}
+                        className="absolute right-6 md:right-8 text-[#e8e3db] text-lg md:text-xl lg:text-2xl font-medium tracking-wide md:w-[32%] text-right leading-relaxed"
+                        style={{
+                            top: "50%",
+                            transform: "translateX(300px) translateY(-50%)",
+                            opacity: 0,
+                            textShadow: "1px 2px 4px rgba(0,0,0,0.9)",
+                            willChange: "transform, opacity",
+                        }}
+                    >
+                        Join thousands of innovators, engineers, and creators at ELEVATE - powered by IEEE IEM Student Branch.
+                    </p>
+
+                    {/* Centered Register button — slides/fades in below ELEVATE */}
+                    <a
+                        ref={registerBtnRef}
+                        href="#register"
+                        className="absolute left-1/2 px-6 py-3 md:px-8 md:py-4 bg-[#eae4f5] hover:bg-[#e8e3db] text-[#181126] font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(234,228,245,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 md:gap-3 group"
+                        style={{
+                            top: "50%",
+                            transform: "translate(-50%, calc(-50% + 180px))",
+                            opacity: 0,
+                            pointerEvents: "none",
+                            willChange: "transform, opacity",
+                        }}
+                    >
+                        <span className="tracking-wider text-sm md:text-base font-semibold">Register Now</span>
+                        <MdArrowOutward className="bg-[#181126] text-[#9a8eb7] w-6 h-6 md:w-7 md:h-7 rounded-full p-1.5 flex-shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </a>
                 </div>
             </div>
         </section>
+
     );
 };
 
