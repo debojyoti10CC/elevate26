@@ -2,8 +2,150 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: 'Bauhaus Std';
+  src: url('../assets/Text-fonts/Bauhaus/BauhausStd-Demi.eot');
+  src: local('Bauhaus Std Demi'), local('BauhausStd-Demi'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Demi.eot?#iefix') format('embedded-opentype'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Demi.woff2') format('woff2'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Demi.woff') format('woff'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Demi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bauhaus Std';
+  src: url('../assets/Text-fonts/Bauhaus/BauhausStd-Medium.eot');
+  src: local('Bauhaus Std Medium'), local('BauhausStd-Medium'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Medium.eot?#iefix') format('embedded-opentype'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Medium.woff2') format('woff2'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Medium.woff') format('woff'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bauhaus Std';
+  src: url('../assets/Text-fonts/Bauhaus/BauhausStd-Light.eot');
+  src: local('Bauhaus Std Light'), local('BauhausStd-Light'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Light.eot?#iefix') format('embedded-opentype'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Light.woff2') format('woff2'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Light.woff') format('woff'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bauhaus Std';
+  src: url('../assets/Text-fonts/Bauhaus/BauhausStd-Bold.eot');
+  src: local('Bauhaus Std Bold'), local('BauhausStd-Bold'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Bold.woff2') format('woff2'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Bold.woff') format('woff'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bauhaus Std';
+  src: url('../assets/Text-fonts/Bauhaus/BauhausStd-Heavy.eot');
+  src: local('Bauhaus Std Heavy'), local('BauhausStd-Heavy'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Heavy.eot?#iefix') format('embedded-opentype'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Heavy.woff2') format('woff2'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Heavy.woff') format('woff'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Heavy.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Climate Crisis';
+  src: url('../assets/Text-fonts/Content-fonts/Climate_Crisis/ClimateCrisis-Regular-VariableFont_YEAR.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monoton';
+  src: url('../assets/Text-fonts/Content-fonts/Monoton/Monoton-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nova Square';
+  src: url('../assets/Text-fonts/Content-fonts/Nova_Square/NovaSquare-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/Text-fonts/Content-fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/Text-fonts/Content-fonts/Space_Mono/SpaceMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Zen Dots';
+  src: url('../assets/Text-fonts/Content-fonts/Zen_Dots/ZenDots-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --color-destructive-foreground: var(--destructive-foreground);
+  --font-bauhaus: 'Bauhaus Std', sans-serif;
+  --font-climate: 'Climate Crisis', sans-serif;
+  --font-monoton: 'Monoton', sans-serif;
+  --font-nova: 'Nova Square', sans-serif;
+  --font-space: 'Space Mono', monospace;
+  --font-zen: 'Zen Dots', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+.font-bauhaus {
+  font-family: 'Bauhaus Std', sans-serif;
+}
+.font-climate {
+  font-family: 'Climate Crisis', sans-serif;
+}
+.font-monoton {
+  font-family: 'Monoton', sans-serif;
+}
+.font-nova {
+  font-family: 'Nova Square', sans-serif;
+}
+.font-space {
+  font-family: 'Space Mono', monospace;
+}
+.font-zen {
+  font-family: 'Zen Dots', sans-serif;
+}
+.font-inter {
+  font-family: 'Inter', sans-serif;
 }
 
 :root {
@@ -153,7 +295,7 @@ html,
 body {
 	background-color: #0b0714;
 	scroll-behavior: smooth;
-	font-family: "Inter", sans-serif;
+	font-family: "Space Mono", monospace;
 	scroll-behavior: smooth;
 	scrollbar-width: none;
 	/* Chrome, Edge, Safari */

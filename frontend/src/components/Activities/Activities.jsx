@@ -100,13 +100,13 @@ const Activities = () => {
 
     return (
         <section className="activities-section w-full md:h-[120vh] h-auto py-12 md:py-0 px-5 md:px-8 md:mt-16 mt-6">
-            <p className="text-[0.7rem] font-bold text-[#eae4f5] activities-subtitle">Ready to compete?</p>
+            <p className="text-[0.7rem] font-bold text-[#eae4f5] font-nova activities-subtitle">Ready to compete?</p>
 
             <div className="md:mt-10 mt-6 activities-part origin-bottom">
                 {activitiesLines.map((line, index) => (
                     <h1
                         key={index}
-                        className="activities-heading text-[#eae4f5] lg:text-[9.5rem] text-[clamp(2rem,10vw,3.5rem)] leading-[0.9] font-medium tracking-tighter"
+                        className="activities-heading text-[#eae4f5] lg:text-[6.5rem] text-[clamp(1.8rem,10vw,3.5rem)] leading-[1.0] font-zen tracking-tighter"
                     >
                         <span className={`activities-title-break ${index === 1 ? "lg:pb-3 pb-1" : ""}`}>
                             {line}
@@ -120,13 +120,13 @@ const Activities = () => {
 
             <div className="activities-sec w-full flex lg:flex-row flex-col justify-center items-start gap-6 md:gap-10 lg:mt-0 mt-8">
                 <div className="lg:w-1/2 w-full">
-                    <div className="lg:w-[40%] w-[80%]">
+                    <div className="lg:w-[45%] w-[80%] font-nova">
                         <p className="text-[0.7rem] text-[#eae4f5]">ELEVATE events span across categories:</p>
                     </div>
-                    <div className="flex flex-col justify-start items-start gap-4 mt-6 md:mr-14">
+                    <div className="flex flex-col justify-start items-start gap-4 mt-6 md:mr-14 font-nova">
                         <div className="w-full">
                             <div className="flex justify-between w-full mb-3">
-                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Technical & Workshops</h1>
+                                <h1 className="text-[#9a8eb7] text-sm sm:text-base md:text-lg">Technical & Workshops</h1>
                                 <p className="text-[#9a8eb7] text-[0.7rem]">7 events</p>
                             </div>
                             <div className="relative z-9 w-full h-[0.1rem] bg-[#271d3a]">
@@ -135,7 +135,7 @@ const Activities = () => {
                         </div>
                         <div className="w-full">
                             <div className="flex justify-between w-full mb-3">
-                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Competitions & Creative</h1>
+                                <h1 className="text-[#9a8eb7] text-sm sm:text-base md:text-lg">Competitions & Creative</h1>
                                 <p className="text-[#9a8eb7] text-[0.7rem]">4 events</p>
                             </div>
                             <div className="relative z-9 w-full h-[0.1rem] bg-[#271d3a]">
@@ -144,7 +144,7 @@ const Activities = () => {
                         </div>
                         <div className="w-full">
                             <div className="flex justify-between w-full mb-3">
-                                <h1 className="text-[#9a8eb7] text-base sm:text-lg md:text-xl">Ceremonies, Talks & Fun</h1>
+                                <h1 className="text-[#9a8eb7] text-sm sm:text-base md:text-lg">Ceremonies, Talks & Fun</h1>
                                 <p className="text-[#9a8eb7] text-[0.7rem]">8 events</p>
                             </div>
                             <div className="relative z-9 w-full h-[0.1rem] bg-[#271d3a]">
@@ -154,7 +154,7 @@ const Activities = () => {
                     </div>
                 </div>
 
-                <div className="lg:w-1/2 w-full text-[#9a8eb7] text-[0.9rem] sm:text-[1rem] lg:text-[2rem] md:leading-[1.1] leading-[1.6] lg:mt-0 mt-4">
+                <div className="lg:w-1/2 w-full text-[#9a8eb7] text-[0.95rem] sm:text-[1.1rem] lg:text-[1.5rem] md:leading-[1.4] leading-[1.6] lg:mt-0 mt-4 font-space">
                     <p>ELEVATE offers 19 events spanning coding, workshops, competitions, creative challenges, talks, ceremonies, and cultural activities. Whether you're a builder, a coder, or a creative thinker, there's a stage here for you.</p>
                 </div>
             </div>

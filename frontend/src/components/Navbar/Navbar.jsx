@@ -46,7 +46,7 @@ const Navbar = () => {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`text-[#181126] text-xl font-medium hover:text-[#9a8eb7] transition-colors ${
+                  className={`text-[#181126] text-xl font-nova font-medium hover:text-[#9a8eb7] transition-colors ${
                     link.label === "Register"
                       ? "text-[#181126] font-bold border-t border-[#35294e] pt-3 mt-1 block"
                       : ""
@@ -59,13 +59,13 @@ const Navbar = () => {
           </ul>
         </div>
       )}
-
+ 
       {/* Navbar pill */}
       <div
         onClick={() => setOpen((prev) => !prev)}
         className="fixed bottom-8 left-1/2 -translate-x-1/2 w-fit h-10 p-1 flex items-center justify-end gap-2 bg-[#eae4f5] rounded-4xl z-50 cursor-pointer group transition-all duration-500 select-none"
       >
-        <div className="pl-4 text-[#181126] text-[12px] font-medium">
+        <div className="pl-4 text-[#181126] text-[12px] font-nova font-medium">
           {open ? "Close" : "Menu"}
         </div>
         <div className="bg-[#181126] rounded-full p-2">

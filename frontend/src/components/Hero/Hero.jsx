@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { MdArrowOutward } from "react-icons/md";
 import smoke from "../../assets/smoke_final.mp4";
+import elevateLogo from "../../assets/elevate-logo.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,9 +50,17 @@ function drawFrame(canvas, img, logW, logH) {
 
     let dW, dH, dX, dY;
     if (imgA > boxA) {
-        dW = W; dH = dW / imgA; dX = 0; dY = (H - dH) / 2;
+        // Image is wider than container - match height and crop sides
+        dH = H;
+        dW = dH * imgA;
+        dX = (W - dW) / 2;
+        dY = 0;
     } else {
-        dH = H; dW = dH * imgA; dX = (W - dW) / 2; dY = 0;
+        // Image is taller than container - match width and crop top/bottom
+        dW = W;
+        dH = dW / imgA;
+        dX = 0;
+        dY = (H - dH) / 2;
     }
     ctx.drawImage(img, dX, dY, dW, dH);
 }
@@ -260,7 +269,8 @@ const Hero = () => {
                         const { cardW, cardH, h1Left, h1Top, h1W, h1H } = layoutSizesRef.current;
 
                         const targetX = (cardW - h1W) / 2 - h1Left;
-                        const targetY = (cardH - h1H) / 2 - h1Top;
+                        const isMobile = window.innerWidth < 768;
+                        const targetY = (cardH - h1H) / 2 - h1Top - (isMobile ? 35 : 0);
 
                         elevX = eased * targetX;
                         elevY = eased * targetY;
@@ -302,13 +312,21 @@ const Hero = () => {
          */
         <section
             ref={sectionRef}
-            className="hero-section w-full p-2 md:p-2 mb-0"
-            style={{ height: "100svh" }}
+            className="hero-section w-full p-0 mb-0"
+            style={{
+                height: "100svh",
+                background: `
+                    radial-gradient(ellipse 65% 90% at 80% 45%, rgba(109, 40, 217, 0.55) 0%, rgba(76, 17, 140, 0.35) 35%, transparent 65%),
+                    radial-gradient(ellipse 45% 60% at 90% 65%, rgba(139, 60, 255, 0.25) 0%, transparent 55%),
+                    radial-gradient(ellipse 80% 70% at 60% 50%, rgba(49, 10, 100, 0.4) 0%, transparent 70%),
+                    #080511
+                `
+            }}
         >
             {/* ── Card ── */}
             <div
                 ref={cardRef}
-                className="relative w-full h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden"
+                className="relative w-full h-full overflow-hidden"
                 style={{
                     background: `
                         radial-gradient(ellipse 65% 90% at 80% 45%, rgba(109, 40, 217, 0.55) 0%, rgba(76, 17, 140, 0.35) 35%, transparent 65%),
@@ -344,22 +362,28 @@ const Hero = () => {
                 {/* ── Text layer ── */}
                 <div className="absolute inset-0 z-30 p-6 md:p-8">
 
-                    {/* Top-left: big title */}
+                    {/* Top-left: big title logo */}
                     <h1
                         ref={h1Ref}
-                        className="text-[#eae4f5] text-[15vw] md:text-[10vw] lg:text-9xl font-bold tracking-wider leading-none w-fit"
+                        className="w-[55vw] md:w-[40vw] lg:w-[32vw] max-w-[500px] w-fit block select-none mt-20 ml-4 md:mt-8 md:ml-8"
                         style={{
-                            textShadow: "2px 4px 12px rgba(0,0,0,0.8)",
                             willChange: "transform",
                         }}
                     >
-                        ELEVATE
+                        <img
+                            src={elevateLogo}
+                            alt="ELEVATE"
+                            className="w-full h-auto object-contain pointer-events-none"
+                            style={{
+                                filter: "drop-shadow(0 0 6px rgba(225, 182, 252, 0.5)) drop-shadow(0 0 15px rgba(168, 85, 247, 0.25)) drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.8))"
+                            }}
+                        />
                     </h1>
 
                     {/* Vertically centered left: tagline — slides in at scroll midpoint, out at end */}
                     <h2
                         ref={h2Ref}
-                        className="absolute left-6 md:left-8 text-[#eae4f5] text-2xl md:text-3xl lg:text-4xl font-bold leading-snug flex flex-col gap-0.5"
+                        className="absolute left-6 md:left-8 text-[#eae4f5] text-2xl md:text-4xl lg:text-5xl font-nova leading-tight flex flex-col gap-2"
                         style={{
                             top: "50%",
                             transform: "translateX(-300px) translateY(-50%)",
@@ -369,14 +393,14 @@ const Hero = () => {
                         }}
                     >
                         <span>India's Premier</span>
-                        <span>College Tech-Fest—</span>
-                        <span>IEEE IEM SB</span>
+                        <span>College <span className="font-monoton text-[#E1B6FC] tracking-wider text-2xl md:text-4xl lg:text-5xl">Tech-Fest</span>—</span>
+                        <span className="font-monoton text-[#E1B6FC] tracking-wider text-2xl md:text-4xl lg:text-5xl">IEEE IEM SB</span>
                     </h2>
 
                     {/* Vertically centered right: description — slides in/out after tagline */}
                     <p
                         ref={descRef}
-                        className="absolute right-6 md:right-8 text-[#e8e3db] text-lg md:text-xl lg:text-2xl font-medium tracking-wide md:w-[32%] text-right leading-relaxed"
+                        className="absolute right-6 md:right-8 text-[#e8e3db] text-lg md:text-xl lg:text-2xl font-space font-bold md:w-[42%] text-right leading-relaxed"
                         style={{
                             top: "50%",
                             transform: "translateX(300px) translateY(-50%)",
@@ -392,7 +416,7 @@ const Hero = () => {
                     <a
                         ref={registerBtnRef}
                         href="#register"
-                        className="absolute left-1/2 px-6 py-3 md:px-8 md:py-4 bg-[#eae4f5] hover:bg-[#e8e3db] text-[#181126] font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(234,228,245,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 md:gap-3 group"
+                        className="absolute left-1/2 px-6 py-3 md:px-8 md:py-4 bg-[#eae4f5] hover:bg-[#e8e3db] text-[#181126] font-nova font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(234,228,245,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 md:gap-3 group"
                         style={{
                             top: "50%",
                             transform: "translate(-50%, calc(-50% + 180px))",

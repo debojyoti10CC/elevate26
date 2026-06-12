@@ -48,14 +48,14 @@ const FooterTitle = () => {
         // Animation - move to normal position
         gsap.to(innerChars, {
             x: "0%",
-            stagger: 0.02, // Add stagger for character-by-character reveal
-            ease: "power3.out",
+            stagger: 0.1, // Stagger delay mapped directly to scroll progress
+            ease: "power2.out",
             force3D: true,
             scrollTrigger: {
                 trigger: ftConRef.current,
-                start: "top 95%",
-                end: "bottom bottom",
-                scrub: true,
+                start: "top bottom", // Starts as soon as the footer enters the viewport
+                end: "max", // Ends exactly when the user reaches the absolute bottom limit of the page
+                scrub: true, // Tied exactly to scrollbar position with no time lag
                 // markers: true
             }
         });
@@ -76,7 +76,7 @@ const FooterTitle = () => {
                     Powered by—<a href="#" className='text-[#eae4f5]'>IEEE IEM Student Branch</a>
                 </p>
                 <p className='text-[#9a8eb7] text-[0.65rem]'>
-                    © ELEVATE 2025
+                    © ELEVATE 2026
                 </p>
                 <p className='text-[#9a8eb7] text-[0.65rem]'>
                     All rights reserved

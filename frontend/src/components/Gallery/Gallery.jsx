@@ -38,14 +38,14 @@ const slides = [
 // ─── Mobile: simple vertical stack ───────────────────────────────────────────
 const MobileGallery = () => (
   <section className="w-full bg-[#0b0714] py-8 px-4 flex flex-col gap-4">
-    <p className="text-[0.65rem] font-bold text-[#eae4f5] mb-2">Venue — ELEVATE 2025</p>
+    <p className="text-[0.65rem] font-bold text-[#eae4f5] font-nova mb-2">Venue — ELEVATE 2025</p>
     {slides.map((s) => (
       <div key={s.id} className="relative rounded-[2rem] overflow-hidden h-[55vw] min-h-[180px]">
         <img src={s.img} alt={s.alt} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="text-[#eae4f5] text-xl font-semibold mb-1">{s.label}</h3>
-          <p className="text-[#9a8eb7] text-[0.65rem] leading-relaxed">{s.desc}</p>
+          <h3 className="text-[#eae4f5] text-lg font-zen font-bold mb-1">{s.label}</h3>
+          <p className="text-[#9a8eb7] text-[0.65rem] font-space leading-relaxed">{s.desc}</p>
         </div>
       </div>
     ))}
@@ -125,13 +125,13 @@ const DesktopGallery = () => {
       {/* Panel 1 */}
       <div className="gallery-background">
         <img src={gbg1} alt="Main Arena" />
-        <div className="gallery-topText">
+        <div className="gallery-topText font-zen">
           <h4>Main Arena</h4>
         </div>
-        <div className="gallery-bottomText">
+        <div className="gallery-bottomText font-space">
           <div className="w-full flex justify-center items-center gap-0">
-            <BsFillPlusCircleFill className="w-8 h-8 text-[#9a8eb7]" />
-            <h3>The Main Arena hosts the flagship robot combat and racing events,<br />surrounded by roaring crowds and electrifying energy.</h3>
+            <BsFillPlusCircleFill className="w-8 h-8 text-[#9a8eb7] flex-shrink-0" />
+            <h3 className="text-xs md:text-sm lg:text-base">The Main Arena hosts the flagship robot combat and racing events,<br />surrounded by roaring crowds and electrifying energy.</h3>
           </div>
           <div className="relative z-9 w-50 h-[0.1rem] bg-[#271d3a]">
             <div className="progress-line absolute z-10 bg-[#eae4f5] w-[33%] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" />
@@ -142,13 +142,13 @@ const DesktopGallery = () => {
       {/* Panel 2 */}
       <div id="gallery-second" className="gallery-background2">
         <img src={gbg2} alt="Lab Complex" />
-        <div className="gallery-topText">
+        <div className="gallery-topText font-zen">
           <h4>Lab Complex</h4>
         </div>
-        <div className="gallery-bottomText">
+        <div className="gallery-bottomText font-space">
           <div className="w-full flex justify-center items-center gap-0">
-            <BsFillPlusCircleFill className="w-8 h-8 text-[#9a8eb7]" />
-            <h3>The Lab Complex is where circuit design, AI hackathons,<br />and hands-on workshops come to life.</h3>
+            <BsFillPlusCircleFill className="w-8 h-8 text-[#9a8eb7] flex-shrink-0" />
+            <h3 className="text-xs md:text-sm lg:text-base">The Lab Complex is where circuit design, AI hackathons,<br />and hands-on workshops come to life.</h3>
           </div>
           <div className="relative z-9 w-50 h-[0.1rem] bg-[#271d3a]">
             <div className="progress-line absolute z-10 bg-[#eae4f5] w-[67%] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" />
@@ -159,13 +159,13 @@ const DesktopGallery = () => {
       {/* Panel 3 */}
       <div id="gallery-third" className="gallery-background2">
         <img src={gbg3} alt="Expo Hall" />
-        <div className="gallery-topText">
+        <div className="gallery-topText font-zen">
           <h4>Expo Hall</h4>
         </div>
-        <div className="gallery-bottomText">
+        <div className="gallery-bottomText font-space">
           <div className="w-full flex justify-center items-center gap-0">
-            <BsFillPlusCircleFill className="w-8 h-8 text-[#9a8eb7]" />
-            <h3>The Expo Hall showcases the best student projects and innovations,<br />open to visitors, judges, and industry guests.</h3>
+            <BsFillPlusCircleFill className="w-8 h-8 text-[#9a8eb7] flex-shrink-0" />
+            <h3 className="text-xs md:text-sm lg:text-base">The Expo Hall showcases the best student projects and innovations,<br />open to visitors, judges, and industry guests.</h3>
           </div>
           <div className="relative z-9 w-50 h-[0.1rem] bg-[#271d3a]">
             <div className="progress-line absolute z-10 bg-[#eae4f5] w-[100%] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" />

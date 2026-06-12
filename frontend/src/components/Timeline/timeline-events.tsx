@@ -18,9 +18,8 @@ function TimelineEvents() {
 
   return (
     <div className="relative mx-5 sm:mx-10 lg:mx-20">
-      {/* Heading */}
       <div className="flex items-center justify-center mb-12 md:mb-16">
-        <h1 className="font-inter font-normal leading-none text-[clamp(3rem,6vw,6rem)] text-[#150BDE]">
+        <h1 className="font-zen font-bold leading-none text-[clamp(2rem,5vw,5rem)] text-[#E1B6FC]">
           TIMELINE
         </h1>
       </div>

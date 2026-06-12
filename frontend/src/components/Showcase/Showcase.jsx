@@ -62,7 +62,7 @@ const EventCard = ({ event }) => (
       </>
     )}
 
-    <div className="relative z-20 flex justify-between items-start">
+    <div className="relative z-20 flex justify-between items-start font-nova">
       <span
         className={`border rounded-3xl px-3 py-1 text-[0.6rem] font-bold tracking-wide ${
           event.category === "Technical"
@@ -77,16 +77,18 @@ const EventCard = ({ event }) => (
       </span>
     </div>
 
-    <div className="relative z-20">
-      <h2 className="text-[#eae4f5] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-        {event.name}
-      </h2>
-    </div>
+    <div className="relative z-20 flex flex-col gap-2">
+      <div className="font-zen">
+        <h2 className="text-[#eae4f5] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+          {event.name}
+        </h2>
+      </div>
 
-    <div className="relative z-20">
-      <p className="text-[0.65rem] sm:text-[0.68rem] text-[#9a8eb7] leading-relaxed">
-        {event.description}
-      </p>
+      <div className="font-space">
+        <p className="text-[0.65rem] sm:text-[0.68rem] text-[#9a8eb7] leading-relaxed">
+          {event.description}
+        </p>
+      </div>
     </div>
   </div>
 );

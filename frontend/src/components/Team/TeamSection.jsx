@@ -134,7 +134,7 @@ const TeamSection = () => {
                     exit={{ opacity: 0, y: 20 }}
                     viewport={{ once: false, amount: 0.5 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="font-display text-3xl md:text-4xl font-bold text-center text-black mb-12 tracking-wide"
+                    className="font-zen text-3xl md:text-4xl font-bold text-center text-black mb-12 tracking-wide"
                 >
                     TEAM
                 </motion.h2>
@@ -169,10 +169,10 @@ const TeamSection = () => {
                                 <div className="relative z-10 h-full flex flex-col justify-between p-6">
                                     <div />
                                     <div className="text-center">
-                                        <p className="font-display text-[0.8rem] md:text-[1rem] font-bold text-white drop-shadow-sm">
+                                        <p className="font-nova text-[0.8rem] md:text-[0.95rem] font-bold text-white drop-shadow-sm">
                                             {team.name}
                                         </p>
-                                        <p className="font-display text-[0.6rem] md:text-sm text-white/80 mt-2 tracking-wide">
+                                        <p className="font-space text-[0.6rem] md:text-xs text-white/80 mt-2 tracking-wide">
                                             {team.role}
                                         </p>
                                     </div>
@@ -210,10 +210,10 @@ const TeamSection = () => {
                                 <div className="relative z-10 h-full flex flex-col justify-between p-6">
                                     <div />
                                     <div className="text-center">
-                                        <p className="font-display text-[0.8rem] md:text-[1rem] font-bold text-white drop-shadow-sm">
+                                        <p className="font-nova text-[0.8rem] md:text-[0.95rem] font-bold text-white drop-shadow-sm">
                                             {team.name}
                                         </p>
-                                        <p className="font-display text-[0.6rem] md:text-sm text-white/80 mt-2 tracking-wide">
+                                        <p className="font-space text-[0.6rem] md:text-xs text-white/80 mt-2 tracking-wide">
                                             {team.role}
                                         </p>
                                     </div>

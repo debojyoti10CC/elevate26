@@ -48,8 +48,8 @@ function Event({
       <div className="shrink-0 select-none">
         <motion.span
           style={{ color }}
-          className="font-sketch-block font-normal leading-none tracking-wider text-[#ADADAD] block
-            text-[64px] sm:text-[90px] lg:text-[110px] xl:text-[140px] 2xl:text-[160px]"
+          className="font-climate font-normal leading-none tracking-wider text-[#ADADAD] block
+            text-[48px] sm:text-[64px] lg:text-[80px] xl:text-[96px] 2xl:text-[110px]"
         >
           {eventNumber}
         </motion.span>
@@ -58,7 +58,7 @@ function Event({
       {/* Content */}
       <div className="flex flex-col py-2 px-3 sm:px-5 min-w-0">
         <Typography.H5
-          className="text-[#7b00ff] leading-tight font-semibold
+          className="text-[#E1B6FC] leading-tight font-nova font-semibold
             text-sm sm:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl"
         >
           {title}
@@ -72,10 +72,10 @@ function Event({
         />
 
         <div className="mt-2 space-y-1">
-          <Typography.H6 className="text-sm sm:text-base font-semibold text-[#ffffff] leading-snug">
+          <Typography.H6 className="text-sm sm:text-base font-space font-semibold text-[#ffffff] leading-snug">
             {duration}
           </Typography.H6>
-          <Typography.P className="text-xs sm:text-sm font-normal text-[#ffffff] leading-relaxed">
+          <Typography.P className="text-xs sm:text-sm font-space font-normal text-[#ffffff]/80 leading-relaxed">
             {description}
           </Typography.P>
         </div>

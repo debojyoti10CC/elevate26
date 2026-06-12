@@ -31,7 +31,7 @@ const Welcome = () => {
     });
 
     return (
-        <section className="welcome-section w-full bg-[#0b0714] text-[#181126] px-5 md:px-7 pt-10 pb-12 md:pt-20 md:pb-16">
+        <section className="welcome-section w-full bg-[#0b0714] text-[#181126] px-5 md:px-7 pt-10 pb-12 md:pt-20 md:pb-16 font-inter">
             {/* Animated headline */}
             <div className="w-full md:w-[86%] text-[8.5vw] sm:text-[7vw] md:text-[64px] mb-8 md:mb-16">
                 <div className="w-full flex flex-col items-start">
@@ -62,7 +62,7 @@ const Welcome = () => {
                     />
                 </div>
                 <div className="md:w-1/2 w-full">
-                    <p className="text-[1rem] sm:text-[1.15rem] md:text-[2rem] text-[#9a8eb7] md:leading-[1.1] leading-[1.5] md:pr-24 font-normal">
+                    <p className="font-space text-[1rem] sm:text-[1.15rem] md:text-[2rem] text-[#9a8eb7] md:leading-[1.1] leading-[1.5] md:pr-24 font-normal">
                         <span>A platform where ideas take form and engineers rise to the challenge.</span>
                         <br className="hidden md:block" />
                         <span className="block mt-2 md:mt-0">Two days of robotics, AI, circuit design, and electrifying competition.</span>
