@@ -17,15 +17,14 @@ const FooterTitle = () => {
         // Get the original HTML before splitting
         const originalHTML = ftConRef.current.querySelector(".footer-title h1").innerHTML;
 
-        // Create split - exclude the sub element from being split
+        // Create split
         const split = new SplitText(".footer-title h1", {
             type: "chars",
             charsClass: "ftChar",
-            // Exclude the <sub> element from being split
             exclude: "sub"
         });
 
-        // Wrap each character in a span for animation
+        // Wrap each character in a span for the clip animation
         split.chars.forEach(char => {
             char.innerHTML = `<span>${char.innerHTML}</span>`;
         });
@@ -36,35 +35,34 @@ const FooterTitle = () => {
         const sub = ftConRef.current.querySelector(".footer-title sub");
         if (sub) {
             sub.innerHTML = `<span>${sub.innerHTML}</span>`;
-            const subSpan = sub.querySelector("span");
-
-            // Add to innerChars array
-            innerChars.push(subSpan);
+            innerChars.push(sub.querySelector("span"));
         }
 
-        // Initial state - start from left (-120%)
-        gsap.set(innerChars, { x: "-120%" });
+        // Initial state — all chars hidden to the left
+        gsap.set(innerChars, { x: "-110%" });
 
-        // Animation - move to normal position
+        // Non-scrub animation: plays automatically when footer enters view.
+        // This guarantees every character fully reaches x:0 regardless of
+        // how much scroll distance remains on the page.
         gsap.to(innerChars, {
             x: "0%",
-            stagger: 0.1, // Stagger delay mapped directly to scroll progress
-            ease: "power2.out",
+            duration: 0.8,
+            stagger: 0.06,
+            ease: "power3.out",
             force3D: true,
             scrollTrigger: {
                 trigger: ftConRef.current,
-                start: "top bottom", // Starts as soon as the footer enters the viewport
-                end: "max", // Ends exactly when the user reaches the absolute bottom limit of the page
-                scrub: true, // Tied exactly to scrollbar position with no time lag
-                // markers: true
+                start: "top 95%",   // fires as soon as footer peeks into view
+                toggleActions: "play none none none",
             }
         });
 
-        // Cleanup - revert the split and restore original HTML
+        // Cleanup
         return () => {
             split.revert();
-            // Restore the original HTML with sub element
-            ftConRef.current.querySelector(".footer-title h1").innerHTML = originalHTML;
+            if (ftConRef.current) {
+                ftConRef.current.querySelector(".footer-title h1").innerHTML = originalHTML;
+            }
         };
 
     }, { scope: ftConRef });
@@ -83,7 +81,7 @@ const FooterTitle = () => {
                 </p>
             </div>
 
-            <div className='footer-title w-full text-center overflow-hidden'>
+            <div className='footer-title w-full text-center'>
                 <h1 className='font-bold leading-none' style={{ fontSize: 'clamp(3rem, 18vw, 14rem)' }}>
                     ELEVATE
                 </h1>
