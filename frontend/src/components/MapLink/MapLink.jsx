@@ -6,7 +6,6 @@ const MapLink = () => {
 
     return (
         <section
-            id="venue"
             className="w-full bg-[#0b0714] flex flex-col justify-center items-center text-center px-6 py-16 md:py-0 md:h-[90vh]"
         >
             {/* Minimal iconic location indicator */}

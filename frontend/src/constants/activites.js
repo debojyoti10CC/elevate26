@@ -1,4 +1,4 @@
 export const activitiesLinesLG = [
     "Explore the",
-    "19 events"
+    "16 events"
 ]

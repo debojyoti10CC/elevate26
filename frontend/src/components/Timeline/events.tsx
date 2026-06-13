@@ -33,6 +33,24 @@ function Event({
     ['#ADADAD', '#000000']
   );
 
+  const titleColor = useTransform(
+    scrollYProgress,
+    [0, 0.5],
+    ['#E1B6FC', '#6b21a8']   // light purple → dark purple
+  );
+
+  const textColor = useTransform(
+    scrollYProgress,
+    [0, 0.5],
+    ['#ffffff', '#1a0a2e']   // white → near-black
+  );
+
+  const textColorMuted = useTransform(
+    scrollYProgress,
+    [0, 0.5],
+    ['rgba(255,255,255,0.8)', 'rgba(26,10,46,0.85)']
+  );
+
   const { border } = svgs;
 
   return (
@@ -57,12 +75,13 @@ function Event({
 
       {/* Content */}
       <div className="flex flex-col py-2 px-3 sm:px-5 min-w-0">
-        <Typography.H5
-          className="text-[#E1B6FC] leading-tight font-nova font-semibold
+        <motion.h5
+          style={{ color: titleColor }}
+          className="leading-tight font-nova font-semibold
             text-sm sm:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl"
         >
           {title}
-        </Typography.H5>
+        </motion.h5>
 
         {/* Squiggly border — constrained to content width */}
         <img
@@ -72,12 +91,18 @@ function Event({
         />
 
         <div className="mt-2 space-y-1">
-          <Typography.H6 className="text-sm sm:text-base font-space font-semibold text-[#ffffff] leading-snug">
+          <motion.p
+            style={{ color: textColor }}
+            className="text-sm sm:text-base font-space font-semibold leading-snug"
+          >
             {duration}
-          </Typography.H6>
-          <Typography.P className="text-xs sm:text-sm font-space font-normal text-[#ffffff]/80 leading-relaxed">
+          </motion.p>
+          <motion.p
+            style={{ color: textColorMuted }}
+            className="text-xs sm:text-sm font-space font-normal leading-relaxed"
+          >
             {description}
-          </Typography.P>
+          </motion.p>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Schedule", href: "#schedule" },
   { label: "Team", href: "#team" },
   { label: "Venue", href: "#venue" },
-  { label: "Register", href: "#register" },
+  { label: "Register", href: "https://forms.gle/mgs8gNcX4RSVPfiv8" },
 ];
 
 const Navbar = () => {
@@ -46,6 +46,8 @@ const Navbar = () => {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
+                  target={link.label === "Register" ? "_blank" : undefined}
+                  rel={link.label === "Register" ? "noopener noreferrer" : undefined}
                   className={`text-[#181126] text-xl font-nova font-medium hover:text-[#9a8eb7] transition-colors ${
                     link.label === "Register"
                       ? "text-[#181126] font-bold border-t border-[#35294e] pt-3 mt-1 block"

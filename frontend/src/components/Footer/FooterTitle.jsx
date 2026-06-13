@@ -53,7 +53,7 @@ const FooterTitle = () => {
             scrollTrigger: {
                 trigger: ftConRef.current,
                 start: "top 95%",   // fires as soon as footer peeks into view
-                toggleActions: "play none none none",
+                toggleActions: "play none none reset",
             }
         });
 

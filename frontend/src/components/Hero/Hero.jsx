@@ -280,12 +280,12 @@ const Hero = () => {
                         h1Ref.current.style.transform = `translate(${elevX}px, ${elevY}px)`;
                     }
 
-                    // ── Register button entry animation (90%->99%) ──
+                    // ── Register button entry animation (85%->99%) ──
                     let regOpacity = 0;
                     let regY = 50;
 
-                    if (self.progress >= 0.90) {
-                        const t = clamp((self.progress - 0.90) / 0.09, 0, 1);
+                    if (self.progress >= 0.85) {
+                        const t = clamp((self.progress - 0.85) / 0.14, 0, 1);
                         const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
                         regOpacity = eased;
                         regY = (1 - eased) * 50;
@@ -294,7 +294,7 @@ const Hero = () => {
                     if (registerBtnRef.current) {
                         registerBtnRef.current.style.opacity = regOpacity;
                         const isMobile = window.innerWidth < 768;
-                        const targetYOffset = isMobile ? 80 : 130;
+                        const targetYOffset = isMobile ? 100 : 180;
                         registerBtnRef.current.style.transform = `translate(-50%, calc(-50% + ${targetYOffset + regY}px))`;
                         registerBtnRef.current.style.pointerEvents = self.progress >= 0.92 ? "auto" : "none";
                     }
@@ -392,9 +392,9 @@ const Hero = () => {
                             willChange: "transform, opacity",
                         }}
                     >
-                        <span>India's Premier</span>
-                        <span>College <span className="font-monoton text-[#E1B6FC] tracking-wider text-2xl md:text-4xl lg:text-5xl">Tech-Fest</span>—</span>
-                        <span className="font-monoton text-[#E1B6FC] tracking-wider text-2xl md:text-4xl lg:text-5xl">IEEE IEM SB</span>
+                        <span>IEEE IEM SB's</span>
+                        <span className="font-monoton text-[#E1B6FC] tracking-wider text-2xl md:text-4xl lg:text-5xl">ANNUAL</span>
+                        <span className="font-monoton text-[#E1B6FC] tracking-wider text-2xl md:text-4xl lg:text-5xl">FLAGSHIP EVENT</span>
                     </h2>
 
                     {/* Vertically centered right: description — slides in/out after tagline */}
@@ -412,22 +412,39 @@ const Hero = () => {
                         Join thousands of innovators, engineers, and creators at ELEVATE - powered by IEEE IEM Student Branch.
                     </p>
 
-                    {/* Centered Register button — slides/fades in below ELEVATE */}
-                    <a
+                    {/* Centered buttons row — slides/fades in below ELEVATE */}
+                    <div
                         ref={registerBtnRef}
-                        href="#register"
-                        className="absolute left-1/2 px-6 py-3 md:px-8 md:py-4 bg-[#eae4f5] hover:bg-[#e8e3db] text-[#181126] font-nova font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(234,228,245,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 md:gap-3 group"
+                        className="absolute left-1/2 flex items-center gap-3 md:gap-4"
                         style={{
                             top: "50%",
                             transform: "translate(-50%, calc(-50% + 180px))",
                             opacity: 0,
                             pointerEvents: "none",
                             willChange: "transform, opacity",
+                            whiteSpace: "nowrap",
                         }}
                     >
-                        <span className="tracking-wider text-sm md:text-base font-semibold">Register Now</span>
-                        <MdArrowOutward className="bg-[#181126] text-[#9a8eb7] w-6 h-6 md:w-7 md:h-7 rounded-full p-1.5 flex-shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </a>
+                        {/* Register Now */}
+                        <a
+                            href="https://forms.gle/mgs8gNcX4RSVPfiv8"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3 md:px-8 md:py-4 bg-[#eae4f5] hover:bg-[#e8e3db] text-[#181126] font-nova font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(234,228,245,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 md:gap-3 group"
+                        >
+                            <span className="tracking-wider text-sm md:text-base font-semibold">Register Now</span>
+                            <MdArrowOutward className="bg-[#181126] text-[#9a8eb7] w-6 h-6 md:w-7 md:h-7 rounded-full p-1.5 flex-shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </a>
+
+                        {/* Brochure */}
+                        <a
+                            href="#brochure"
+                            className="px-6 py-3 md:px-8 md:py-4 bg-[#181126] hover:bg-[#1e1535] text-[#eae4f5] font-nova font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(24,17,38,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 md:gap-3 group"
+                        >
+                            <span className="tracking-wider text-sm md:text-base font-semibold">Brochure</span>
+                            <MdArrowOutward className="bg-[#eae4f5] text-[#181126] w-6 h-6 md:w-7 md:h-7 rounded-full p-1.5 flex-shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

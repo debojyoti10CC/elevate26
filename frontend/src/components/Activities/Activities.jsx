@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { activitiesLinesLG } from "../../constants/activites";
 import './activities.css';
 
-const activitiesLinesSM = ["Explore", "the 19 events"];
+const activitiesLinesSM = ["Explore", "the 16 events"];
 
 const Activities = () => {
     const isMobD = useMediaQuery({ query: "(max-width:768px)" });
@@ -145,7 +145,7 @@ const Activities = () => {
                         <div className="w-full">
                             <div className="flex justify-between w-full mb-3">
                                 <h1 className="text-[#9a8eb7] text-sm sm:text-base md:text-lg">Ceremonies, Talks & Fun</h1>
-                                <p className="text-[#9a8eb7] text-[0.7rem]">8 events</p>
+                                <p className="text-[#9a8eb7] text-[0.7rem]">5 events</p>
                             </div>
                             <div className="relative z-9 w-full h-[0.1rem] bg-[#271d3a]">
                                 <div className="progress-line absolute z-10 bg-[#eae4f5] h-[0.1rem] top-1/2 -translate-y-1/2 left-0" style={{ width: "42%" }} />
@@ -155,7 +155,7 @@ const Activities = () => {
                 </div>
 
                 <div className="lg:w-1/2 w-full text-[#9a8eb7] text-[0.95rem] sm:text-[1.1rem] lg:text-[1.5rem] md:leading-[1.4] leading-[1.6] lg:mt-0 mt-4 font-space">
-                    <p>ELEVATE offers 19 events spanning coding, workshops, competitions, creative challenges, talks, ceremonies, and cultural activities. Whether you're a builder, a coder, or a creative thinker, there's a stage here for you.</p>
+                    <p>ELEVATE offers 16 events spanning coding, workshops, competitions, creative challenges, talks, ceremonies, and cultural activities. Whether you're a builder, a coder, or a creative thinker, there's a stage here for you.</p>
                 </div>
             </div>
         </section>

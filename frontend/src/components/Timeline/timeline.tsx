@@ -21,15 +21,15 @@ export function Timeline() {
 
   return (
     <div
-      id="timeline"
+      id="schedule"
       className="relative mt-20 md:mt-40 mb-20"
       ref={ref}
     >
-      <TimelineEvents />
       <TimelineEffect
-        className="hidden lg:block"
+        className="hidden lg:block z-0"
         pathLengths={[pathLength]}
       />
+      <TimelineEvents className="relative z-10" />
     </div>
   );
 }

@@ -8,7 +8,6 @@ import techAlumniTalk from "../../assets/events/tech-alumni-talk.png";
 import funEventOne from "../../assets/events/fun-event-one.png";
 import raspberryPiWorkshop from "../../assets/events/raspberry-pi-workshop.png";
 import matlab from "../../assets/events/matlab.png";
-import workshop from "../../assets/events/workshop.png";
 import agenticWebWorkshop from "../../assets/events/agentic-web-workshop.png";
 import pcbDesignWorkshop from "../../assets/events/pcb-design-workshop.png";
 import culturalEve from "../../assets/events/cultural-eve.png";
@@ -28,17 +27,16 @@ const eventsData = [
   { id: 6, name: "Tech Talk / Alumni Talk", category: "Session", description: "Industry speakers and alumni share practical insights, career lessons, and emerging technology trends.", difficulty: "Open", image: techAlumniTalk },
   { id: 7, name: "Fun Event", category: "Fun", description: "Enjoy light-hearted games and activities designed to encourage teamwork and friendly competition.", difficulty: "Beginner", image: funEventOne },
   { id: 8, name: "Raspberry Pi Workshop", category: "Workshop", description: "Explore Raspberry Pi through a guided hands-on session covering computing, electronics, and small projects.", difficulty: "Beginner", image: raspberryPiWorkshop },
-  { id: 9, name: "Matlab", category: "Workshop", description: "Learn the fundamentals of MATLAB for numerical computing, visualization, and engineering problem-solving.", difficulty: "Beginner", image: matlab },
-  { id: 10, name: "Workshop", category: "Workshop", description: "A practical learning session where participants build new skills through demonstrations and guided exercises.", difficulty: "Beginner", image: workshop },
-  { id: 11, name: "Workshop 3 (Agentic / Web)", category: "Workshop", description: "Discover agentic AI or modern web development concepts through practical examples and activities.", difficulty: "Intermediate", image: agenticWebWorkshop },
-  { id: 12, name: "PCB Design Workshop", category: "Workshop", description: "Learn schematic creation, component placement, routing, and the basics of printed circuit board design.", difficulty: "Intermediate", image: pcbDesignWorkshop },
-  { id: 13, name: "Cultural Eve", category: "Cultural", description: "An evening of music, dance, and performances celebrating creativity, talent, and campus culture.", difficulty: "Open", image: culturalEve },
-  { id: 14, name: "Meme Making Competition", category: "Creative", description: "Create clever and original memes that combine humor, creativity, and an engaging event-related theme.", difficulty: "Open", image: memeMaking },
-  { id: 15, name: "Quiz", category: "Competition", description: "Challenge your knowledge across technology, science, current affairs, and general topics.", difficulty: "Intermediate", image: quiz },
-  { id: 16, name: "Maths Olympiad (For School Students)", category: "Competition", description: "A mathematics challenge for school students focused on reasoning, accuracy, and problem-solving.", difficulty: "Intermediate", image: mathsOlympiad },
-  { id: 17, name: "Fun Event", category: "Fun", description: "Join another round of entertaining activities filled with participation, teamwork, and friendly challenges.", difficulty: "Beginner", image: funEventTwo },
-  { id: 18, name: "Prize Distribution", category: "Ceremony", description: "Winners and outstanding participants are recognized and presented with prizes and certificates.", difficulty: "Open", image: prizeDistribution },
-  { id: 19, name: "Grand Auction", category: "Fun", description: "A lively closing auction where participants bid, compete, and end the celebration on a high note.", difficulty: "Open", image: grandAuction },
+  { id: 9, name: "Matlab Workshop", category: "Workshop", description: "Learn the fundamentals of MATLAB for numerical computing, visualization, and engineering problem-solving.", difficulty: "Beginner", image: matlab },
+  { id: 10, name: "Workshop 3 (Agentic / Web)", category: "Workshop", description: "Discover agentic AI or modern web development concepts through practical examples and activities.", difficulty: "Intermediate", image: agenticWebWorkshop },
+  { id: 11, name: "PCB Design Workshop", category: "Workshop", description: "Learn schematic creation, component placement, routing, and the basics of printed circuit board design.", difficulty: "Intermediate", image: pcbDesignWorkshop },
+  { id: 12, name: "Cultural Eve", category: "Cultural", description: "An evening of music, dance, and performances celebrating creativity, talent, and campus culture.", difficulty: "Open", image: culturalEve },
+  { id: 13, name: "Meme Making Competition", category: "Creative", description: "Create clever and original memes that combine humor, creativity, and an engaging event-related theme.", difficulty: "Open", image: memeMaking },
+  { id: 14, name: "Quiz", category: "Competition", description: "Challenge your knowledge across technology, science, current affairs, and general topics.", difficulty: "Intermediate", image: quiz },
+  { id: 15, name: "Maths Olympiad (For School Students)", category: "Competition", description: "A mathematics challenge for school students focused on reasoning, accuracy, and problem-solving.", difficulty: "Intermediate", image: mathsOlympiad },
+  { id: 16, name: "Fun Event", category: "Fun", description: "Join another round of entertaining activities filled with participation, teamwork, and friendly challenges.", difficulty: "Beginner", image: funEventTwo },
+  { id: 17, name: "Prize Distribution", category: "Ceremony", description: "Winners and outstanding participants are recognized and presented with prizes and certificates.", difficulty: "Open", image: prizeDistribution },
+  { id: 18, name: "Grand Auction", category: "Fun", description: "A lively closing auction where participants bid, compete, and end the celebration on a high note.", difficulty: "Open", image: grandAuction },
 ];
 
 const difficultyColor = {
