@@ -139,57 +139,15 @@ const TeamSection = () => {
                     TEAM
                 </motion.h2>
 
-                <div className="flex flex-col gap-6 max-w-6xl mx-auto">
-                    {/* TOP ROW – 6 CARDS */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-                        {teamCards.slice(0, 6).map((team, index) => (
-                            <motion.div
-                                key={team.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 30 }}
-                                transition={{ delay: index * 0.08, duration: 0.5, ease: "easeOut" }}
-                                viewport={{ once: false, amount: 0.1 }}
-                                onClick={() => setSelectedTeam(team.id)}
-                                className={`${CARD_CLASSES} ${selectedTeam === team.id ? "ring-4 ring-[#f33]/80" : "ring-0"
-                                    }`}
-                            >
-                                {team.image ? (
-                                    <div
-                                        className="absolute inset-0 bg-cover bg-center filter grayscale brightness-95"
-                                        style={{ backgroundImage: `url(${team.image})` }}
-                                    />
-                                ) : (
-                                    <div className="absolute inset-0 bg-neutral-200" />
-                                )}
-
-                                <div className="absolute inset-0 bg-gradient-to-t from-[purple]/70 via-[purple]/30 to-transparent" />
-                                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-
-                                <div className="relative z-10 h-full flex flex-col justify-between p-6">
-                                    <div />
-                                    <div className="text-center">
-                                        <p className="font-nova text-[0.8rem] md:text-[0.95rem] font-bold text-white drop-shadow-sm">
-                                            {team.name}
-                                        </p>
-                                        <p className="font-space text-[0.6rem] md:text-xs text-white/80 mt-2 tracking-wide">
-                                            {team.role}
-                                        </p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* BOTTOM ROW – 5 CARDS */}
+                <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-                        {teamCards.slice(6, 11).map((team, index) => (
+                        {teamCards.map((team, index) => (
                             <motion.div
                                 key={team.id}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: 30 }}
-                                transition={{ delay: index * 0.08, duration: 0.5, ease: "easeOut" }}
+                                transition={{ delay: index * 0.05, duration: 0.5, ease: "easeOut" }}
                                 viewport={{ once: false, amount: 0.1 }}
                                 onClick={() => setSelectedTeam(team.id)}
                                 className={`${CARD_CLASSES} ${selectedTeam === team.id ? "ring-4 ring-[#f33]/80" : "ring-0"
