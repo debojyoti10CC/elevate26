@@ -14,9 +14,9 @@ export const welcomeLinesSM = [
     "flagship event,",
     "where innovation",
     "meets competition.",
-    "Explore robotics,",
-    "AI, circuits, and",
-    "more across two days",
+    "Explore AI,",
+    "circuits, and more",
+    "across two days",
     "of electrifying",
     "events.",
 ];
