@@ -11,6 +11,7 @@ import souhardya from "../../../assets/Team_section/Souhardya.svg";
 import souherdya from "../../../assets/Team_section/Souherdya.svg";
 import swarnalee from "../../../assets/Team_section/Swarnalee.svg";
 import Swarnalee from "../../../assets/Team_section/Swarnalee Ray.svg";
+import Soham from "../../../assets/Team_section/Soham Karak.svg";
 import archishman from "../../../assets/Team_section/Archishman.svg";
 import shinjan from "../../../assets/Team_section/Shinjan.svg";
 import ishika from "../../../assets/Team_section/Ishika.svg";
@@ -34,7 +35,7 @@ const teamCards = [
         id: "vice chairperson",
         name: "SOHAM KARAK",
         role: "VICE CHAIRPERSON, SB",
-        image: Swarnalee,
+        image: Soham,
     },
     {
         id: "Treasurer",
