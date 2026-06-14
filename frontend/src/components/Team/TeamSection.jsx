@@ -12,6 +12,7 @@ import souherdya from "../../../assets/Team_section/Souherdya.svg";
 import swarnalee from "../../../assets/Team_section/Swarnalee.svg";
 import Swarnalee from "../../../assets/Team_section/Swarnalee Ray.svg";
 import Soham from "../../../assets/Team_section/Soham Karak.svg";
+import sneha from "../../../assets/Team_section/Sneha Shaw.svg";
 import archishman from "../../../assets/Team_section/Archishman.svg";
 import shinjan from "../../../assets/Team_section/Shinjan.svg";
 import ishika from "../../../assets/Team_section/Ishika.svg";
@@ -56,11 +57,10 @@ const teamCards = [
         image: souherdya,
     },
     {
-        id: "webmaster",
-        name: "SOUHERDYA SARKAR",
-        role: "WEBMASTER",
-        image: souherdya,
-        placeholder: true,
+        id: "sneha-shaw",
+        name: "SNEHA SHAW",
+        role: "CHAIRPERSON, WIE",
+        image: sneha,
     },
 
     //CORE
