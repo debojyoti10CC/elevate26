@@ -20,6 +20,7 @@ import archismanDas from "../../../assets/Team_section/Archisman Das.svg";
 import atrisha from "../../../assets/Team_section/Atrisha Biswas.svg";
 import manoj from "../../../assets/Team_section/Manoj Ghosh.svg";
 import meesha from "../../../assets/Team_section/Meesha Sinha.svg";
+import prachi from "../../../assets/Team_section/Prachi Sil.svg";
 import shinjan from "../../../assets/Team_section/Shinjan.svg";
 import ishika from "../../../assets/Team_section/Ishika.svg";
 import amreta from "../../../assets/Team_section/Amreta.svg";
@@ -112,6 +113,12 @@ const teamCards = [
         name: "MEESHA SINHA",
         role: "CHAIRPERSON, SIGHT",
         image: meesha,
+    },
+    {
+        id: "prachi-sil",
+        name: "PRACHI SIL",
+        role: "TREASURER, SIGHT",
+        image: prachi,
     },
 ];
 
