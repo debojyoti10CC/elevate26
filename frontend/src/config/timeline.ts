@@ -15,113 +15,127 @@ export const svgs = {
 
 export const timelineData = {
   events: [
-    // 11th July
+    // 10th July — Online
     {
       eventNumber: 1,
+      title: 'Day 1 (10th July) — Online: Inauguration Ceremony',
+      duration: '6:30 PM – 7:30 PM',
+      description: 'The official online opening of ELEVATE, welcoming participants, guests, and speakers to the event.',
+    },
+    {
+      eventNumber: 2,
+      title: 'Day 1 (10th July) — Online: Panel Discussion',
+      duration: '7:30 PM – 8:30 PM',
+      description: 'A moderated virtual conversation where experts share perspectives on technology, innovation, and current trends.',
+    },
+    {
+      eventNumber: 3,
+      title: 'Day 1 (10th July) — Online: Online Coding',
+      duration: '9:00 PM – 10:30 PM',
+      description: 'Solve online programming challenges that test logic, speed, accuracy, and problem-solving skills.',
+    },
+    {
+      eventNumber: 4,
+      title: 'Day 1 (10th July) — Online: Online Photography OPENS',
+      duration: '9:00 PM',
+      description: 'Submission portal opens — capture and submit an original photograph showcasing creativity and visual storytelling.',
+    },
+
+    // 11th July
+    {
+      eventNumber: 5,
       title: 'Day 2 (11th July): Blind Coding',
       duration: '10:00 AM - 11:00 AM',
       description: 'Coding competition with monitors turned off.',
     },
     {
-      eventNumber: 2,
+      eventNumber: 6,
       title: 'Day 2 (11th July): Tech Talk / Alumni Talk',
       duration: '11:00 AM - 12:00 PM',
       description: 'Insights and networking session with industry experts and alumni.',
     },
     {
-      eventNumber: 3,
-      title: 'Day 2 (11th July): Fun Event',
+      eventNumber: 7,
+      title: 'Day 2 (11th July): Fun Event — Trace of a Lie',
       duration: '12:00 PM - 01:00 PM',
       description: 'Engaging and relaxing recreational activities.',
     },
     {
-      eventNumber: 4,
+      eventNumber: 8,
       title: 'Day 2 (11th July): LUNCH',
       duration: '01:00 PM - 02:00 PM',
       description: 'Midday lunch break.',
     },
     {
-      eventNumber: 5,
+      eventNumber: 9,
       title: 'Day 2 (11th July): Raspberry Pi Workshop',
       duration: '02:00 PM - 03:00 PM',
       description: 'Hands-on offline workshop on Raspberry Pi fundamentals.',
     },
     {
-      eventNumber: 6,
+      eventNumber: 10,
       title: 'Day 2 (11th July): Matlab Workshop',
       duration: '02:00 PM - 03:00 PM',
       description: 'Hands-on offline session covering Matlab applications.',
     },
     {
-      eventNumber: 7,
+      eventNumber: 11,
       title: 'Day 2 (11th July): Workshop 3 (Agentic/Web)',
       duration: '02:00 PM - 03:00 PM',
       description: 'Specialized session on Agentic AI and Web technologies.',
     },
     {
-      eventNumber: 8,
+      eventNumber: 12,
       title: 'Day 2 (11th July): PCB DESIGN WORKSHOP',
       duration: '02:00 PM - 03:00 PM',
       description: 'Practical training on printed circuit board design.',
     },
     {
-      eventNumber: 9,
+      eventNumber: 13,
       title: 'Day 2 (11th July): Cultural Eve',
       duration: '03:00 PM - 05:00 PM',
       description: 'Evening cultural performances and celebrations.',
     },
     {
-      eventNumber: 10,
-      title: 'Day 2 (11th July): Meme Making Opens',
+      eventNumber: 14,
+      title: 'Day 2 (11th July) — Online: Meme Making Opens',
       duration: '06:00 PM',
       description: 'Start of the online meme-making competition.',
-    },
-    {
-      eventNumber: 11,
-      title: 'Day 2 (11th July): Photography Closes',
-      duration: '09:00 PM',
-      description: 'Deadline for online photography event submissions.',
     },
 
     // 12th July
     {
-      eventNumber: 12,
-      title: 'Day 3 (12th July): Quiz',
+      eventNumber: 15,
+      title: 'Day 3 (12th July): General Quiz',
       duration: '10:00 AM - 11:30 AM',
       description: 'Offline general knowledge and technical quiz competition.',
     },
     {
-      eventNumber: 13,
+      eventNumber: 16,
       title: 'Day 3 (12th July): Maths Olympiad',
       duration: '10:00 AM - 11:30 AM',
       description: 'Mathematics competition held specifically for school students.',
     },
     {
-      eventNumber: 14,
+      eventNumber: 17,
       title: 'Day 3 (12th July): Fun Event',
       duration: '11:30 AM - 02:00 PM',
       description: 'Midday recreational and interactive activities.',
     },
     {
-      eventNumber: 15,
-      title: 'Day 3 (12th July): Meme Closes',
-      duration: '12:00 PM',
-      description: 'Submission portal closes for the online meme competition.',
-    },
-    {
-      eventNumber: 16,
+      eventNumber: 18,
       title: 'Day 3 (12th July): LUNCH',
       duration: '02:00 PM - 03:00 PM',
       description: 'Midday lunch break.',
     },
     {
-      eventNumber: 17,
+      eventNumber: 19,
       title: 'Day 3 (12th July): Prize Distribution',
       duration: '03:00 PM - 04:00 PM',
       description: 'Official ceremony to reward winners across all tracks.',
     },
     {
-      eventNumber: 18,
+      eventNumber: 20,
       title: 'Day 3 (12th July): Grand Auction',
       duration: '04:00 PM',
       description: 'The final bidding and closing event of the timeline.',

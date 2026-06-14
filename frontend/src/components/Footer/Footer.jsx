@@ -1,14 +1,13 @@
 import { FaInstagram } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
-import { FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import MarqueeText from '../Marquee/MarqueeText';
 
 const Footer = () => {
     return (
-        <section className="w-full px-5 md:px-6 pt-10 pb-12 md:pb-16">
-            <p className="text-[0.65rem] text-[#eae4f5] mb-2">
-                Ready to compete?<br />Register for ELEVATE 2025
+        <section className="w-full px-5 md:px-6 pt-10 pb-12 md:pb-16 font-space">
+            <p className="text-[0.65rem] text-[#eae4f5] font-nova mb-2">
+                Ready to compete?<br />Register for ELEVATE 2026
             </p>
 
             <div className="mt-2 mb-8">
@@ -16,8 +15,8 @@ const Footer = () => {
             </div>
 
             {/* Google Map Embed */}
-            <div className="w-full mb-10 md:mb-14 text-center">
-                <p className="text-[0.65rem] text-[#eae4f5] mb-3">Find us at IEM Gurukul Building</p>
+            <div id="venue" className="w-full mb-10 md:mb-14 text-center">
+                <p className="text-[0.65rem] text-[#eae4f5] font-nova mb-3">Find us at IEM Gurukul Building</p>
                 <div className="footer-map-container">
                     <iframe
                         width="100%"
@@ -37,24 +36,45 @@ const Footer = () => {
 
             {/* Main footer content */}
             <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-4 mt-6 md:mt-14">
-                <p className="text-[#9a8eb7] text-sm md:text-2xl leading-relaxed max-w-sm">
-                    ELEVATE — powered by IEEE IEM Student Branch.
-                    <br className="hidden md:block" />
-                    A celebration of technology, innovation, and community.
-                    <br /><br />
-                    Questions?{" "}
-                    <a href="mailto:ieee@iem.edu.in" className="text-[#eae4f5] hover:text-[#35294e] underline">
-                        contact us.
-                    </a>
-                </p>
+                <div className="max-w-sm">
+                    <p className="text-[#9a8eb7] text-sm md:text-xl leading-relaxed">
+                        ELEVATE — powered by IEEE IEM Student Branch.
+                        <br className="hidden md:block" />
+                        A celebration of technology, innovation, and community.
+                        <br /><br />
+                        Questions? Reach us at:
+                    </p>
+                    <div className="mt-3 flex flex-col gap-1.5">
+                        {[
+                            { name: "Aditi Rai", phone: "+919804876700", display: "+91 98048 76700" },
+                            { name: "Aniruddha Das", phone: "+917439137694", display: "+91 7439137694" },
+                            { name: "Debasmita Hazra", phone: "+919547230573", display: "+91 95472 30573" },
+                            { name: "Anwesha Ghosh", phone: "+919007719690", display: "+91 90077 19690" },
+                        ].map(({ name, phone, display }) => (
+                            <a
+                                key={name}
+                                href={`tel:${phone}`}
+                                className="flex items-baseline gap-2 group"
+                            >
+                                <span className="text-[#9a8eb7] text-sm md:text-base font-nova shrink-0">{name}</span>
+                                <span className="text-[#eae4f5] text-sm md:text-base font-space group-hover:text-[#E1B6FC] transition-colors">{display}</span>
+                            </a>
+                        ))}
+                    </div>
+                </div>
 
-                <div className="flex flex-row md:flex-col flex-wrap gap-x-5 gap-y-2 md:gap-1 items-start md:items-end">
+                <div className="flex flex-row md:flex-col flex-wrap gap-x-5 gap-y-2 md:gap-1 items-start md:items-end font-nova">
                     {["About", "Events", "Schedule", "Team", "Venue"].map((item) => (
-                        <a key={item} href="#" className="text-[#eae4f5] text-base md:text-2xl hover:text-[#9a8eb7] transition-colors">
+                        <a key={item} href={`#${item.toLowerCase()}`} className="text-[#eae4f5] text-base md:text-xl hover:text-[#9a8eb7] transition-colors">
                             {item}
                         </a>
                     ))}
-                    <a href="#register" className="text-[#eae4f5] text-base md:text-2xl font-bold hover:text-[#9a8eb7] transition-colors">
+                    <a
+                        href="https://forms.gle/mgs8gNcX4RSVPfiv8"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#eae4f5] text-base md:text-xl font-bold hover:text-[#9a8eb7] transition-colors"
+                    >
                         Register ↗
                     </a>
                 </div>
@@ -63,15 +83,35 @@ const Footer = () => {
             {/* Social + tagline */}
             <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mt-10 md:mt-20">
                 <div className="flex gap-2">
-                    <div className="border border-[#35294e] rounded-full p-2.5 text-[#eae4f5]"><FaInstagram className="text-base" /></div>
-                    <div className="border border-[#35294e] rounded-full p-2.5 text-[#eae4f5]"><CiLinkedin className="text-base" /></div>
-                    <div className="border border-[#35294e] rounded-full p-2.5 text-[#eae4f5]"><FaYoutube className="text-base" /></div>
-                    <div className="border border-[#35294e] rounded-full p-2.5 text-[#eae4f5]"><FaXTwitter className="text-base" /></div>
+                    <a
+                        href="https://www.instagram.com/ieeeiemsb_official/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="border border-[#35294e] rounded-full p-2.5 text-[#eae4f5] hover:bg-[#eae4f5] hover:text-[#181126] transition-colors"
+                    >
+                        <FaInstagram className="text-base" />
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/company/ieee-iemsb/posts/?feedView=all"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="border border-[#35294e] rounded-full p-2.5 text-[#eae4f5] hover:bg-[#eae4f5] hover:text-[#181126] transition-colors"
+                    >
+                        <CiLinkedin className="text-base" />
+                    </a>
+                    <a
+                        href="https://x.com/IEEE_CS_IEM_SBC"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="border border-[#35294e] rounded-full p-2.5 text-[#eae4f5] hover:bg-[#eae4f5] hover:text-[#181126] transition-colors"
+                    >
+                        <FaXTwitter className="text-base" />
+                    </a>
                 </div>
 
                 <p className="text-[0.7rem] text-[#9a8eb7] md:text-right leading-relaxed">
                     ELEVATE — IEEE IEM Student Branch's<br />
-                    flagship college tech-fest.
+                    flagship college event.
                 </p>
             </div>
         </section>

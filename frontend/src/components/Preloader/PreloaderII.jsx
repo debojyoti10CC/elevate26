@@ -74,7 +74,6 @@ export default function PreloaderII() {
                 "0.25"
             )
             .add(animateProgress(), "<")
-            .set(".preloader-progress", { backgroundClip: "var(--base-300)" })
             .to(
                 ".box-loader-wrapper",
                 {
@@ -145,7 +144,7 @@ export default function PreloaderII() {
                 <div className="preloader-footer">
                     <p className="text-sm">
                         ELEVATE — IEEE IEM Student Branch's<br />
-                        flagship college tech-fest.
+                        flagship college event.
                     </p>
                 </div>
             </div>

@@ -1,32 +1,42 @@
 import "./showcase.css";
-
-// Import event background images
-import roboWarsBg from "../../assets/robo-wars-bg.jpg";
-import eventHackathon from "../../assets/event-hackathon.jpg";
-import eventSeminar from "../../assets/event-seminar.jpg";
-import event3DPrint from "../../assets/event-3dprint.jpg";
-import eventVR from "../../assets/event-vr.jpg";
-import eventCertificate from "../../assets/event-certificate.jpg";
-import eventMazeSolver from "../../assets/event-mazesolver.jpg";
-import eventRoboSoccer from "../../assets/event-robosoccer.jpg";
-import eventDroneRacing from "../../assets/event-droneracing.jpg";
-import eventCircuitDesign from "../../assets/event-circuitdesign.jpg";
-import eventTechQuiz from "../../assets/event-techquiz.jpg";
-import eventPhotography from "../../assets/event-photography.jpg";
+import inaugurationCeremony from "../../assets/events/inauguration-ceremony.png";
+import panelDiscussion from "../../assets/events/panel-discussion.png";
+import onlineCoding from "../../assets/events/online-coding.png";
+import onlinePhotography from "../../assets/events/online-photography.png";
+import blindCoding from "../../assets/events/blind-coding.png";
+import techAlumniTalk from "../../assets/events/tech-alumni-talk.png";
+import funEventOne from "../../assets/events/fun-event-one.png";
+import raspberryPiWorkshop from "../../assets/events/raspberry-pi-workshop.png";
+import matlab from "../../assets/events/matlab.png";
+import agenticWebWorkshop from "../../assets/events/agentic-web-workshop.png";
+import pcbDesignWorkshop from "../../assets/events/pcb-design-workshop.png";
+import culturalEve from "../../assets/events/cultural-eve.png";
+import memeMaking from "../../assets/events/meme-making.png";
+import quiz from "../../assets/events/quiz.png";
+import mathsOlympiad from "../../assets/events/maths-olympiad.png";
+import funEventTwo from "../../assets/events/fun-event-two.png";
+import prizeDistribution from "../../assets/events/prize-distribution.png";
+import grandAuction from "../../assets/events/grand-auction.png";
 
 const eventsData = [
-  { id: 1, name: "Robo Wars", category: "Technical", description: "Battle your robot against opponents in an arena combat challenge. Build the toughest machine and dominate the ring.", difficulty: "Advanced", icon: "⚔️", image: roboWarsBg },
-  { id: 2, name: "Line Follower", category: "Technical", description: "Program an autonomous robot to follow a line track at maximum speed with precision and reliability.", difficulty: "Intermediate", icon: "📡", image: eventHackathon },
-  { id: 3, name: "Maze Solver", category: "Technical", description: "Design a robot that can autonomously navigate and solve a complex maze with the shortest possible path.", difficulty: "Advanced", icon: "🧩", image: eventMazeSolver },
-  { id: 4, name: "Robo Soccer", category: "Technical", description: "Head-to-head robot football. Maneuver your bot to score goals and outplay your opponent in 2-minute matches.", difficulty: "Intermediate", icon: "⚽", image: eventRoboSoccer },
-  { id: 5, name: "Drone Racing", category: "Technical", description: "Pilot FPV drones through obstacle courses at high speed. Fastest lap time wins.", difficulty: "Advanced", icon: "🚁", image: eventDroneRacing },
-  { id: 6, name: "Circuit Design", category: "Technical", description: "Solve PCB layout and circuit design challenges under time pressure. Test your electronics fundamentals.", difficulty: "Intermediate", icon: "🔌", image: eventCircuitDesign },
-  { id: 7, name: "AI Hackathon", category: "Technical", description: "Build an AI/ML solution to a real-world problem in 4 hours. Any language, any framework.", difficulty: "Open", icon: "🤖", image: eventSeminar },
-  { id: 8, name: "Paper Presentation", category: "Non-Technical", description: "Present your research paper or technical concept to a panel of judges. Innovation and clarity rewarded.", difficulty: "Open", icon: "📄", image: event3DPrint },
-  { id: 9, name: "Project Exhibition", category: "Non-Technical", description: "Showcase your project — hardware or software — to visitors and judges. Best project wins.", difficulty: "Open", icon: "🏗️", image: eventVR },
-  { id: 10, name: "Tech Quiz", category: "Non-Technical", description: "Fast-paced technical quiz covering robotics, AI, electronics, and general science. Teams of 2.", difficulty: "Beginner", icon: "🧠", image: eventTechQuiz },
-  { id: 11, name: "Photography", category: "Non-Technical", description: "Capture the energy and spirit of ELEVATE through your lens. Best photo wins across categories.", difficulty: "Open", icon: "📸", image: eventPhotography },
-  { id: 12, name: "Gaming", category: "Non-Technical", description: "Compete in the esports tournament. Titles to be announced. Solo and team formats available.", difficulty: "Open", icon: "🎮", image: eventCertificate },
+  { id: 1, name: "Inauguration Ceremony", category: "Ceremony", description: "The official opening of ELEVATE, welcoming participants, guests, and speakers to the event.", difficulty: "Open", image: inaugurationCeremony },
+  { id: 2, name: "Panel Discussion", category: "Session", description: "A moderated conversation where experts share perspectives on technology, innovation, and current trends.", difficulty: "Open", image: panelDiscussion },
+  { id: 3, name: "Online Coding", category: "Technical", description: "Solve online programming challenges that test logic, speed, accuracy, and problem-solving skills.", difficulty: "Intermediate", image: onlineCoding },
+  { id: 4, name: "Online Photography", category: "Creative", description: "Submit an original photograph online and showcase creativity, composition, and visual storytelling.", difficulty: "Open", image: onlinePhotography },
+  { id: 5, name: "Blind Coding", category: "Technical", description: "Write working code without viewing the screen, relying on memory, focus, and precise typing.", difficulty: "Advanced", image: blindCoding },
+  { id: 6, name: "Tech Talk / Alumni Talk", category: "Session", description: "Industry speakers and alumni share practical insights, career lessons, and emerging technology trends.", difficulty: "Open", image: techAlumniTalk },
+  { id: 7, name: "Fun Event", category: "Fun", description: "Enjoy light-hearted games and activities designed to encourage teamwork and friendly competition.", difficulty: "Beginner", image: funEventOne },
+  { id: 8, name: "Raspberry Pi Workshop", category: "Workshop", description: "Explore Raspberry Pi through a guided hands-on session covering computing, electronics, and small projects.", difficulty: "Beginner", image: raspberryPiWorkshop },
+  { id: 9, name: "Matlab Workshop", category: "Workshop", description: "Learn the fundamentals of MATLAB for numerical computing, visualization, and engineering problem-solving.", difficulty: "Beginner", image: matlab },
+  { id: 10, name: "Workshop 3 (Agentic / Web)", category: "Workshop", description: "Discover agentic AI or modern web development concepts through practical examples and activities.", difficulty: "Intermediate", image: agenticWebWorkshop },
+  { id: 11, name: "PCB Design Workshop", category: "Workshop", description: "Learn schematic creation, component placement, routing, and the basics of printed circuit board design.", difficulty: "Intermediate", image: pcbDesignWorkshop },
+  { id: 12, name: "Cultural Eve", category: "Cultural", description: "An evening of music, dance, and performances celebrating creativity, talent, and campus culture.", difficulty: "Open", image: culturalEve },
+  { id: 13, name: "Meme Making Competition", category: "Creative", description: "Create clever and original memes that combine humor, creativity, and an engaging event-related theme.", difficulty: "Open", image: memeMaking },
+  { id: 14, name: "Quiz", category: "Competition", description: "Challenge your knowledge across technology, science, current affairs, and general topics.", difficulty: "Intermediate", image: quiz },
+  { id: 15, name: "Maths Olympiad (For School Students)", category: "Competition", description: "A mathematics challenge for school students focused on reasoning, accuracy, and problem-solving.", difficulty: "Intermediate", image: mathsOlympiad },
+  { id: 16, name: "Fun Event", category: "Fun", description: "Join another round of entertaining activities filled with participation, teamwork, and friendly challenges.", difficulty: "Beginner", image: funEventTwo },
+  { id: 17, name: "Prize Distribution", category: "Ceremony", description: "Winners and outstanding participants are recognized and presented with prizes and certificates.", difficulty: "Open", image: prizeDistribution },
+  { id: 18, name: "Grand Auction", category: "Fun", description: "A lively closing auction where participants bid, compete, and end the celebration on a high note.", difficulty: "Open", image: grandAuction },
 ];
 
 const difficultyColor = {
@@ -36,31 +46,27 @@ const difficultyColor = {
   Beginner: "text-[#9a8eb7] border-[#9a8eb7]",
 };
 
-// ─── Single event card ───────────────────────────────────────────────────────
 const EventCard = ({ event }) => (
   <div className="relative flex-shrink-0 w-[82vw] sm:w-[60vw] md:w-[44vw] lg:w-[36vw] h-[52vh] min-h-[280px] bg-[#181126] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden flex flex-col justify-between p-5 md:p-8">
-
-    {/* Background image */}
     {event.image && (
       <>
         <img
           src={event.image}
           alt={event.name}
-          className="absolute inset-0 w-full h-full object-cover object-center z-0"
+          className="absolute inset-0 z-0 h-full w-full object-cover object-center"
           draggable="false"
         />
-        {/* Dark gradient overlay */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/55 to-black/25" />
       </>
     )}
 
-    {/* Top badges */}
-    <div className="relative z-20 flex justify-between items-start">
+    <div className="relative z-20 flex justify-between items-start font-nova">
       <span
-        className={`border rounded-3xl px-3 py-1 text-[0.6rem] font-bold tracking-wide ${event.category === "Technical"
-          ? "text-[#eae4f5] border-[#eae4f5]"
-          : "text-[#9a8eb7] border-[#9a8eb7]"
-          }`}
+        className={`border rounded-3xl px-3 py-1 text-[0.6rem] font-bold tracking-wide ${
+          event.category === "Technical"
+            ? "text-[#eae4f5] border-[#eae4f5]"
+            : "text-[#9a8eb7] border-[#9a8eb7]"
+        }`}
       >
         {event.category}
       </span>
@@ -69,25 +75,23 @@ const EventCard = ({ event }) => (
       </span>
     </div>
 
-    {/* Event name */}
-    <div className="relative z-20">
-      <h2 className="text-[#eae4f5] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-        {event.name}
-      </h2>
-    </div>
+    <div className="relative z-20 flex flex-col gap-2">
+      <div className="font-zen">
+        <h2 className="text-[#eae4f5] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+          {event.name}
+        </h2>
+      </div>
 
-    {/* Bottom */}
-    <div className="relative z-20">
-      <p className="text-[0.65rem] sm:text-[0.68rem] text-[#9a8eb7] leading-relaxed">
-        {event.description}
-      </p>
+      <div className="font-space">
+        <p className="text-[0.65rem] sm:text-[0.68rem] text-[#9a8eb7] leading-relaxed">
+          {event.description}
+        </p>
+      </div>
     </div>
   </div>
 );
 
-// ─── Desktop: continuous auto-scrolling carousel ──────────────────────────────
 const DesktopShowcase = () => {
-  // Duplicate the list so we can seamlessly loop (translateX -50%)
   const doubled = [...eventsData, ...eventsData];
 
   return (
@@ -95,11 +99,9 @@ const DesktopShowcase = () => {
       id="events"
       className="relative w-full bg-[#0b0714] pt-4 pb-12 overflow-hidden"
     >
-      {/* Edge fade masks */}
       <div className="carousel-fade-left" aria-hidden="true" />
       <div className="carousel-fade-right" aria-hidden="true" />
 
-      {/* Scrolling track — animation speed tuned to ~40 s for 12 cards */}
       <div
         className="carousel-track"
         style={{ "--carousel-duration": "50s", paddingLeft: "1.25rem" }}
@@ -112,8 +114,6 @@ const DesktopShowcase = () => {
   );
 };
 
-
-// ─── Root: swap based on viewport ────────────────────────────────────────────
 const Showcase = () => {
   return <DesktopShowcase />;
 };

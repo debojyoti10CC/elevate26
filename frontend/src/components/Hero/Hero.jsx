@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { MdArrowOutward } from "react-icons/md";
 import smoke from "../../assets/smoke_final.mp4";
+import elevateLogo from "../../assets/elevate-logo.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +22,20 @@ const sortedKeys = Object.keys(frameModules).sort((a, b) => {
 const FRAME_SRCS = sortedKeys.map((k) => frameModules[k].default);
 const TOTAL_FRAMES = FRAME_SRCS.length;
 
+// ── Import all mobile robot frames eagerly via Vite glob (auto-detects count) ──
+const mobileFrameModules = import.meta.glob(
+    "../../assets/robot-frames-mobile/ezgif-frame-*.jpg",
+    { eager: true }
+);
+
+const sortedMobileKeys = Object.keys(mobileFrameModules).sort((a, b) => {
+    const n = (s) => parseInt(s.match(/(\d+)\.jpg$/)?.[1] ?? "0", 10);
+    return n(a) - n(b);
+});
+
+const MOBILE_FRAME_SRCS = sortedMobileKeys.map((k) => mobileFrameModules[k].default);
+const TOTAL_MOBILE_FRAMES = MOBILE_FRAME_SRCS.length;
+
 // ── Canvas draw ──
 function drawFrame(canvas, img, logW, logH) {
     if (!canvas || !img || !img.complete || !img.naturalWidth) return;
@@ -35,9 +50,17 @@ function drawFrame(canvas, img, logW, logH) {
 
     let dW, dH, dX, dY;
     if (imgA > boxA) {
-        dW = W; dH = dW / imgA; dX = 0; dY = (H - dH) / 2;
+        // Image is wider than container - match height and crop sides
+        dH = H;
+        dW = dH * imgA;
+        dX = (W - dW) / 2;
+        dY = 0;
     } else {
-        dH = H; dW = dH * imgA; dX = (W - dW) / 2; dY = 0;
+        // Image is taller than container - match width and crop top/bottom
+        dW = W;
+        dH = dW / imgA;
+        dX = 0;
+        dY = (H - dH) / 2;
     }
     ctx.drawImage(img, dX, dY, dW, dH);
 }
@@ -50,9 +73,33 @@ const Hero = () => {
     const h2Ref = useRef(null);
     const descRef = useRef(null);
     const registerBtnRef = useRef(null);
-    const imagesRef = useRef([]);
+    const desktopImagesRef = useRef([]);
+    const mobileImagesRef = useRef([]);
     const frameIdxRef = useRef(0);
     const logSizeRef = useRef({ w: 0, h: 0 });
+
+    // Cache layout sizes to avoid layout thrashing during scroll events
+    const layoutSizesRef = useRef({
+        cardW: 0,
+        cardH: 0,
+        h1Left: 0,
+        h1Top: 0,
+        h1W: 0,
+        h1H: 0
+    });
+
+    const updateLayoutSizes = () => {
+        if (cardRef.current && h1Ref.current) {
+            layoutSizesRef.current = {
+                cardW: cardRef.current.offsetWidth,
+                cardH: cardRef.current.offsetHeight,
+                h1Left: h1Ref.current.offsetLeft,
+                h1Top: h1Ref.current.offsetTop,
+                h1W: h1Ref.current.offsetWidth,
+                h1H: h1Ref.current.offsetHeight
+            };
+        }
+    };
 
     // ── Size the canvas ──
     const setupCanvas = () => {
@@ -71,23 +118,48 @@ const Hero = () => {
 
     // ── Pre-load all frames ──
     useEffect(() => {
-        const imgs = FRAME_SRCS.map((src) => {
+        const dImgs = FRAME_SRCS.map((src) => {
             const img = new Image();
             img.src = src;
             return img;
         });
-        imagesRef.current = imgs;
+        desktopImagesRef.current = dImgs;
 
-        imgs[0].onload = () => {
-            setupCanvas();
-            const { w, h } = logSizeRef.current;
-            drawFrame(canvasRef.current, imgs[0], w, h);
-        };
+        const mImgs = MOBILE_FRAME_SRCS.map((src) => {
+            const img = new Image();
+            img.src = src;
+            return img;
+        });
+        mobileImagesRef.current = mImgs;
+
+        const isMobile = window.innerWidth < 768;
+        const initialImg = isMobile ? mImgs[0] : dImgs[0];
+
+        if (initialImg) {
+            initialImg.onload = () => {
+                setupCanvas();
+                const { w, h } = logSizeRef.current;
+                drawFrame(canvasRef.current, initialImg, w, h);
+                updateLayoutSizes();
+            };
+            if (initialImg.complete) {
+                setupCanvas();
+                const { w, h } = logSizeRef.current;
+                drawFrame(canvasRef.current, initialImg, w, h);
+                updateLayoutSizes();
+            }
+        }
 
         const onResize = () => {
             setupCanvas();
+            const isMob = window.innerWidth < 768;
+            const imgs = isMob ? mobileImagesRef.current : desktopImagesRef.current;
+            const target = Math.round(frameIdxRef.current);
             const { w, h } = logSizeRef.current;
-            drawFrame(canvasRef.current, imagesRef.current[Math.round(frameIdxRef.current)], w, h);
+            if (imgs[target]) {
+                drawFrame(canvasRef.current, imgs[target], w, h);
+            }
+            updateLayoutSizes();
         };
         window.addEventListener("resize", onResize);
         return () => window.removeEventListener("resize", onResize);
@@ -106,15 +178,24 @@ const Hero = () => {
                 anticipatePin: 1,
                 scrub: 0.6,
                 invalidateOnRefresh: true,
+                onRefresh() {
+                    updateLayoutSizes();
+                },
                 onUpdate(self) {
                     // ── Frame animation (ends by 80% progress) ──
+                    const isMobile = window.innerWidth < 768;
+                    const imgs = isMobile ? mobileImagesRef.current : desktopImagesRef.current;
+                    const totalFrames = isMobile ? TOTAL_MOBILE_FRAMES : TOTAL_FRAMES;
+
                     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
                     const robotProgress = clamp(self.progress / 0.80, 0, 1);
-                    const target = Math.round(robotProgress * (TOTAL_FRAMES - 1));
+                    const target = Math.round(robotProgress * (totalFrames - 1));
                     if (target !== Math.round(frameIdxRef.current)) {
                         frameIdxRef.current = target;
                         const { w, h } = logSizeRef.current;
-                        drawFrame(canvasRef.current, imagesRef.current[target], w, h);
+                        if (imgs[target]) {
+                            drawFrame(canvasRef.current, imgs[target], w, h);
+                        }
                     }
 
                     // ── Tagline animation (enters 15%->30%, exits 40%->55%) ──
@@ -185,15 +266,11 @@ const Hero = () => {
                         const t = clamp((self.progress - 0.82) / 0.16, 0, 1);
                         const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
 
-                        const cardW = cardRef.current?.offsetWidth || 0;
-                        const cardH = cardRef.current?.offsetHeight || 0;
-                        const h1Left = h1Ref.current?.offsetLeft || 0;
-                        const h1Top = h1Ref.current?.offsetTop || 0;
-                        const h1W = h1Ref.current?.offsetWidth || 0;
-                        const h1H = h1Ref.current?.offsetHeight || 0;
+                        const { cardW, cardH, h1Left, h1Top, h1W, h1H } = layoutSizesRef.current;
 
                         const targetX = (cardW - h1W) / 2 - h1Left;
-                        const targetY = (cardH - h1H) / 2 - h1Top;
+                        const isMobile = window.innerWidth < 768;
+                        const targetY = (cardH - h1H) / 2 - h1Top - (isMobile ? 35 : 0);
 
                         elevX = eased * targetX;
                         elevY = eased * targetY;
@@ -203,12 +280,12 @@ const Hero = () => {
                         h1Ref.current.style.transform = `translate(${elevX}px, ${elevY}px)`;
                     }
 
-                    // ── Register button entry animation (90%->99%) ──
+                    // ── Register button entry animation (85%->99%) ──
                     let regOpacity = 0;
                     let regY = 50;
 
-                    if (self.progress >= 0.90) {
-                        const t = clamp((self.progress - 0.90) / 0.09, 0, 1);
+                    if (self.progress >= 0.85) {
+                        const t = clamp((self.progress - 0.85) / 0.14, 0, 1);
                         const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
                         regOpacity = eased;
                         regY = (1 - eased) * 50;
@@ -217,7 +294,7 @@ const Hero = () => {
                     if (registerBtnRef.current) {
                         registerBtnRef.current.style.opacity = regOpacity;
                         const isMobile = window.innerWidth < 768;
-                        const targetYOffset = isMobile ? 80 : 130;
+                        const targetYOffset = isMobile ? 100 : 180;
                         registerBtnRef.current.style.transform = `translate(-50%, calc(-50% + ${targetYOffset + regY}px))`;
                         registerBtnRef.current.style.pointerEvents = self.progress >= 0.92 ? "auto" : "none";
                     }
@@ -235,13 +312,21 @@ const Hero = () => {
          */
         <section
             ref={sectionRef}
-            className="hero-section w-full p-2 md:p-2 mb-0"
-            style={{ height: "100svh" }}
+            className="hero-section w-full p-0 mb-0"
+            style={{
+                height: "100svh",
+                background: `
+                    radial-gradient(ellipse 65% 90% at 80% 45%, rgba(109, 40, 217, 0.55) 0%, rgba(76, 17, 140, 0.35) 35%, transparent 65%),
+                    radial-gradient(ellipse 45% 60% at 90% 65%, rgba(139, 60, 255, 0.25) 0%, transparent 55%),
+                    radial-gradient(ellipse 80% 70% at 60% 50%, rgba(49, 10, 100, 0.4) 0%, transparent 70%),
+                    #080511
+                `
+            }}
         >
             {/* ── Card ── */}
             <div
                 ref={cardRef}
-                className="relative w-full h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden"
+                className="relative w-full h-full overflow-hidden"
                 style={{
                     background: `
                         radial-gradient(ellipse 65% 90% at 80% 45%, rgba(109, 40, 217, 0.55) 0%, rgba(76, 17, 140, 0.35) 35%, transparent 65%),
@@ -277,22 +362,28 @@ const Hero = () => {
                 {/* ── Text layer ── */}
                 <div className="absolute inset-0 z-30 p-6 md:p-8">
 
-                    {/* Top-left: big title */}
+                    {/* Top-left: big title logo */}
                     <h1
                         ref={h1Ref}
-                        className="text-[#eae4f5] text-[15vw] md:text-[10vw] lg:text-9xl font-bold tracking-wider leading-none w-fit"
+                        className="w-[55vw] md:w-[40vw] lg:w-[32vw] max-w-[500px] w-fit block select-none mt-20 ml-4 md:mt-8 md:ml-8"
                         style={{
-                            textShadow: "2px 4px 12px rgba(0,0,0,0.8)",
                             willChange: "transform",
                         }}
                     >
-                        ELEVATE
+                        <img
+                            src={elevateLogo}
+                            alt="ELEVATE"
+                            className="w-full h-auto object-contain pointer-events-none"
+                            style={{
+                                filter: "drop-shadow(0 0 6px rgba(225, 182, 252, 0.5)) drop-shadow(0 0 15px rgba(168, 85, 247, 0.25)) drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.8))"
+                            }}
+                        />
                     </h1>
 
                     {/* Vertically centered left: tagline — slides in at scroll midpoint, out at end */}
                     <h2
                         ref={h2Ref}
-                        className="absolute left-6 md:left-8 text-[#eae4f5] text-2xl md:text-3xl lg:text-4xl font-bold leading-snug flex flex-col gap-0.5"
+                        className="absolute left-6 md:left-8 text-[#eae4f5] text-2xl md:text-4xl lg:text-5xl font-nova leading-tight flex flex-col gap-2"
                         style={{
                             top: "50%",
                             transform: "translateX(-300px) translateY(-50%)",
@@ -301,15 +392,15 @@ const Hero = () => {
                             willChange: "transform, opacity",
                         }}
                     >
-                        <span>India's Premier</span>
-                        <span>Tech/Non-tech event</span>
-                        <span>IEEE IEM SB</span>
+                        <span>IEEE IEM SB's</span>
+                        <span className="font-monoton text-[#E1B6FC] tracking-wider text-2xl md:text-4xl lg:text-5xl">ANNUAL</span>
+                        <span className="font-monoton text-[#E1B6FC] tracking-wider text-2xl md:text-4xl lg:text-5xl">FLAGSHIP EVENT</span>
                     </h2>
 
                     {/* Vertically centered right: description — slides in/out after tagline */}
                     <p
                         ref={descRef}
-                        className="absolute right-6 md:right-8 text-[#e8e3db] text-lg md:text-xl lg:text-2xl font-medium tracking-wide md:w-[32%] text-right leading-relaxed"
+                        className="absolute right-6 md:right-8 text-[#e8e3db] text-lg md:text-xl lg:text-2xl font-space font-bold md:w-[42%] text-right leading-relaxed"
                         style={{
                             top: "50%",
                             transform: "translateX(300px) translateY(-50%)",
@@ -321,22 +412,39 @@ const Hero = () => {
                         Join thousands of innovators, engineers, and creators at ELEVATE - powered by IEEE IEM Student Branch.
                     </p>
 
-                    {/* Centered Register button — slides/fades in below ELEVATE */}
-                    <a
+                    {/* Centered buttons row — slides/fades in below ELEVATE */}
+                    <div
                         ref={registerBtnRef}
-                        href="#register"
-                        className="absolute left-1/2 px-6 py-3 md:px-8 md:py-4 bg-[#eae4f5] hover:bg-[#e8e3db] text-[#181126] font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(234,228,245,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 md:gap-3 group"
+                        className="absolute left-1/2 flex items-center gap-3 md:gap-4"
                         style={{
                             top: "50%",
                             transform: "translate(-50%, calc(-50% + 180px))",
                             opacity: 0,
                             pointerEvents: "none",
                             willChange: "transform, opacity",
+                            whiteSpace: "nowrap",
                         }}
                     >
-                        <span className="tracking-wider text-sm md:text-base font-semibold">Register Now</span>
-                        <MdArrowOutward className="bg-[#181126] text-[#9a8eb7] w-6 h-6 md:w-7 md:h-7 rounded-full p-1.5 flex-shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </a>
+                        {/* Register Now */}
+                        <a
+                            href="https://forms.gle/mgs8gNcX4RSVPfiv8"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3 md:px-8 md:py-4 bg-[#eae4f5] hover:bg-[#e8e3db] text-[#181126] font-nova font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(234,228,245,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 md:gap-3 group"
+                        >
+                            <span className="tracking-wider text-sm md:text-base font-semibold">Register Now</span>
+                            <MdArrowOutward className="bg-[#181126] text-[#9a8eb7] w-6 h-6 md:w-7 md:h-7 rounded-full p-1.5 flex-shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </a>
+
+                        {/* Brochure */}
+                        <a
+                            href="#brochure"
+                            className="px-6 py-3 md:px-8 md:py-4 bg-[#181126] hover:bg-[#1e1535] text-[#eae4f5] font-nova font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(24,17,38,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 md:gap-3 group"
+                        >
+                            <span className="tracking-wider text-sm md:text-base font-semibold">Brochure</span>
+                            <MdArrowOutward className="bg-[#eae4f5] text-[#181126] w-6 h-6 md:w-7 md:h-7 rounded-full p-1.5 flex-shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

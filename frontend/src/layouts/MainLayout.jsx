@@ -29,6 +29,50 @@ const MainLayout = () => {
         });
     }, [isMobile]);
 
+    useEffect(() => {
+        const handleAnchorClick = (e) => {
+            const link = e.target.closest("a");
+            if (!link) return;
+            const href = link.getAttribute("href");
+            if (href && href.startsWith("#") && href.length > 1) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const smoother = ScrollSmoother.get();
+                    if (smoother) {
+                        smoother.scrollTo(target, true);
+                    } else {
+                        target.scrollIntoView({ behavior: "smooth" });
+                    }
+                    // Update URL hash
+                    window.history.pushState(null, "", href);
+                }
+            }
+        };
+
+        document.addEventListener("click", handleAnchorClick);
+        return () => document.removeEventListener("click", handleAnchorClick);
+    }, []);
+
+    // Handle initial hash routing on page load
+    useEffect(() => {
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                // Wait for preloader/page loading to settle
+                const timer = setTimeout(() => {
+                    const smoother = ScrollSmoother.get();
+                    if (smoother) {
+                        smoother.scrollTo(target, true);
+                    } else {
+                        target.scrollIntoView({ behavior: "smooth" });
+                    }
+                }, 1000); // 1s is safe to let preloader finish
+                return () => clearTimeout(timer);
+            }
+        }
+    }, []);
+
     return (
         <>
             <PreloaderII />

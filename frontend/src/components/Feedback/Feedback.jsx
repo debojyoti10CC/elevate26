@@ -19,17 +19,17 @@ const Feedback = () => {
 
     return (
         <section className="w-full px-5 md:px-8 py-16 md:h-dvh flex flex-col justify-center">
-            <p className="text-[0.65rem] font-bold text-[#eae4f5] mb-4">
+            <p className="text-[0.65rem] font-bold text-[#eae4f5] font-nova mb-4">
                 ELEVATE Highlights
             </p>
 
-            <h1 className="text-[#eae4f5] text-3xl md:text-7xl mt-2 mb-6 leading-tight">
+            <h1 className="text-[#eae4f5] text-2xl md:text-5xl lg:text-6xl font-zen font-bold mt-2 mb-6 leading-tight tracking-tight">
                 {feedbackH1LG[index].map((line, i) => (
                     <span key={i}>{line}<br /></span>
                 ))}
             </h1>
 
-            <div className="flex items-center gap-4 mt-8">
+            <div className="flex items-center gap-4 mt-8 font-space">
                 <img
                     src={reviewImages[feedbackReviewLG[index][2]]}
                     alt="reviewer"
