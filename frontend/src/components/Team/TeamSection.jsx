@@ -22,6 +22,7 @@ import manoj from "../../../assets/Team_section/Manoj Ghosh.svg";
 import meesha from "../../../assets/Team_section/Meesha Sinha.svg";
 import prachi from "../../../assets/Team_section/Prachi Sil.svg";
 import pritesh from "../../../assets/Team_section/Pritesh Patra.svg";
+import snehaSight from "../../../assets/Team_section/Sneha Shaw SIGHT.svg";
 import shinjan from "../../../assets/Team_section/Shinjan.svg";
 import ishika from "../../../assets/Team_section/Ishika.svg";
 import amreta from "../../../assets/Team_section/Amreta.svg";
@@ -126,6 +127,12 @@ const teamCards = [
         name: "PRITESH PATRA",
         role: "LOGISTICS LEAD, CS",
         image: pritesh,
+    },
+    {
+        id: "sneha-shaw-sight",
+        name: "SNEHA SHAW",
+        role: "SECRETARY, SIGHT",
+        image: snehaSight,
     },
 ];
 
