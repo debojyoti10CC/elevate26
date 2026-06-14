@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![ELEVATE Logo](https://img.shields.io/badge/ELEVATE-2025-orange)
+![ELEVATE Logo](https://img.shields.io/badge/ELEVATE-2026-orange)
 [![React](https://img.shields.io/badge/React-18.3.1-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-Latest-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 [![GSAP](https://img.shields.io/badge/GSAP-Animation-88CE02?logo=greensock)](https://gsap.com/)
