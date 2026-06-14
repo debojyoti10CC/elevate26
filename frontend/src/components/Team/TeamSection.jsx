@@ -26,8 +26,8 @@ const isTeamFinal = false;
 const teamCards = [
     {
         id: "chairperson",
-        name: "SHINJAN BHATTA",
-        role: "CHAIRPERSON",
+        name: "Shinjan Bhatta",
+        role: "Chairperson, SB",
         image: Shinjan,
     },
     {
@@ -147,9 +147,10 @@ const TeamSection = () => {
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
                         {teamCards.map((team, index) => {
-                            const cardImage = isTeamFinal ? team.image : anonymous;
-                            const cardName = isTeamFinal ? team.name : "Coming Soon";
-                            const cardRole = isTeamFinal ? team.role : "Coming Soon";
+                            const showActual = isTeamFinal || index === 0;
+                            const cardImage = showActual ? team.image : anonymous;
+                            const cardName = showActual ? team.name : "Coming Soon";
+                            const cardRole = showActual ? team.role : "Coming Soon";
 
                             return (
                                 <motion.div
