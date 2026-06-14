@@ -111,7 +111,7 @@ const Footer = () => {
 
                 <p className="text-[0.7rem] text-[#9a8eb7] md:text-right leading-relaxed">
                     ELEVATE — IEEE IEM Student Branch's<br />
-                    flagship college tech-fest.
+                    flagship college event.
                 </p>
             </div>
         </section>

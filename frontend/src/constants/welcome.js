@@ -1,7 +1,7 @@
 export const welcomeLinesLG = [
     "Step into the future of technology at",
     "ELEVATE, IEEE IEM Student Branch's",
-    "flagship tech-fest, where innovation",
+    "flagship event, where innovation",
     "meets competition. Explore",
     "AI, circuits, and more across",
     "two days of electrifying events.",
@@ -11,7 +11,7 @@ export const welcomeLinesSM = [
     "of technology at",
     "ELEVATE — IEEE IEM",
     "Student Branch's",
-    "flagship tech-fest,",
+    "flagship event,",
     "where innovation",
     "meets competition.",
     "Explore robotics,",

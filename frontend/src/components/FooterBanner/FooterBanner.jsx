@@ -70,7 +70,7 @@ const FooterBanner = () => {
                             className="md:w-[32%] lg:w-[25%] w-full text-[#c4b5fd] text-[0.75rem] md:text-[0.7rem] lg:text-xs font-space tracking-wide md:text-right text-left leading-relaxed mt-2 md:mt-0"
                             style={{ textShadow: '2px 2px 4px #000' }}
                         >
-                            Join ELEVATE — IEEE IEM Student Branch's flagship tech-fest. Don't miss your shot.
+                            Join ELEVATE — IEEE IEM Student Branch's flagship event. Don't miss your shot.
                         </p>
                     </div>
                 </div>
