@@ -16,7 +16,7 @@ import sneha from "../../../assets/Team_section/Sneha Shaw.svg";
 import abhishek from "../../../assets/Team_section/Abhishek Kumar.svg";
 import ahana from "../../../assets/Team_section/Ahana Gupta.svg";
 import anweya from "../../../assets/Team_section/Anweya Das.svg";
-import archishman from "../../../assets/Team_section/Archishman.svg";
+import archismanDas from "../../../assets/Team_section/Archisman Das.svg";
 import shinjan from "../../../assets/Team_section/Shinjan.svg";
 import ishika from "../../../assets/Team_section/Ishika.svg";
 import amreta from "../../../assets/Team_section/Amreta.svg";
@@ -87,11 +87,10 @@ const teamCards = [
         image: anweya,
     },
     {
-        id: "ContentLead",
-        name: "AMRETA DEY",
-        role: "CONTENT LEAD",
-        image: amreta,
-        placeholder: true,
+        id: "archisman-das",
+        name: "ARCHISMAN DAS",
+        role: "JOINT VICE CHAIR, CS",
+        image: archismanDas,
     },
     {
         id: "PRLead",
