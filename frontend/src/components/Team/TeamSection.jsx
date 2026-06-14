@@ -40,8 +40,8 @@ const teamCards = [
     },
     {
         id: "Treasurer",
-        name: "Souhardya Ray",
-        role: "Treasurer, SB",
+        name: "SOUHARDYA RAY",
+        role: "TREASURER, SB",
         image: souhardya,
     },
     {
