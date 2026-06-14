@@ -184,7 +184,7 @@ const Hero = () => {
                     if (self.progress >= 0.82) {
                         const t = clamp((self.progress - 0.82) / 0.16, 0, 1);
                         const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
-                        
+
                         const cardW = cardRef.current?.offsetWidth || 0;
                         const cardH = cardRef.current?.offsetHeight || 0;
                         const h1Left = h1Ref.current?.offsetLeft || 0;
@@ -302,7 +302,7 @@ const Hero = () => {
                         }}
                     >
                         <span>India's Premier</span>
-                        <span>College Tech-Fest—</span>
+                        <span>Tech/Non-tech event</span>
                         <span>IEEE IEM SB</span>
                     </h2>
 

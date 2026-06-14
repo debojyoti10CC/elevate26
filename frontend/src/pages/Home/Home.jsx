@@ -21,12 +21,8 @@ const Home = () => {
             <Welcome />
             <Activities />
             <Showcase />
-            {/* <Choose /> */}
-            {/* <Gallery /> */}
             <MarqueeSticky />
             <Timeline />
-            {/* <StickyCols /> */}
-            {/* <Feedback /> */}
             <TeamSection />
             <FooterBanner />
         </div>
