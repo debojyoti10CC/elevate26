@@ -26,14 +26,14 @@ const isTeamFinal = true;
 const teamCards = [
     {
         id: "chairperson",
-        name: "Shinjan Bhatta",
-        role: "Chairperson, SB",
+        name: "SHINJAN BHATTA",
+        role: "CHAIRPERSON, SB",
         image: Shinjan,
     },
     {
         id: "vice chairperson",
         name: "SOHAM KARAK",
-        role: "VICE CHAIRPERSON",
+        role: "VICE CHAIRPERSON, SB",
         image: Swarnalee,
     },
     {
