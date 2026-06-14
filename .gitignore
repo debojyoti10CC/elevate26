@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+.node-bin/
+
+# IDE and OS files
+.vscode/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
+db.json
+
+# Local env files
+*.local

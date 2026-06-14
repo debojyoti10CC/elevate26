@@ -1,0 +1,746 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@font-face {
+  font-family: 'Bauhaus Std';
+  src: url('../assets/Text-fonts/Bauhaus/BauhausStd-Demi.eot');
+  src: local('Bauhaus Std Demi'), local('BauhausStd-Demi'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Demi.eot?#iefix') format('embedded-opentype'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Demi.woff2') format('woff2'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Demi.woff') format('woff'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Demi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bauhaus Std';
+  src: url('../assets/Text-fonts/Bauhaus/BauhausStd-Medium.eot');
+  src: local('Bauhaus Std Medium'), local('BauhausStd-Medium'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Medium.eot?#iefix') format('embedded-opentype'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Medium.woff2') format('woff2'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Medium.woff') format('woff'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bauhaus Std';
+  src: url('../assets/Text-fonts/Bauhaus/BauhausStd-Light.eot');
+  src: local('Bauhaus Std Light'), local('BauhausStd-Light'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Light.eot?#iefix') format('embedded-opentype'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Light.woff2') format('woff2'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Light.woff') format('woff'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bauhaus Std';
+  src: url('../assets/Text-fonts/Bauhaus/BauhausStd-Bold.eot');
+  src: local('Bauhaus Std Bold'), local('BauhausStd-Bold'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Bold.woff2') format('woff2'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Bold.woff') format('woff'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bauhaus Std';
+  src: url('../assets/Text-fonts/Bauhaus/BauhausStd-Heavy.eot');
+  src: local('Bauhaus Std Heavy'), local('BauhausStd-Heavy'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Heavy.eot?#iefix') format('embedded-opentype'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Heavy.woff2') format('woff2'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Heavy.woff') format('woff'),
+       url('../assets/Text-fonts/Bauhaus/BauhausStd-Heavy.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Climate Crisis';
+  src: url('../assets/Text-fonts/Content-fonts/Climate_Crisis/ClimateCrisis-Regular-VariableFont_YEAR.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monoton';
+  src: url('../assets/Text-fonts/Content-fonts/Monoton/Monoton-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nova Square';
+  src: url('../assets/Text-fonts/Content-fonts/Nova_Square/NovaSquare-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/Text-fonts/Content-fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/Text-fonts/Content-fonts/Space_Mono/SpaceMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Zen Dots';
+  src: url('../assets/Text-fonts/Content-fonts/Zen_Dots/ZenDots-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --color-destructive-foreground: var(--destructive-foreground);
+  --font-bauhaus: 'Bauhaus Std', sans-serif;
+  --font-climate: 'Climate Crisis', sans-serif;
+  --font-monoton: 'Monoton', sans-serif;
+  --font-nova: 'Nova Square', sans-serif;
+  --font-space: 'Space Mono', monospace;
+  --font-zen: 'Zen Dots', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+.font-bauhaus {
+  font-family: 'Bauhaus Std', sans-serif;
+}
+.font-climate {
+  font-family: 'Climate Crisis', sans-serif;
+}
+.font-monoton {
+  font-family: 'Monoton', sans-serif;
+}
+.font-nova {
+  font-family: 'Nova Square', sans-serif;
+}
+.font-space {
+  font-family: 'Space Mono', monospace;
+}
+.font-zen {
+  font-family: 'Zen Dots', sans-serif;
+}
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+:root {
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --radius: 0.625rem;
+}
+
+.dark {
+  --card: oklch(0.145 0 0);
+  --popover: oklch(0.145 0 0);
+  --primary: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+
+@keyframes box1 {
+  0%,
+    50% {
+    transform: translate(100%, 0);
+  }
+  100% {
+    transform: translate(200%, 0);
+  }
+}
+
+@keyframes box2 {
+  0% {
+    transform: translate(0, 100%);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+
+@keyframes box3 {
+  0%,
+    50% {
+    transform: translate(100%, 100%);
+  }
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+
+@keyframes box4 {
+  0% {
+    transform: translate(200%, 0);
+  }
+  50% {
+    transform: translate(200%, 100%);
+  }
+  100% {
+    transform: translate(100%, 100%);
+  }
+}
+
+/* 3D Box Loader CSS Classes */
+.boxes {
+  --size: 48px;
+  --color: #ffffff;
+  --face: #f0f0f0;
+  --duration: 800ms;
+  height: calc(var(--size) * 2);
+  width: calc(var(--size) * 3);
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+}
+
+.boxes .box {
+  width: var(--size);
+  height: var(--size);
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.boxes .box.box-1 {
+  transform: translate(100%, 0);
+  animation: box1 var(--duration) linear infinite;
+}
+
+.boxes .box.box-2 {
+  transform: translate(0, 100%);
+  animation: box2 var(--duration) linear infinite;
+}
+
+.boxes .box.box-3 {
+  transform: translate(100%, 100%);
+  animation: box3 var(--duration) linear infinite;
+}
+
+.boxes .box.box-4 {
+  transform: translate(200%, 0);
+  animation: box4 var(--duration) linear infinite;
+}
+
+.boxes .box > .face {
+  --background: var(--color);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: var(--background);
+}
+
+.boxes .box > .face-top {
+  --background: #ffffff;
+  transform: rotateX(0deg) translateZ(calc(var(--size) / 2));
+}
+
+.boxes .box > .face-front {
+  --background: #d4d4d4;
+  transform: rotateX(-90deg) translateZ(calc(var(--size) / 2));
+}
+
+.boxes .box > .face-right {
+  --background: #e8e8e8;
+  transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
+}
+
+.boxes .box > .face-back {
+  --background: #000000;
+  opacity: 0.15;
+  transform: rotateX(0deg) translateZ(calc(var(--size) * -1.2));
+  filter: blur(4px);
+}
+
+
+:root {
+	--base-100: #0b0714;
+	--base-200: #292725;
+	--base-300: #f5f5f5;
+}
+
+html,
+body {
+	background-color: #0b0714;
+	scroll-behavior: smooth;
+	font-family: "Space Mono", monospace;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	/* Chrome, Edge, Safari */
+	-ms-overflow-style: none;
+	/* IE & Edge */
+}
+
+
+/* ----------------- Preloader Styles ---------------- */
+/* .preloader-progress,
+.preloader-mask,
+.preloader-content {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100svh;
+	pointer-events: none;
+	overflow: hidden;
+}
+
+.preloader-progress {
+	background-color: var(--base-100);
+	z-index: 1;
+	will-change: opacity;
+}
+
+.preloader-progress-bar {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%) scaleX(0);
+	width: 55%;
+	height: 100%;
+	background-color: transparent;
+	transform-origin: left;
+	will-change: transform;
+}
+
+.preloader-logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	mix-blend-mode: difference;
+	z-index: 2;
+}
+
+.preloader-logo .logo-text {
+	position: relative;
+	color: var(--base-300);
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.preloader-mask {
+	background-color: var(--base-100);
+	mask: linear-gradient(var(--base-300), var(--base-300)), url("./../public/preloader-bg.svg") center/40% no-repeat;
+	-webkit-mask-composite: source-out;
+	mask-composite: subtract;
+	will-change: transform;
+	z-index: 1;
+}
+
+.preloader-content {
+	z-index: 2;
+}
+
+.preloader-footer {
+	position: absolute;
+	bottom: 4rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30%;
+	text-align: center;
+}
+
+.preloader-footer p {
+	color: var(--base-300);
+	opacity: 0.5;
+}
+
+.preloader-logo h1 .char2 {
+	position: relative;
+	transform: translateX(0%);
+	display: inline-block;
+	overflow-x: hidden;
+	will-change: transform;
+}
+
+.line,
+.char2 {
+	display: inline-block;
+	position: relative;
+	transform: translateY(0%);
+	padding-bottom: 0.2em;
+	margin-bottom: -0.2em;
+	will-change: transform;
+	overflow: hidden;
+
+} */
+
+/* Glassmorphism card effect */
+.glassEffect {
+	-webkit-backdrop-filter: blur(5px) saturate(100%);
+	backdrop-filter: blur(5px) saturate(100%);
+	background-color: rgba(237, 240, 245, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.hero-bg-img {
+	background-image: url("./assets/cap1.png");
+	background-repeat: no-repeat;
+	object-fit: cover;
+	/* background-position: center; */
+}
+
+/* --------------- Welcome Section Styles -------------- */
+
+.text-darkBrown {
+	color: #181126;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	line-height: 1.05;
+}
+
+.clip-text-welcome {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #eae4f5;
+	clip-path: inset(0 0 100% 0);
+	white-space: nowrap;
+	transition: none;
+}
+
+/* Mobile: remove the absolute positioning that broke hero */
+@media (max-width: 768px) {
+	.responsive-mobile {
+		position: relative;
+		top: auto;
+	}
+}
+
+/* -------------- Choose Section Styles ----------------- */
+.choose-section {
+	background: linear-gradient(to bottom,
+			#0b0714 0%,
+			#0b0714 50%,
+			#12091f 65%,
+			#12091f 75%,
+			#12091f 85%,
+			#12091f 90%,
+			/* #241f1d 95%, */
+			#1b112d 100%);
+}
+
+.choose-title-break {
+	color: #0b0714;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.choose-title-clip {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #eae4f5;
+	clip-path: inset(100% 0 0 0);
+	white-space: wrap;
+	transition: none;
+	z-index: 100;
+}
+
+.title-part {
+	overflow: hidden;
+}
+
+/* ------------------ Sticky Section Style ------------------- */
+.sticky-cols {
+	padding: 0rem;
+
+	/* .sticky-cols-wrapper {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+	} */
+
+	.col {
+		position: absolute;
+		width: 50%;
+		height: 100%;
+		will-change: transform;
+	}
+
+	.col h1 {
+		color: #9a8eb7;
+		width: 60%;
+	}
+
+	.col p {
+		color: #9a8eb7;
+		width: auto;
+	}
+
+	.col-2 {
+		scale: 1;
+		transform: translateX(100%);
+	}
+
+	.col .col-img img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.col-content,
+	.col-img {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		padding: 0.5rem;
+	}
+
+	.col-3 {
+		transform: translateX(100%) translateY(100%);
+		padding: 0.5rem;
+	}
+
+	.col-4 {
+		transform: translateX(100%) translateY(100%);
+	}
+
+	.col-content-wrapper {
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.col-content-wrapper,
+	.col-img-wrapper {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		background-color: #181126;
+		border-radius: 3rem;
+		overflow: hidden;
+	}
+
+	.col-content-wrapper-2 {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: 2.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.col-img-1,
+	.col-img-2 {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.col-img-2 {
+		clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+	}
+
+	.col-img-2 {
+		transform: scale(1);
+	}
+
+	.line {
+		overflow: hidden;
+	}
+
+	.line span {
+		display: block;
+		will-change: transform;
+	}
+}
+
+
+@media(max-width: 800px) {
+	.preloader-progress-bar {
+		left: 0%;
+		width: 100%;
+		transform: translateX(0%) scale(0);
+	}
+
+	.preloader-logo .logo-text {
+		font-size: 2rem;
+	}
+
+	.preloader-mask {
+		mask: linear-gradient(var(--base-300), var(--base-300)), url("./../public/preloader-bg.svg") center/90% no-repeat;
+		-webkit-mask-composite: source-out;
+		mask-composite: subtract;
+	}
+
+	.preloader-footer {
+		width: 75%;
+	}
+}
+
+/* ─── Footer Map Embed Styles ─── */
+.footer-map-container {
+	width: 100%;
+	max-width: 850px;
+	margin: 0 auto;
+	border-radius: 1.5rem;
+	overflow: hidden;
+	border: 1px solid rgba(139, 92, 246, 0.15);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 12px rgba(139, 92, 246, 0.04);
+	transition: all 0.3s ease;
+}
+
+.footer-map-container:hover {
+	border-color: rgba(139, 92, 246, 0.35);
+	box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+.footer-map-container iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+	display: block;
+}
+
+@media (max-width: 767px) {
+	.footer-map-container {
+		height: 260px;
+		margin-bottom: 2rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.footer-map-container {
+		height: 340px;
+		margin-bottom: 3rem;
+	}
+}
+* {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+	display: none;
+}
+
+/* ─── Mobile: Choose section title colour fix ─── */
+/* On mobile the animation trigger fires too late, so make text visible by default */
+@media (max-width: 767px) {
+	.choose-title-break {
+		color: #2e2540;        /* slightly lighter so it's visible on dark bg */
+	}
+	.choose-title-clip {
+		clip-path: inset(0% 0% 0% 0%); /* fully revealed on mobile — no clip anim */
+	}
+
+	/* Activities huge heading – scale down */
+	.activities-heading {
+		font-size: clamp(2.2rem, 11vw, 3.5rem) !important;
+	}
+
+	/* Prevent sections from having extra bottom margin that creates gaps */
+	section {
+		margin-bottom: 0;
+	}
+
+	/* Footer text sizes */
+	.footer-title h1 {
+		font-size: clamp(3rem, 22vw, 8rem);
+	}
+}
+
+/* ─── Smooth scroll on iOS ─── */
+#smooth-wrapper,
+#smooth-content {
+	-webkit-overflow-scrolling: touch;
+}
+
+/* ─── GPU acceleration for animated elements ─── */
+.hero-img,
+.clip-text-welcome,
+.choose-title-clip,
+.activities-title-clip,
+.progress-line,
+.nav-overlay,
+.nav-link-item,
+.ftChar span,
+.col-1, .col-2, .col-3, .col-4,
+.gallery-background,
+.gallery-background2 {
+	will-change: transform;
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+/* ─── Mobile: optimize touch performance ─── */
+@media (max-width: 767px) {
+	* {
+		-webkit-tap-highlight-color: transparent;
+		-webkit-touch-callout: none;
+	}
+	
+	/* Optimize section rendering */
+	section {
+		contain: layout style paint;
+	}
+	
+	/* Smooth native scroll */
+	html {
+		scroll-behavior: smooth;
+		-webkit-overflow-scrolling: touch;
+	}
+	
+	body {
+		overscroll-behavior-y: none;
+	}
+	
+	/* Ensure videos don't cause layout issues */
+	video {
+		transform: translateZ(0);
+		-webkit-transform: translateZ(0);
+	}
+	
+	/* Optimize image rendering */
+	img {
+		transform: translateZ(0);
+		-webkit-transform: translateZ(0);
+	}
+}
