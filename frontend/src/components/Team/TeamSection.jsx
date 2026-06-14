@@ -21,7 +21,7 @@ import anonymous from "../../../assets/Team_section/Anonymous.png";
 
 // Set this variable to true to display actual names, positions, and images.
 // Set to false to display Coming Soon and the Anonymous placeholder.
-const isTeamFinal = false;
+const isTeamFinal = true;
 
 const teamCards = [
     {
@@ -44,9 +44,9 @@ const teamCards = [
     },
     {
         id: "Secretary",
-        name: "SHINJAN BHATTA",
-        role: "SECRETARY",
-        image: shinjan,
+        name: "SWARNALEE RAY",
+        role: "JOINT-TREASURER, SB",
+        image: Swarnalee,
     },
     {
         id: "join-treasurer",
