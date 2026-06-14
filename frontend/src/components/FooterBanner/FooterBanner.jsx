@@ -38,11 +38,11 @@ const FooterBanner = () => {
                 <img
                     onMouseEnter={() => setActive(true)}
                     onMouseLeave={() => setActive(false)}
-                    ref={fbImgRef} 
-                    src={banner} 
-                    alt="" 
-                    className='w-full h-full object-cover select-none' 
-                    style={{ filter: "blur(2px) brightness(0.45)" }} 
+                    ref={fbImgRef}
+                    src={banner}
+                    alt=""
+                    className='w-full h-full object-cover select-none'
+                    style={{ filter: "blur(2px) brightness(0.45)" }}
                 />
 
                 <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55vw] md:w-[45vw] lg:w-[35vw] max-w-[600px] select-none">
