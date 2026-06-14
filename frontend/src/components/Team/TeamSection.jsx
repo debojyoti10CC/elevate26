@@ -50,9 +50,9 @@ const teamCards = [
     },
     {
         id: "join-treasurer",
-        name: "SOUHARDYA RAY",
-        role: "JOINT Treasurer",
-        image: souhardya,
+        name: "SOUHERDYA SARKAR",
+        role: "WEBMASTER, SB",
+        image: souherdya,
     },
     {
         id: "webmaster",
