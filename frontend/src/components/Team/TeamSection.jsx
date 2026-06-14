@@ -13,6 +13,8 @@ import swarnalee from "../../../assets/Team_section/Swarnalee.svg";
 import Swarnalee from "../../../assets/Team_section/Swarnalee Ray.svg";
 import Soham from "../../../assets/Team_section/Soham Karak.svg";
 import sneha from "../../../assets/Team_section/Sneha Shaw.svg";
+import abhishek from "../../../assets/Team_section/Abhishek Kumar.svg";
+import ahana from "../../../assets/Team_section/Ahana Gupta.svg";
 import archishman from "../../../assets/Team_section/Archishman.svg";
 import shinjan from "../../../assets/Team_section/Shinjan.svg";
 import ishika from "../../../assets/Team_section/Ishika.svg";
@@ -66,18 +68,16 @@ const teamCards = [
     //CORE
 
     {
-        id: "Spokesperson",
-        name: "ARCHISHMAN DAS",
-        role: "SPOKESPERSON",
-        image: archishman,
-        placeholder: true,
+        id: "abhishek-kumar",
+        name: "ABHISHEK KUMAR",
+        role: "WEBMASTER, EMC",
+        image: abhishek,
     },
     {
-        id: "GraphicsLead",
-        name: "SWARNALEE RAY",
-        role: "GRAPHICS LEAD",
-        image: swarnalee,
-        placeholder: true,
+        id: "ahana-gupta",
+        name: "AHANA GUPTA",
+        role: "VICE CHAIRPERSON, EMC",
+        image: ahana,
     },
     {
         id: "MediaLead",
