@@ -24,38 +24,45 @@ function Event({
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start 70%', 'start 30%'],
+    offset: ['start end', 'end start'],
   });
 
   const color = useTransform(
     scrollYProgress,
-    [0, 0.5],
-    ['#ADADAD', '#000000']
+    [0.25, 0.5, 0.75],
+    ['#3a2e4c', '#ADADAD', '#3a2e4c']
   );
 
   const titleColor = useTransform(
     scrollYProgress,
-    [0, 0.5],
-    ['#E1B6FC', '#6b21a8']   // light purple → dark purple
+    [0.25, 0.5, 0.75],
+    ['#6b21a8', '#E1B6FC', '#6b21a8']   // dark purple → light purple → dark purple
   );
 
   const textColor = useTransform(
     scrollYProgress,
-    [0, 0.5],
-    ['#ffffff', '#1a0a2e']   // white → near-black
+    [0.25, 0.5, 0.75],
+    ['#888888', '#ffffff', '#888888']   // medium grey → white → medium grey
   );
 
   const textColorMuted = useTransform(
     scrollYProgress,
-    [0, 0.5],
-    ['rgba(255,255,255,0.8)', 'rgba(26,10,46,0.85)']
+    [0.25, 0.5, 0.75],
+    ['rgba(136,136,136,0.85)', 'rgba(255,255,255,0.8)', 'rgba(136,136,136,0.85)']
+  );
+
+  const opacity = useTransform(
+    scrollYProgress,
+    [0.25, 0.5, 0.75],
+    [0.55, 1, 0.55]
   );
 
   const { border } = svgs;
 
   return (
-    <div
+    <motion.div
       ref={ref}
+      style={{ opacity }}
       className={cn(
         'flex flex-row w-full max-w-[500px] items-start',
         align === 'right' && 'lg:ml-auto',
@@ -105,7 +112,7 @@ function Event({
           </motion.p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -30,7 +30,6 @@ dist-ssr
 *.sln
 *.sw?
 
-frontend/src/assets
 # Optional: ignore lockfiles if you use only one package manager
 # yarn.lock
 # pnpm-lock.yaml

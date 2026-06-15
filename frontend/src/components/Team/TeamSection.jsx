@@ -11,7 +11,20 @@ import souhardya from "../../../assets/Team_section/Souhardya.svg";
 import souherdya from "../../../assets/Team_section/Souherdya.svg";
 import swarnalee from "../../../assets/Team_section/Swarnalee.svg";
 import Swarnalee from "../../../assets/Team_section/Swarnalee Ray.svg";
-import archishman from "../../../assets/Team_section/Archishman.svg";
+import Soham from "../../../assets/Team_section/Soham Karak.svg";
+import sneha from "../../../assets/Team_section/Sneha Shaw.svg";
+import abhishek from "../../../assets/Team_section/Abhishek Kumar.svg";
+import ahana from "../../../assets/Team_section/Ahana Gupta.svg";
+import anweya from "../../../assets/Team_section/Anweya Das.svg";
+import archismanDas from "../../../assets/Team_section/Archisman Das.svg";
+import atrisha from "../../../assets/Team_section/Atrisha Biswas.svg";
+import manoj from "../../../assets/Team_section/Manoj Ghosh.svg";
+import meesha from "../../../assets/Team_section/Meesha Sinha.svg";
+import prachi from "../../../assets/Team_section/Prachi Sil.svg";
+import pritesh from "../../../assets/Team_section/Pritesh Patra.svg";
+import snehaSight from "../../../assets/Team_section/Sneha Shaw SIGHT.svg";
+import spandan from "../../../assets/Team_section/Spandan Chakraborty.svg";
+import swapnaleena from "../../../assets/Team_section/Swapnaleena Biswas.svg";
 import shinjan from "../../../assets/Team_section/Shinjan.svg";
 import ishika from "../../../assets/Team_section/Ishika.svg";
 import amreta from "../../../assets/Team_section/Amreta.svg";
@@ -21,83 +34,119 @@ import anonymous from "../../../assets/Team_section/Anonymous.png";
 
 // Set this variable to true to display actual names, positions, and images.
 // Set to false to display Coming Soon and the Anonymous placeholder.
-const isTeamFinal = false;
+const isTeamFinal = true;
 
 const teamCards = [
     {
         id: "chairperson",
         name: "SHINJAN BHATTA",
-        role: "CHAIRPERSON",
+        role: "CHAIRPERSON, SB",
         image: Shinjan,
     },
     {
         id: "vice chairperson",
         name: "SOHAM KARAK",
-        role: "VICE CHAIRPERSON",
-        image: Swarnalee,
+        role: "VICE CHAIRPERSON, SB",
+        image: Soham,
     },
     {
         id: "Treasurer",
-        name: "SRIJIT CHAKRABORTY",
-        role: "TREASURER",
-        image: srijit,
-    },
-    {
-        id: "Secretary",
-        name: "SHINJAN BHATTA",
-        role: "SECRETARY",
-        image: shinjan,
-    },
-    {
-        id: "join-treasurer",
         name: "SOUHARDYA RAY",
-        role: "JOINT Treasurer",
+        role: "TREASURER, SB",
         image: souhardya,
     },
     {
-        id: "webmaster",
+        id: "Secretary",
+        name: "SWARNALEE RAY",
+        role: "JOINT-TREASURER, SB",
+        image: Swarnalee,
+    },
+    {
+        id: "join-treasurer",
         name: "SOUHERDYA SARKAR",
-        role: "WEBMASTER",
+        role: "WEBMASTER, SB",
         image: souherdya,
-        placeholder: true,
+    },
+    {
+        id: "sneha-shaw",
+        name: "SNEHA SHAW",
+        role: "CHAIRPERSON, WIE",
+        image: sneha,
     },
 
     //CORE
 
     {
-        id: "Spokesperson",
-        name: "ARCHISHMAN DAS",
-        role: "SPOKESPERSON",
-        image: archishman,
-        placeholder: true,
+        id: "abhishek-kumar",
+        name: "ABHISHEK KUMAR",
+        role: "WEBMASTER, EMC",
+        image: abhishek,
     },
     {
-        id: "GraphicsLead",
-        name: "SWARNALEE RAY",
-        role: "GRAPHICS LEAD",
-        image: swarnalee,
-        placeholder: true,
+        id: "ahana-gupta",
+        name: "AHANA GUPTA",
+        role: "VICE CHAIRPERSON, EMC",
+        image: ahana,
     },
     {
-        id: "MediaLead",
-        name: "ANANYA MUKHERJEE",
-        role: "MEDIA LEAD",
-        image: ananya,
-        placeholder: true,
+        id: "anweya-das",
+        name: "ANWEYA DAS",
+        role: "SECRETARY, EMC",
+        image: anweya,
     },
     {
-        id: "ContentLead",
-        name: "AMRETA DEY",
-        role: "CONTENT LEAD",
-        image: amreta,
-        placeholder: true,
+        id: "archisman-das",
+        name: "ARCHISMAN DAS",
+        role: "JOINT VICE CHAIR, CS",
+        image: archismanDas,
     },
     {
-        id: "PRLead",
-        name: "ISHIKA DUTTA",
-        role: "PR LEAD",
-        image: ishika,
-        placeholder: true,
+        id: "atrisha-biswas",
+        name: "ATRISHA BISWAS",
+        role: "CHAIRPERSON, EMC",
+        image: atrisha,
+    },
+    {
+        id: "manoj-ghosh",
+        name: "MANOJ GHOSH",
+        role: "EVENT MANAGEMENT HEAD, IEEE-IES",
+        image: manoj,
+    },
+    {
+        id: "meesha-sinha",
+        name: "MEESHA SINHA",
+        role: "CHAIRPERSON, SIGHT",
+        image: meesha,
+    },
+    {
+        id: "prachi-sil",
+        name: "PRACHI SIL",
+        role: "TREASURER, SIGHT",
+        image: prachi,
+    },
+    {
+        id: "pritesh-patra",
+        name: "PRITESH PATRA",
+        role: "LOGISTICS LEAD, CS",
+        image: pritesh,
+    },
+    {
+        id: "sneha-shaw-sight",
+        name: "SNEHA SHAW",
+        role: "SECRETARY, SIGHT",
+        image: snehaSight,
+    },
+    {
+        id: "spandan-chakraborty",
+        name: "SPANDAN CHAKRABORTY",
+        role: "VICE CHAIRPERSON, MTTS",
+        image: spandan,
+    },
+    {
+        id: "swapnaleena-biswas",
+        name: "SWAPNALEENA BISWAS",
+        role: "VICE CHAIRPERSON, WIE",
+        image: swapnaleena,
     },
 ];
 
