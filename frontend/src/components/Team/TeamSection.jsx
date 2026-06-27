@@ -15,16 +15,30 @@ import Soham from "../../../assets/Team_section/Soham Karak.svg";
 import sneha from "../../../assets/Team_section/Sneha Shaw.svg";
 import abhishek from "../../../assets/Team_section/Abhishek Kumar.svg";
 import ahana from "../../../assets/Team_section/Ahana Gupta.svg";
+import amit from "../../../assets/Team_section/Amit Debnath.svg";
+import ananyaMukherjee from "../../../assets/Team_section/Ananya Mukherjee.svg";
 import anweya from "../../../assets/Team_section/Anweya Das.svg";
 import archismanDas from "../../../assets/Team_section/Archisman Das.svg";
 import atrisha from "../../../assets/Team_section/Atrisha Biswas.svg";
+import debosmita from "../../../assets/Team_section/Debosmita Gorai.svg";
+import deep from "../../../assets/Team_section/Deep Batabyal.svg";
 import manoj from "../../../assets/Team_section/Manoj Ghosh.svg";
 import meesha from "../../../assets/Team_section/Meesha Sinha.svg";
 import prachi from "../../../assets/Team_section/Prachi Sil.svg";
 import pritesh from "../../../assets/Team_section/Pritesh Patra.svg";
+import sarbatriki from "../../../assets/Team_section/Sarbatriki Jana.svg";
+import satwik from "../../../assets/Team_section/Satwik Khan.svg";
+import siddhartha from "../../../assets/Team_section/Siddhartha Ghosh.svg";
 import snehaSight from "../../../assets/Team_section/Sneha Shaw SIGHT.svg";
+import somsuddha from "../../../assets/Team_section/Somsuddha Dasgupta.svg";
+import sougata from "../../../assets/Team_section/Sougata Sengupta.svg";
+import sounak from "../../../assets/Team_section/Sounak Maiti.svg";
+import souraprava from "../../../assets/Team_section/Souraprava Das.svg";
 import spandan from "../../../assets/Team_section/Spandan Chakraborty.svg";
+import srija from "../../../assets/Team_section/Srija Pal.svg";
+import subhadra from "../../../assets/Team_section/Subhadra Bhattacharya.svg";
 import swapnaleena from "../../../assets/Team_section/Swapnaleena Biswas.svg";
+import swarnadeep from "../../../assets/Team_section/Swarnadeep Koley.svg";
 import shinjan from "../../../assets/Team_section/Shinjan.svg";
 import ishika from "../../../assets/Team_section/Ishika.svg";
 import amreta from "../../../assets/Team_section/Amreta.svg";
@@ -147,6 +161,90 @@ const teamCards = [
         name: "SWAPNALEENA BISWAS",
         role: "VICE CHAIRPERSON, WIE",
         image: swapnaleena,
+    },
+    {
+        id: "siddhartha-ghosh",
+        name: "SIDDHARTHA GHOSH",
+        role: "CHAIRPERSON, RAS",
+        image: siddhartha,
+    },
+    {
+        id: "subhadra-bhattacharya",
+        name: "SUBHADRA BHATTACHARYA",
+        role: "CHAIRPERSON, EDS",
+        image: subhadra,
+    },
+    {
+        id: "sarbatriki-jana",
+        name: "SARBATRIKI JANA",
+        role: "VICE CHAIRPERSON, CAS",
+        image: sarbatriki,
+    },
+    {
+        id: "srija-pal",
+        name: "SRIJA PAL",
+        role: "VICE CHAIRPERSON, IES",
+        image: srija,
+    },
+    {
+        id: "amit-debnath",
+        name: "AMIT DEBNATH",
+        role: "SECRETARY, IES",
+        image: amit,
+    },
+    {
+        id: "sounak-maiti",
+        name: "SOUNAK MAITI",
+        role: "VICE CHAIRPERSON, EDC",
+        image: sounak,
+    },
+    {
+        id: "deep-batabyal",
+        name: "DEEP BATABYAL",
+        role: "CHAIRPERSON, CAS",
+        image: deep,
+    },
+    {
+        id: "somsuddha-dasgupta",
+        name: "SOMSUDDHA DASGUPTA",
+        role: "TREASURER, SBIES",
+        image: somsuddha,
+    },
+    {
+        id: "satwik-khan",
+        name: "SATWIK KHAN",
+        role: "VICE CHAIRPERSON, APS",
+        image: satwik,
+    },
+    {
+        id: "souraprava-das",
+        name: "SOURAPRAVA DAS",
+        role: "TREASURER, IAS",
+        image: souraprava,
+    },
+    {
+        id: "swarnadeep-koley",
+        name: "SWARNADEEP KOLEY",
+        role: "TREASURER, MTTS",
+        image: swarnadeep,
+    },
+    {
+        id: "debosmita-gorai",
+        name: "DEBOSMITA GORAI",
+        role: "CHAIRPERSON, IAS",
+        image: debosmita,
+    },
+    {
+        id: "sougata-sengupta",
+        name: "SOUGATA SENGUPTA",
+        role: "VICE CHAIRPERSON, IAS",
+        image: sougata,
+    },
+    {
+        id: "ananya-mukherjee",
+        name: "ANANYA MUKHERJEE",
+        role: "CORE ORGANISER",
+        image: ananyaMukherjee,
     },
 ];
 
