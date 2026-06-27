@@ -118,7 +118,7 @@ export const timelineData = {
     },
     {
       eventNumber: 17,
-      title: 'Day 3 (12th July): Fun Event',
+      title: 'Day 3 (12th July): Fun Event — Once Upon A Time',
       duration: '11:30 AM - 02:00 PM',
       description: 'Midday recreational and interactive activities.',
     },

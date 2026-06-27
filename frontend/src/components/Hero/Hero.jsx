@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap/all";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -66,6 +66,7 @@ function drawFrame(canvas, img, logW, logH) {
 }
 
 const Hero = () => {
+    const [isBrochureHovered, setIsBrochureHovered] = useState(false);
     const sectionRef = useRef(null);
     const cardRef = useRef(null);
     const canvasRef = useRef(null);
@@ -439,10 +440,16 @@ const Hero = () => {
                         {/* Brochure */}
                         <a
                             href="#brochure"
+                            onMouseEnter={() => setIsBrochureHovered(true)}
+                            onMouseLeave={() => setIsBrochureHovered(false)}
                             className="px-6 py-3 md:px-8 md:py-4 bg-[#181126] hover:bg-[#1e1535] text-[#eae4f5] font-nova font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(24,17,38,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2 md:gap-3 group"
                         >
-                            <span className="tracking-wider text-sm md:text-base font-semibold">Brochure</span>
-                            <MdArrowOutward className="bg-[#eae4f5] text-[#181126] w-6 h-6 md:w-7 md:h-7 rounded-full p-1.5 flex-shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                            <span className="tracking-wider text-sm md:text-base font-semibold">
+                                {isBrochureHovered ? "COMING SOON..." : "Brochure"}
+                            </span>
+                            {!isBrochureHovered && (
+                                <MdArrowOutward className="bg-[#eae4f5] text-[#181126] w-6 h-6 md:w-7 md:h-7 rounded-full p-1.5 flex-shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                            )}
                         </a>
                     </div>
                 </div>
